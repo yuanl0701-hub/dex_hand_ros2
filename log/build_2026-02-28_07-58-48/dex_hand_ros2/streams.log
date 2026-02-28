@@ -1,0 +1,30 @@
+[0.488s] Invoking command in '/root/dex_hand_ws/build/dex_hand_ros2': PYTHONPATH=/root/dex_hand_ws/build/dex_hand_ros2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/dex_hand_ws/install/dex_hand_ros2/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /root/dex_hand_ws/build/dex_hand_ros2/build --no-deps symlink_data
+[0.655s] /usr/lib/python3/dist-packages/setuptools/dist.py:723: UserWarning: Usage of dash-separated 'script-dir' will not be supported in future versions. Please use the underscore name 'script_dir' instead
+[0.655s]   warnings.warn(
+[0.677s] running develop
+[0.733s] running egg_info
+[0.734s] creating dex_hand_ros2.egg-info
+[0.734s] writing dex_hand_ros2.egg-info/PKG-INFO
+[0.735s] writing dependency_links to dex_hand_ros2.egg-info/dependency_links.txt
+[0.735s] writing entry points to dex_hand_ros2.egg-info/entry_points.txt
+[0.736s] writing requirements to dex_hand_ros2.egg-info/requires.txt
+[0.736s] writing top-level names to dex_hand_ros2.egg-info/top_level.txt
+[0.736s] writing manifest file 'dex_hand_ros2.egg-info/SOURCES.txt'
+[0.739s] reading manifest file 'dex_hand_ros2.egg-info/SOURCES.txt'
+[0.740s] writing manifest file 'dex_hand_ros2.egg-info/SOURCES.txt'
+[0.741s] running build_ext
+[0.741s] Creating /root/dex_hand_ws/install/dex_hand_ros2/lib/python3.10/site-packages/dex-hand-ros2.egg-link (link to .)
+[0.742s] Installing config_node script to /root/dex_hand_ws/install/dex_hand_ros2/lib/dex_hand_ros2
+[0.742s] Installing hand_node script to /root/dex_hand_ws/install/dex_hand_ros2/lib/dex_hand_ros2
+[0.743s] 
+[0.743s] Installed /root/dex_hand_ws/build/dex_hand_ros2
+[0.743s] running symlink_data
+[0.744s] creating /root/dex_hand_ws/install/dex_hand_ros2/share/ament_index
+[0.744s] creating /root/dex_hand_ws/install/dex_hand_ros2/share/ament_index/resource_index
+[0.744s] creating /root/dex_hand_ws/install/dex_hand_ros2/share/ament_index/resource_index/packages
+[0.744s] symbolically linking /root/dex_hand_ws/build/dex_hand_ros2/resource/dex_hand_ros2 -> /root/dex_hand_ws/install/dex_hand_ros2/share/ament_index/resource_index/packages
+[0.745s] symbolically linking /root/dex_hand_ws/build/dex_hand_ros2/package.xml -> /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2
+[0.745s] creating /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/msg
+[0.747s] symbolically linking /root/dex_hand_ws/build/dex_hand_ros2/dex_hand_ros2/msg/MotorState.msg -> /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/msg
+[0.747s] symbolically linking /root/dex_hand_ws/build/dex_hand_ros2/dex_hand_ros2/msg/GestureCmd.msg -> /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/msg
+[0.762s] Invoked command in '/root/dex_hand_ws/build/dex_hand_ros2' returned '0': PYTHONPATH=/root/dex_hand_ws/build/dex_hand_ros2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/dex_hand_ws/install/dex_hand_ros2/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /root/dex_hand_ws/build/dex_hand_ros2/build --no-deps symlink_data

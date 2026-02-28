@@ -1,0 +1,4 @@
+[console_scripts]
+config_node = dex_hand_ros2.config_node:main
+hand_node = dex_hand_ros2.hand_node:main
+

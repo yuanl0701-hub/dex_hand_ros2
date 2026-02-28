@@ -1,0 +1,1 @@
+/root/dex_hand_ws/build/dex_hand_ros2/dex_hand_ros2/msg/GestureCmd.msg
