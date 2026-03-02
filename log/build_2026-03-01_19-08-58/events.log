@@ -1,0 +1,56 @@
+[0.000000] (-) TimerEvent: {}
+[0.001465] (dex_hand_ros2) JobQueued: {'identifier': 'dex_hand_ros2', 'dependencies': OrderedDict()}
+[0.001764] (dex_hand_ros2) JobStarted: {'identifier': 'dex_hand_ros2'}
+[0.031714] (dex_hand_ros2) JobProgress: {'identifier': 'dex_hand_ros2', 'progress': 'cmake'}
+[0.032685] (dex_hand_ros2) JobProgress: {'identifier': 'dex_hand_ros2', 'progress': 'build'}
+[0.035171] (dex_hand_ros2) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/dex_hand_ws/build/dex_hand_ros2', '--', '-j10', '-l10'], 'cwd': '/root/dex_hand_ws/build/dex_hand_ros2', 'env': OrderedDict([('HOSTNAME', 'docker-desktop'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/root/dex_hand_ws/install/dex_hand_ros2/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/root/dex_hand_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/dex_hand_ws/install/dex_hand_ros2:/opt/ros/humble'), ('PWD', '/root/dex_hand_ws/build/dex_hand_ros2'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages:/root/dex_hand_ws/build/dex_hand_ros2:/root/dex_hand_ws/install/dex_hand_ros2/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/dex_hand_ws/install/dex_hand_ros2:/opt/ros/humble')]), 'shell': False}
+[0.098392] (-) TimerEvent: {}
+[0.154366] (dex_hand_ros2) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.199365] (-) TimerEvent: {}
+[0.302600] (-) TimerEvent: {}
+[0.404387] (-) TimerEvent: {}
+[0.423705] (dex_hand_ros2) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[0.425193] (dex_hand_ros2) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.427431] (dex_hand_ros2) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.446354] (dex_hand_ros2) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.459739] (dex_hand_ros2) StdoutLine: {'line': b'-- Found std_msgs: 4.9.0 (/opt/ros/humble/share/std_msgs/cmake)\n'}
+[0.474379] (dex_hand_ros2) StdoutLine: {'line': b'-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[0.482696] (dex_hand_ros2) StdoutLine: {'line': b'-- Found rclpy: 3.3.19 (/opt/ros/humble/share/rclpy/cmake)\n'}
+[0.505355] (-) TimerEvent: {}
+[0.606418] (-) TimerEvent: {}
+[0.708395] (-) TimerEvent: {}
+[0.810382] (-) TimerEvent: {}
+[0.914384] (-) TimerEvent: {}
+[1.016646] (-) TimerEvent: {}
+[1.042349] (dex_hand_ros2) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[1.117390] (-) TimerEvent: {}
+[1.218388] (-) TimerEvent: {}
+[1.322407] (-) TimerEvent: {}
+[1.423383] (-) TimerEvent: {}
+[1.526394] (-) TimerEvent: {}
+[1.558311] (dex_hand_ros2) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.627385] (-) TimerEvent: {}
+[1.731498] (-) TimerEvent: {}
+[1.832391] (-) TimerEvent: {}
+[1.933614] (-) TimerEvent: {}
+[2.037394] (-) TimerEvent: {}
+[2.138384] (-) TimerEvent: {}
+[2.240390] (-) TimerEvent: {}
+[2.243493] (dex_hand_ros2) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.308840] (dex_hand_ros2) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[2.341349] (-) TimerEvent: {}
+[2.374369] (dex_hand_ros2) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[2.374662] (dex_hand_ros2) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[2.374869] (dex_hand_ros2) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[2.442386] (-) TimerEvent: {}
+[2.546386] (-) TimerEvent: {}
+[2.558873] (dex_hand_ros2) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:45 (install):\n'}
+[2.559170] (dex_hand_ros2) StderrLine: {'line': b'  install PROGRAMS given RENAME option with more than one file.\n'}
+[2.560661] (dex_hand_ros2) StderrLine: {'line': b'\n'}
+[2.560774] (dex_hand_ros2) StderrLine: {'line': b'\x1b[0m\n'}
+[2.561087] (dex_hand_ros2) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[2.561565] (dex_hand_ros2) StdoutLine: {'line': b'See also "/root/dex_hand_ws/build/dex_hand_ros2/CMakeFiles/CMakeOutput.log".\n'}
+[2.569262] (dex_hand_ros2) StderrLine: {'line': b'gmake: *** [Makefile:963: cmake_check_build_system] Error 1\n'}
+[2.574529] (dex_hand_ros2) CommandEnded: {'returncode': 2}
+[2.591128] (dex_hand_ros2) JobEnded: {'identifier': 'dex_hand_ros2', 'rc': 2}
+[2.592413] (-) EventReactorShutdown: {}

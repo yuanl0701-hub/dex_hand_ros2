@@ -1,0 +1,26 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from dex_hand_ros2/dex_hand_ros2/msg/MotorState.msg
+// generated code does not contain a copyright notice
+
+
+module dex_hand_ros2 {
+  module msg {
+    struct MotorState {
+      @verbatim (language="comment", text=
+        "电机ID（1-6）")
+      int32 motor_id;
+
+      @verbatim (language="comment", text=
+        "电机当前位置")
+      int32 position;
+
+      @verbatim (language="comment", text=
+        "电机当前速度（可选，暂用不到）")
+      float velocity;
+
+      @verbatim (language="comment", text=
+        "电机连接状态")
+      boolean connected;
+    };
+  };
+};

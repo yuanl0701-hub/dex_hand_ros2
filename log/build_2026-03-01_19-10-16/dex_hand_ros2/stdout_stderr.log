@@ -1,0 +1,156 @@
+-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found std_msgs: 4.9.0 (/opt/ros/humble/share/std_msgs/cmake)
+-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+-- Found rclpy: 3.3.19 (/opt/ros/humble/share/rclpy/cmake)
+-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/dex_hand_ws/build/dex_hand_ros2
+[35m[1mConsolidate compiler generated dependencies of target dex_hand_ros2__rosidl_generator_c[0m
+[  2%] Built target dex_hand_ros2__cpp
+[ 12%] Built target dex_hand_ros2__rosidl_generator_c
+[ 12%] Built target ament_cmake_python_copy_dex_hand_ros2
+[35m[1mConsolidate compiler generated dependencies of target dex_hand_ros2__rosidl_typesupport_cpp[0m
+[35m[1mConsolidate compiler generated dependencies of target dex_hand_ros2__rosidl_typesupport_fastrtps_cpp[0m
+[35m[1mConsolidate compiler generated dependencies of target dex_hand_ros2__rosidl_typesupport_introspection_cpp[0m
+[35m[1mConsolidate compiler generated dependencies of target dex_hand_ros2__rosidl_typesupport_fastrtps_c[0m
+[35m[1mConsolidate compiler generated dependencies of target dex_hand_ros2__rosidl_typesupport_introspection_c[0m
+[35m[1mConsolidate compiler generated dependencies of target dex_hand_ros2__rosidl_typesupport_c[0m
+[ 33%] Built target dex_hand_ros2__rosidl_typesupport_introspection_c
+[ 33%] Built target dex_hand_ros2__rosidl_typesupport_c
+[ 43%] Built target dex_hand_ros2__rosidl_typesupport_cpp
+[ 56%] Built target dex_hand_ros2__rosidl_typesupport_fastrtps_cpp
+[ 64%] Built target dex_hand_ros2__rosidl_typesupport_introspection_cpp
+[ 74%] Built target dex_hand_ros2__rosidl_typesupport_fastrtps_c
+running egg_info
+writing dex_hand_ros2.egg-info/PKG-INFO
+writing dependency_links to dex_hand_ros2.egg-info/dependency_links.txt
+writing top-level names to dex_hand_ros2.egg-info/top_level.txt
+reading manifest file 'dex_hand_ros2.egg-info/SOURCES.txt'
+writing manifest file 'dex_hand_ros2.egg-info/SOURCES.txt'
+[ 74%] Built target dex_hand_ros2
+[ 74%] Built target ament_cmake_python_build_dex_hand_ros2_egg
+[ 76%] Built target dex_hand_ros2__py
+[35m[1mConsolidate compiler generated dependencies of target dex_hand_ros2__rosidl_generator_py[0m
+[ 84%] Built target dex_hand_ros2__rosidl_generator_py
+[35m[1mConsolidate compiler generated dependencies of target dex_hand_ros2__rosidl_typesupport_fastrtps_c__pyext[0m
+[35m[1mConsolidate compiler generated dependencies of target dex_hand_ros2__rosidl_typesupport_introspection_c__pyext[0m
+[35m[1mConsolidate compiler generated dependencies of target dex_hand_ros2__rosidl_typesupport_c__pyext[0m
+[ 89%] Built target dex_hand_ros2__rosidl_typesupport_fastrtps_c__pyext
+[ 94%] Built target dex_hand_ros2__rosidl_typesupport_introspection_c__pyext
+[100%] Built target dex_hand_ros2__rosidl_typesupport_c__pyext
+-- Install configuration: ""
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/ament_index/resource_index/rosidl_interfaces/dex_hand_ros2
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_generator_c__visibility_control.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/gesture_cmd.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/motor_state.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__functions.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__struct.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__functions.c
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__type_support.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__type_support.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__functions.c
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__struct.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__functions.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/environment/library_path.sh
+-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/environment/library_path.dsv
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_generator_c.so
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_fastrtps_c.so
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__type_support.c
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__type_support.c
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_typesupport_introspection_c__visibility_control.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_introspection_c.so
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_c.so
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/motor_state.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__struct.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__struct.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__builder.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__type_support.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__traits.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__type_support.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__traits.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__builder.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_generator_cpp__visibility_control.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/gesture_cmd.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/dds_fastrtps
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_fastrtps_cpp.so
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__type_support.cpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__type_support.cpp
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_introspection_cpp.so
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_cpp.so
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/environment/pythonpath.sh
+-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/environment/pythonpath.dsv
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2-0.1.0-py3.10.egg-info
+-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2-0.1.0-py3.10.egg-info/PKG-INFO
+-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2-0.1.0-py3.10.egg-info/SOURCES.txt
+-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2-0.1.0-py3.10.egg-info/top_level.txt
+-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2-0.1.0-py3.10.egg-info/dependency_links.txt
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/_dex_hand_ros2_s.ep.rosidl_typesupport_fastrtps_c.c
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg/_motor_state_s.c
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg/_gesture_cmd_s.c
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg/__init__.py
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg/_gesture_cmd.py
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg/_motor_state.py
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/_dex_hand_ros2_s.ep.rosidl_typesupport_introspection_c.c
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/_dex_hand_ros2_s.ep.rosidl_typesupport_c.c
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/__init__.py
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/libdex_hand_ros2__rosidl_generator_py.so
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+Listing '/root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2'...
+Compiling '/root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/__init__.py'...
+Listing '/root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg'...
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_generator_py.so
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/msg/GestureCmd.idl
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/msg/MotorState.idl
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/msg/GestureCmd.msg
+-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/msg/MotorState.msg
+-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/hand_node.py
+-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/hand_driver.py
+-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/config_node.py
+-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/lib/dex_hand_ros2/hand_node
+-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/lib/dex_hand_ros2/config_node

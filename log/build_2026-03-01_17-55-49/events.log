@@ -1,0 +1,189 @@
+[0.000000] (-) TimerEvent: {}
+[0.001299] (dex_hand_ros2) JobQueued: {'identifier': 'dex_hand_ros2', 'dependencies': OrderedDict()}
+[0.001652] (dex_hand_ros2) JobStarted: {'identifier': 'dex_hand_ros2'}
+[0.031681] (dex_hand_ros2) JobProgress: {'identifier': 'dex_hand_ros2', 'progress': 'cmake'}
+[0.032682] (dex_hand_ros2) JobProgress: {'identifier': 'dex_hand_ros2', 'progress': 'build'}
+[0.035199] (dex_hand_ros2) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/dex_hand_ws/build/dex_hand_ros2', '--', '-j10', '-l10'], 'cwd': '/root/dex_hand_ws/build/dex_hand_ros2', 'env': OrderedDict([('HOSTNAME', 'docker-desktop'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/root/dex_hand_ws/install/dex_hand_ros2/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/root/dex_hand_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/dex_hand_ws/install/dex_hand_ros2:/opt/ros/humble'), ('PWD', '/root/dex_hand_ws/build/dex_hand_ros2'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages:/root/dex_hand_ws/build/dex_hand_ros2:/root/dex_hand_ws/install/dex_hand_ros2/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/dex_hand_ws/install/dex_hand_ros2:/opt/ros/humble')]), 'shell': False}
+[0.098804] (-) TimerEvent: {}
+[0.199803] (-) TimerEvent: {}
+[0.304817] (-) TimerEvent: {}
+[0.356074] (dex_hand_ros2) StdoutLine: {'line': b'[  2%] Built target dex_hand_ros2__cpp\n'}
+[0.371998] (dex_hand_ros2) StdoutLine: {'line': b'[ 12%] Built target dex_hand_ros2__rosidl_generator_c\n'}
+[0.405890] (-) TimerEvent: {}
+[0.442290] (dex_hand_ros2) StdoutLine: {'line': b'[ 12%] Built target ament_cmake_python_copy_dex_hand_ros2\n'}
+[0.506858] (-) TimerEvent: {}
+[0.589571] (dex_hand_ros2) StdoutLine: {'line': b'[ 33%] Built target dex_hand_ros2__rosidl_typesupport_c\n'}
+[0.590104] (dex_hand_ros2) StdoutLine: {'line': b'[ 33%] Built target dex_hand_ros2__rosidl_typesupport_introspection_cpp\n'}
+[0.598019] (dex_hand_ros2) StdoutLine: {'line': b'[ 53%] Built target dex_hand_ros2__rosidl_typesupport_cpp\n'}
+[0.600066] (dex_hand_ros2) StdoutLine: {'line': b'[ 53%] Built target dex_hand_ros2__rosidl_typesupport_fastrtps_cpp\n'}
+[0.602978] (dex_hand_ros2) StdoutLine: {'line': b'[ 64%] Built target dex_hand_ros2__rosidl_typesupport_introspection_c\n'}
+[0.605747] (dex_hand_ros2) StdoutLine: {'line': b'[ 74%] Built target dex_hand_ros2__rosidl_typesupport_fastrtps_c\n'}
+[0.607750] (-) TimerEvent: {}
+[0.708807] (-) TimerEvent: {}
+[0.752805] (dex_hand_ros2) StdoutLine: {'line': b'[ 74%] Built target dex_hand_ros2\n'}
+[0.809794] (-) TimerEvent: {}
+[0.816131] (dex_hand_ros2) StdoutLine: {'line': b'running egg_info\n'}
+[0.816850] (dex_hand_ros2) StdoutLine: {'line': b'writing dex_hand_ros2.egg-info/PKG-INFO\n'}
+[0.817288] (dex_hand_ros2) StdoutLine: {'line': b'writing dependency_links to dex_hand_ros2.egg-info/dependency_links.txt\n'}
+[0.817883] (dex_hand_ros2) StdoutLine: {'line': b'writing top-level names to dex_hand_ros2.egg-info/top_level.txt\n'}
+[0.821481] (dex_hand_ros2) StdoutLine: {'line': b"reading manifest file 'dex_hand_ros2.egg-info/SOURCES.txt'\n"}
+[0.822016] (dex_hand_ros2) StdoutLine: {'line': b"writing manifest file 'dex_hand_ros2.egg-info/SOURCES.txt'\n"}
+[0.878090] (dex_hand_ros2) StdoutLine: {'line': b'[ 74%] Built target ament_cmake_python_build_dex_hand_ros2_egg\n'}
+[0.907154] (dex_hand_ros2) StdoutLine: {'line': b'[ 76%] Built target dex_hand_ros2__py\n'}
+[0.910753] (-) TimerEvent: {}
+[1.011057] (-) TimerEvent: {}
+[1.042787] (dex_hand_ros2) StdoutLine: {'line': b'[ 84%] Built target dex_hand_ros2__rosidl_generator_py\n'}
+[1.111796] (-) TimerEvent: {}
+[1.206654] (dex_hand_ros2) StdoutLine: {'line': b'[ 89%] Built target dex_hand_ros2__rosidl_typesupport_c__pyext\n'}
+[1.212762] (-) TimerEvent: {}
+[1.215014] (dex_hand_ros2) StdoutLine: {'line': b'[ 94%] Built target dex_hand_ros2__rosidl_typesupport_fastrtps_c__pyext\n'}
+[1.216565] (dex_hand_ros2) StdoutLine: {'line': b'[100%] Built target dex_hand_ros2__rosidl_typesupport_introspection_c__pyext\n'}
+[1.256679] (dex_hand_ros2) CommandEnded: {'returncode': 0}
+[1.259420] (dex_hand_ros2) JobProgress: {'identifier': 'dex_hand_ros2', 'progress': 'install'}
+[1.289893] (dex_hand_ros2) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/dex_hand_ws/build/dex_hand_ros2'], 'cwd': '/root/dex_hand_ws/build/dex_hand_ros2', 'env': OrderedDict([('HOSTNAME', 'docker-desktop'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/root/dex_hand_ws/install/dex_hand_ros2/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/root/dex_hand_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/dex_hand_ws/install/dex_hand_ros2:/opt/ros/humble'), ('PWD', '/root/dex_hand_ws/build/dex_hand_ros2'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages:/root/dex_hand_ws/build/dex_hand_ros2:/root/dex_hand_ws/install/dex_hand_ros2/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/dex_hand_ws/install/dex_hand_ros2:/opt/ros/humble')]), 'shell': False}
+[1.313765] (-) TimerEvent: {}
+[1.329663] (dex_hand_ros2) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[1.330333] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/ament_index/resource_index/rosidl_interfaces/dex_hand_ros2\n'}
+[1.330884] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2\n'}
+[1.331378] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg\n'}
+[1.331696] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_generator_c__visibility_control.h\n'}
+[1.331964] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/gesture_cmd.h\n'}
+[1.332216] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/motor_state.h\n'}
+[1.332410] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail\n'}
+[1.332636] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__functions.h\n'}
+[1.332812] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__struct.h\n'}
+[1.333005] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__functions.c\n'}
+[1.333206] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__type_support.h\n'}
+[1.333408] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__type_support.h\n'}
+[1.333598] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__functions.c\n'}
+[1.333906] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__struct.h\n'}
+[1.334134] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__functions.h\n'}
+[1.334569] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/environment/library_path.sh\n'}
+[1.334889] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/environment/library_path.dsv\n'}
+[1.336740] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_generator_c.so\n'}
+[1.337444] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2\n'}
+[1.337946] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg\n'}
+[1.338346] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail\n'}
+[1.338683] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__rosidl_typesupport_fastrtps_c.h\n'}
+[1.338948] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__rosidl_typesupport_fastrtps_c.h\n'}
+[1.339158] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[1.339514] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_fastrtps_c.so\n'}
+[1.339986] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2\n'}
+[1.340291] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg\n'}
+[1.340638] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail\n'}
+[1.341170] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__type_support.c\n'}
+[1.341512] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__rosidl_typesupport_introspection_c.h\n'}
+[1.341896] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__rosidl_typesupport_introspection_c.h\n'}
+[1.342225] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__type_support.c\n'}
+[1.342493] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[1.342766] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_introspection_c.so\n'}
+[1.343300] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_c.so\n'}
+[1.343684] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2\n'}
+[1.344045] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg\n'}
+[1.344324] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/motor_state.hpp\n'}
+[1.344537] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail\n'}
+[1.344913] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__struct.hpp\n'}
+[1.345199] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__struct.hpp\n'}
+[1.345532] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__builder.hpp\n'}
+[1.345818] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__type_support.hpp\n'}
+[1.346335] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__traits.hpp\n'}
+[1.346573] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__type_support.hpp\n'}
+[1.346820] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__traits.hpp\n'}
+[1.347019] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__builder.hpp\n'}
+[1.347219] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[1.347611] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/gesture_cmd.hpp\n'}
+[1.348039] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2\n'}
+[1.348266] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg\n'}
+[1.348455] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[1.348640] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail\n'}
+[1.348892] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[1.349108] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[1.349309] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/dds_fastrtps\n'}
+[1.349869] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_fastrtps_cpp.so\n'}
+[1.350507] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2\n'}
+[1.350821] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg\n'}
+[1.351171] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail\n'}
+[1.351487] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__type_support.cpp\n'}
+[1.351725] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__rosidl_typesupport_introspection_cpp.hpp\n'}
+[1.352036] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__rosidl_typesupport_introspection_cpp.hpp\n'}
+[1.352285] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__type_support.cpp\n'}
+[1.352660] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_introspection_cpp.so\n'}
+[1.353515] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_cpp.so\n'}
+[1.354130] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/environment/pythonpath.sh\n'}
+[1.354470] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/environment/pythonpath.dsv\n'}
+[1.354703] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2-0.1.0-py3.10.egg-info\n'}
+[1.355038] (dex_hand_ros2) StdoutLine: {'line': b'-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2-0.1.0-py3.10.egg-info/PKG-INFO\n'}
+[1.356986] (dex_hand_ros2) StdoutLine: {'line': b'-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2-0.1.0-py3.10.egg-info/SOURCES.txt\n'}
+[1.357871] (dex_hand_ros2) StdoutLine: {'line': b'-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2-0.1.0-py3.10.egg-info/top_level.txt\n'}
+[1.358953] (dex_hand_ros2) StdoutLine: {'line': b'-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2-0.1.0-py3.10.egg-info/dependency_links.txt\n'}
+[1.359956] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2\n'}
+[1.360430] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[1.360652] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/_dex_hand_ros2_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[1.360782] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg\n'}
+[1.361004] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg/_motor_state_s.c\n'}
+[1.361237] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg/_gesture_cmd_s.c\n'}
+[1.361505] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg/__init__.py\n'}
+[1.361808] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg/_gesture_cmd.py\n'}
+[1.362046] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg/_motor_state.py\n'}
+[1.362220] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/_dex_hand_ros2_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[1.362388] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/_dex_hand_ros2_s.ep.rosidl_typesupport_c.c\n'}
+[1.362528] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[1.362716] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/__init__.py\n'}
+[1.364141] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/libdex_hand_ros2__rosidl_generator_py.so\n'}
+[1.364422] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[1.414809] (-) TimerEvent: {}
+[1.447771] (dex_hand_ros2) StdoutLine: {'line': b"Listing '/root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2'...\n"}
+[1.450782] (dex_hand_ros2) StdoutLine: {'line': b"Listing '/root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/msg'...\n"}
+[1.452632] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[1.453283] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[1.453843] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/local/lib/python3.10/dist-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[1.454359] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_generator_py.so\n'}
+[1.454789] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/msg/GestureCmd.idl\n'}
+[1.455056] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/msg/MotorState.idl\n'}
+[1.455324] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/msg/GestureCmd.msg\n'}
+[1.455547] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/msg/MotorState.msg\n'}
+[1.455764] (dex_hand_ros2) StdoutLine: {'line': b'-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/lib/dex_hand_ros2/hand_node.py\n'}
+[1.457305] (dex_hand_ros2) StdoutLine: {'line': b'-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/lib/dex_hand_ros2/hand_driver.py\n'}
+[1.458517] (dex_hand_ros2) StdoutLine: {'line': b'-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/lib/dex_hand_ros2/config_node.py\n'}
+[1.459685] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/ament_index/resource_index/package_run_dependencies/dex_hand_ros2\n'}
+[1.460143] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/ament_index/resource_index/parent_prefix_path/dex_hand_ros2\n'}
+[1.460383] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/environment/ament_prefix_path.sh\n'}
+[1.460625] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/environment/ament_prefix_path.dsv\n'}
+[1.460811] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/environment/path.sh\n'}
+[1.461004] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/environment/path.dsv\n'}
+[1.461217] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/local_setup.bash\n'}
+[1.461435] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/local_setup.sh\n'}
+[1.461587] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/local_setup.zsh\n'}
+[1.461788] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/local_setup.dsv\n'}
+[1.462063] (dex_hand_ros2) StdoutLine: {'line': b'-- Installing: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/package.dsv\n'}
+[1.463109] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/ament_index/resource_index/packages/dex_hand_ros2\n'}
+[1.463976] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/export_dex_hand_ros2__rosidl_generator_cExport.cmake\n'}
+[1.464500] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/export_dex_hand_ros2__rosidl_generator_cExport-noconfig.cmake\n'}
+[1.464886] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/export_dex_hand_ros2__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[1.465130] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/export_dex_hand_ros2__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[1.465478] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/dex_hand_ros2__rosidl_typesupport_introspection_cExport.cmake\n'}
+[1.465697] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/dex_hand_ros2__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[1.466015] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/dex_hand_ros2__rosidl_typesupport_cExport.cmake\n'}
+[1.466226] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/dex_hand_ros2__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[1.466523] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/export_dex_hand_ros2__rosidl_generator_cppExport.cmake\n'}
+[1.466827] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/export_dex_hand_ros2__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[1.467105] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/export_dex_hand_ros2__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[1.467553] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/dex_hand_ros2__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[1.467839] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/dex_hand_ros2__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[1.468140] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/dex_hand_ros2__rosidl_typesupport_cppExport.cmake\n'}
+[1.468367] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/dex_hand_ros2__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[1.468695] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/export_dex_hand_ros2__rosidl_generator_pyExport.cmake\n'}
+[1.468914] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/export_dex_hand_ros2__rosidl_generator_pyExport-noconfig.cmake\n'}
+[1.469075] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/rosidl_cmake-extras.cmake\n'}
+[1.469263] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[1.469472] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[1.469894] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[1.470193] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[1.470311] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[1.470453] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[1.470601] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/dex_hand_ros2Config.cmake\n'}
+[1.470807] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/cmake/dex_hand_ros2Config-version.cmake\n'}
+[1.470961] (dex_hand_ros2) StdoutLine: {'line': b'-- Up-to-date: /root/dex_hand_ws/install/dex_hand_ros2/share/dex_hand_ros2/package.xml\n'}
+[1.476962] (dex_hand_ros2) CommandEnded: {'returncode': 0}
+[1.503923] (dex_hand_ros2) JobEnded: {'identifier': 'dex_hand_ros2', 'rc': 0}
+[1.505010] (-) EventReactorShutdown: {}

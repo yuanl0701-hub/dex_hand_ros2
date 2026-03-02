@@ -1,0 +1,24 @@
+[0.034s] Invoking command in '/root/dex_hand_ws/build/dex_hand_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /root/dex_hand_ws/build/dex_hand_ros2 -- -j10 -l10
+[0.152s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.422s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.423s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.425s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.445s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.459s] -- Found std_msgs: 4.9.0 (/opt/ros/humble/share/std_msgs/cmake)
+[0.473s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.481s] -- Found rclpy: 3.3.19 (/opt/ros/humble/share/rclpy/cmake)
+[1.041s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[1.556s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.241s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.307s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[2.372s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.373s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[2.373s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[2.557s] [31mCMake Error at CMakeLists.txt:45 (install):
+[2.558s]   install PROGRAMS given RENAME option with more than one file.
+[2.558s] 
+[2.559s] [0m
+[2.559s] -- Configuring incomplete, errors occurred!
+[2.559s] See also "/root/dex_hand_ws/build/dex_hand_ros2/CMakeFiles/CMakeOutput.log".
+[2.567s] gmake: *** [Makefile:963: cmake_check_build_system] Error 1
+[2.572s] Invoked command in '/root/dex_hand_ws/build/dex_hand_ros2' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /root/dex_hand_ws/build/dex_hand_ros2 -- -j10 -l10
