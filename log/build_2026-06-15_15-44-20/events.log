@@ -1,0 +1,67 @@
+[0.000000] (-) TimerEvent: {}
+[0.000264] (dex_hand_ros2) JobQueued: {'identifier': 'dex_hand_ros2', 'dependencies': OrderedDict()}
+[0.000315] (dex_hand_ros2) JobStarted: {'identifier': 'dex_hand_ros2'}
+[0.006028] (dex_hand_ros2) JobProgress: {'identifier': 'dex_hand_ros2', 'progress': 'cmake'}
+[0.006263] (dex_hand_ros2) Command: {'cmd': ['/home/airs01/miniconda3/envs/env_ros/bin/cmake', '/home/airs01/yl/ros2_ws_v1.0/src/dex_hand_ros2', '-DCMAKE_INSTALL_PREFIX=/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2'], 'cwd': '/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(env_ros)'), ('HTTPS_PROXY', 'http://127.0.0.1:7897/'), ('no_proxy', 'localhost,127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,::1'), ('LANGUAGE', 'zh_CN:zh'), ('USER', 'airs01'), ('all_proxy', 'socks://127.0.0.1:7897/'), ('XDG_SESSION_TYPE', 'x11'), ('ROS_ETC_DIR', '/home/airs01/miniconda3/envs/env_ros/etc/ros'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib:/home/airs01/miniconda3/envs/env_ros/opt/rviz_ogre_vendor/lib'), ('HOME', '/home/airs01'), ('CONDA_SHLVL', '2'), ('OLDPWD', '/home/airs01/yl/ros2_ws_v1.0'), ('DESKTOP_SESSION', 'ubuntu'), ('NO_PROXY', 'localhost,127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,::1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '2062'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('_CONDA_ROOT', '/home/airs01/miniconda3'), ('https_proxy', 'http://127.0.0.1:7897/'), ('COLCON_PREFIX_PATH', '/home/airs01/yl/ros2_ws_v1.0/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'airs01'), ('ALL_PROXY', 'socks://127.0.0.1:7897/'), ('http_proxy', 'http://127.0.0.1:7897/'), ('_', '/home/airs01/miniconda3/envs/env_ros/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'airs01'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('ROS_OS_OVERRIDE', 'conda:linux'), ('WINDOWPATH', '2'), ('PATH', '/home/airs01/miniconda3/envs/env_ros/bin:/home/airs01/miniconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/airs01-Precision-3630-Tower:@/tmp/.ICE-unix/2039,unix/airs01-Precision-3630-Tower:/tmp/.ICE-unix/2039'), ('PROJ_NETWORK', 'ON'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/4cceea41_c343_4c5a_a228_4255be8665ab'), ('PROJ_DATA', '/home/airs01/miniconda3/envs/env_ros/share/proj'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'zh_CN.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('CONDA_PREFIX_1', '/home/airs01/miniconda3'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.283'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('XML_CATALOG_FILES', 'file:///home/airs01/miniconda3/envs/env_ros/etc/xml/catalog file:///etc/xml/catalog'), ('GSETTINGS_SCHEMA_DIR', '/home/airs01/miniconda3/envs/env_ros/share/glib-2.0/schemas'), ('AMENT_PREFIX_PATH', '/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2:/home/airs01/miniconda3/envs/env_ros'), ('CONDA_PYTHON_EXE', '/home/airs01/miniconda3/bin/python'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'env_ros'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('_CONDA_EXE', '/home/airs01/miniconda3/bin/conda'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/airs01/miniconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/local/lib/python3.10/dist-packages:/home/airs01/miniconda3/envs/env_ros/lib/python310/site-packages:/home/airs01/miniconda3/envs/env_ros/lib/python3.10/site-packages'), ('HTTP_PROXY', 'http://127.0.0.1:7897/'), ('CONDA_PREFIX', '/home/airs01/miniconda3/envs/env_ros'), ('GSETTINGS_SCHEMA_DIR_CONDA_BACKUP', ''), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2:/home/airs01/miniconda3/envs/env_ros')]), 'shell': False}
+[0.099685] (-) TimerEvent: {}
+[0.200183] (-) TimerEvent: {}
+[0.300873] (-) TimerEvent: {}
+[0.401480] (-) TimerEvent: {}
+[0.501795] (-) TimerEvent: {}
+[0.601975] (-) TimerEvent: {}
+[0.677223] (dex_hand_ros2) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.702132] (-) TimerEvent: {}
+[0.802722] (-) TimerEvent: {}
+[0.903327] (-) TimerEvent: {}
+[1.003774] (-) TimerEvent: {}
+[1.104465] (-) TimerEvent: {}
+[1.205108] (-) TimerEvent: {}
+[1.305756] (-) TimerEvent: {}
+[1.406339] (-) TimerEvent: {}
+[1.411590] (dex_hand_ros2) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[1.491475] (dex_hand_ros2) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.506503] (-) TimerEvent: {}
+[1.606847] (-) TimerEvent: {}
+[1.707493] (-) TimerEvent: {}
+[1.771021] (dex_hand_ros2) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.785564] (dex_hand_ros2) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[1.805028] (dex_hand_ros2) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.805802] (dex_hand_ros2) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.807623] (-) TimerEvent: {}
+[1.816591] (dex_hand_ros2) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.907856] (-) TimerEvent: {}
+[1.999440] (dex_hand_ros2) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[2.007919] (-) TimerEvent: {}
+[2.008978] (dex_hand_ros2) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[2.009244] (dex_hand_ros2) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[2.009662] (dex_hand_ros2) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[2.013129] (dex_hand_ros2) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.3 (/home/airs01/miniconda3/envs/env_ros/share/ament_cmake/cmake)\n'}
+[2.107999] (-) TimerEvent: {}
+[2.208226] (-) TimerEvent: {}
+[2.308453] (-) TimerEvent: {}
+[2.408678] (-) TimerEvent: {}
+[2.508891] (-) TimerEvent: {}
+[2.609081] (-) TimerEvent: {}
+[2.709303] (-) TimerEvent: {}
+[2.766432] (dex_hand_ros2) StdoutLine: {'line': b'-- Found Python3: /home/airs01/miniconda3/envs/env_ros/bin/python3.10 (found version "3.10.12") found components: Interpreter \n'}
+[2.809411] (-) TimerEvent: {}
+[2.871299] (dex_hand_ros2) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/home/airs01/miniconda3/envs/env_ros/share/rosidl_default_generators/cmake)\n'}
+[2.874833] (dex_hand_ros2) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.883722] (dex_hand_ros2) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.4 (/home/airs01/miniconda3/envs/env_ros/share/rosidl_adapter/cmake)\n'}
+[2.909507] (-) TimerEvent: {}
+[2.929496] (dex_hand_ros2) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.970682] (dex_hand_ros2) StdoutLine: {'line': b'-- Found std_msgs: 4.2.3 (/home/airs01/miniconda3/envs/env_ros/share/std_msgs/cmake)\n'}
+[3.009618] (-) TimerEvent: {}
+[3.038206] (dex_hand_ros2) StdoutLine: {'line': b'-- Found geometry_msgs: 4.2.3 (/home/airs01/miniconda3/envs/env_ros/share/geometry_msgs/cmake)\n'}
+[3.079922] (dex_hand_ros2) StderrLine: {'line': b'\x1b[31mCMake Error at /home/airs01/miniconda3/envs/env_ros/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:93 (message):\n'}
+[3.080125] (dex_hand_ros2) StderrLine: {'line': b"  rosidl_generate_interfaces() the passed file 'msg/GestureCmd.msg' doesn't\n"}
+[3.080184] (dex_hand_ros2) StderrLine: {'line': b'  exist relative to the CMAKE_CURRENT_SOURCE_DIR\n'}
+[3.080233] (dex_hand_ros2) StderrLine: {'line': b"  '/home/airs01/yl/ros2_ws_v1.0/src/dex_hand_ros2'\n"}
+[3.080279] (dex_hand_ros2) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[3.080324] (dex_hand_ros2) StderrLine: {'line': b'  CMakeLists.txt:15 (rosidl_generate_interfaces)\n'}
+[3.080368] (dex_hand_ros2) StderrLine: {'line': b'\n'}
+[3.080414] (dex_hand_ros2) StderrLine: {'line': b'\x1b[0m\n'}
+[3.080458] (dex_hand_ros2) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[3.084228] (dex_hand_ros2) CommandEnded: {'returncode': 1}
+[3.097124] (dex_hand_ros2) JobEnded: {'identifier': 'dex_hand_ros2', 'rc': 1}
+[3.107581] (-) EventReactorShutdown: {}

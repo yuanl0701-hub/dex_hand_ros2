@@ -1,0 +1,380 @@
+[0.008s] Invoking command in '/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/airs01/miniconda3/envs/env_ros CONDA_PROMPT_MODIFIER=(env_ros) /home/airs01/miniconda3/envs/env_ros/bin/cmake /home/airs01/yl/ros2_ws_v1.0/src/dex_hand_ros2 -DCMAKE_INSTALL_PREFIX=/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2
+[0.042s] -- The C compiler identification is GNU 11.4.0
+[0.082s] -- The CXX compiler identification is GNU 11.4.0
+[0.089s] -- Detecting C compiler ABI info
+[0.136s] -- Detecting C compiler ABI info - done
+[0.144s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.144s] -- Detecting C compile features
+[0.145s] -- Detecting C compile features - done
+[0.147s] -- Detecting CXX compiler ABI info
+[0.207s] -- Detecting CXX compiler ABI info - done
+[0.217s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.217s] -- Detecting CXX compile features
+[0.218s] -- Detecting CXX compile features - done
+[0.221s] -- Found ament_cmake: 1.3.3 (/home/airs01/miniconda3/envs/env_ros/share/ament_cmake/cmake)
+[0.970s] -- Found Python3: /home/airs01/miniconda3/envs/env_ros/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[1.055s] -- Found rosidl_default_generators: 1.2.0 (/home/airs01/miniconda3/envs/env_ros/share/rosidl_default_generators/cmake)
+[1.059s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.068s] -- Found rosidl_adapter: 3.1.4 (/home/airs01/miniconda3/envs/env_ros/share/rosidl_adapter/cmake)
+[1.113s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.153s] -- Found std_msgs: 4.2.3 (/home/airs01/miniconda3/envs/env_ros/share/std_msgs/cmake)
+[1.218s] -- Found geometry_msgs: 4.2.3 (/home/airs01/miniconda3/envs/env_ros/share/geometry_msgs/cmake)
+[1.484s] -- Found ament_cmake_ros: 0.10.0 (/home/airs01/miniconda3/envs/env_ros/share/ament_cmake_ros/cmake)
+[1.618s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.788s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.801s] -- Found PythonInterp: /home/airs01/miniconda3/envs/env_ros/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[1.804s] -- Found python_cmake_module: 0.10.0 (/home/airs01/miniconda3/envs/env_ros/share/python_cmake_module/cmake)
+[1.818s] -- Found PythonLibs: /home/airs01/miniconda3/envs/env_ros/lib/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[1.818s] -- Using PYTHON_EXECUTABLE: /home/airs01/miniconda3/envs/env_ros/bin/python3
+[1.818s] -- Using PYTHON_INCLUDE_DIRS: /home/airs01/miniconda3/envs/env_ros/include/python3.10
+[1.818s] -- Using PYTHON_LIBRARIES: /home/airs01/miniconda3/envs/env_ros/lib/libpython3.10.so
+[1.830s] -- Found PythonExtra: .so  
+[2.694s] -- Found Python3: /home/airs01/miniconda3/envs/env_ros/include/python3.10 (found version "3.10.12") found components: Development NumPy Interpreter Development.Module Development.Embed 
+[2.764s] -- Found Python3: /home/airs01/miniconda3/envs/env_ros/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[2.764s] -- Configuring done (2.8s)
+[2.801s] -- Generating done (0.0s)
+[2.811s] -- Build files have been written to: /home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2
+[2.817s] Invoked command in '/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/airs01/miniconda3/envs/env_ros CONDA_PROMPT_MODIFIER=(env_ros) /home/airs01/miniconda3/envs/env_ros/bin/cmake /home/airs01/yl/ros2_ws_v1.0/src/dex_hand_ros2 -DCMAKE_INSTALL_PREFIX=/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2
+[2.819s] Invoking command in '/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/airs01/miniconda3/envs/env_ros CONDA_PROMPT_MODIFIER=(env_ros) /home/airs01/miniconda3/envs/env_ros/bin/cmake --build /home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2 -- -j8 -l8
+[2.840s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[2.846s] [  2%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[2.849s] [  2%] Built target ament_cmake_python_copy_dex_hand_ros2
+[3.291s] running egg_info
+[3.291s] creating dex_hand_ros2.egg-info
+[3.344s] writing dex_hand_ros2.egg-info/PKG-INFO
+[3.386s] writing dependency_links to dex_hand_ros2.egg-info/dependency_links.txt
+[3.407s] [  2%] Built target dex_hand_ros2__cpp
+[3.414s] [  6%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[3.414s] [  6%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[3.414s] [  6%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[3.462s] [ 10%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_c.dir/rosidl_generator_c/dex_hand_ros2/msg/detail/gesture_cmd__functions.c.o[0m
+[3.462s] [ 10%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_c.dir/rosidl_generator_c/dex_hand_ros2/msg/detail/pi_dconfig__functions.c.o[0m
+[3.462s] [ 10%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_c.dir/rosidl_generator_c/dex_hand_ros2/msg/detail/motor_state__functions.c.o[0m
+[3.465s] [ 11%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_c.dir/rosidl_generator_c/dex_hand_ros2/srv/detail/change_id__functions.c.o[0m
+[3.495s] [ 13%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_c.dir/rosidl_generator_c/dex_hand_ros2/srv/detail/run_gesture_pid__functions.c.o[0m
+[3.500s] [ 13%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_c.dir/rosidl_generator_c/dex_hand_ros2/srv/detail/add_gesture__functions.c.o[0m
+[3.500s] [ 15%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_c.dir/rosidl_generator_c/dex_hand_ros2/srv/detail/change_baud__functions.c.o[0m
+[3.544s] [ 16%] [32m[1mLinking C shared library libdex_hand_ros2__rosidl_generator_c.so[0m
+[3.573s] [ 16%] Built target dex_hand_ros2__rosidl_generator_c
+[3.582s] [ 18%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[3.582s] [ 18%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[3.582s] [ 20%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[3.669s] writing top-level names to dex_hand_ros2.egg-info/top_level.txt
+[3.669s] writing manifest file 'dex_hand_ros2.egg-info/SOURCES.txt'
+[3.751s] reading manifest file 'dex_hand_ros2.egg-info/SOURCES.txt'
+[3.752s] writing manifest file 'dex_hand_ros2.egg-info/SOURCES.txt'
+[3.787s] [ 20%] Built target ament_cmake_python_build_dex_hand_ros2_egg
+[3.842s] [ 21%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/dex_hand_ros2/msg/gesture_cmd__type_support.cpp.o[0m
+[3.842s] [ 22%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/dex_hand_ros2/msg/motor_state__type_support.cpp.o[0m
+[3.843s] [ 24%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/dex_hand_ros2/msg/pi_dconfig__type_support.cpp.o[0m
+[3.980s] [ 25%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/dex_hand_ros2/msg/detail/gesture_cmd__type_support.cpp.o[0m
+[4.035s] [ 26%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/dex_hand_ros2/msg/detail/dds_fastrtps/gesture_cmd__type_support.cpp.o[0m
+[4.047s] [ 27%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_c.dir/rosidl_typesupport_c/dex_hand_ros2/msg/gesture_cmd__type_support.cpp.o[0m
+[4.068s] [ 29%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/dex_hand_ros2/msg/detail/dds_fastrtps/motor_state__type_support.cpp.o[0m
+[4.069s] [ 30%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/dex_hand_ros2/msg/detail/dds_fastrtps/pi_dconfig__type_support.cpp.o[0m
+[4.069s] [ 31%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/dex_hand_ros2/srv/change_id__type_support.cpp.o[0m
+[4.070s] [ 32%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_c.dir/rosidl_typesupport_c/dex_hand_ros2/msg/motor_state__type_support.cpp.o[0m
+[4.094s] [ 34%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_c.dir/rosidl_typesupport_c/dex_hand_ros2/msg/pi_dconfig__type_support.cpp.o[0m
+[4.115s] [ 35%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_c.dir/rosidl_typesupport_c/dex_hand_ros2/srv/change_id__type_support.cpp.o[0m
+[4.141s] [ 36%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_c.dir/rosidl_typesupport_c/dex_hand_ros2/srv/change_baud__type_support.cpp.o[0m
+[4.162s] [ 37%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_c.dir/rosidl_typesupport_c/dex_hand_ros2/srv/add_gesture__type_support.cpp.o[0m
+[4.167s] [ 39%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/dex_hand_ros2/msg/detail/gesture_cmd__type_support.c.o[0m
+[4.185s] [ 41%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/dex_hand_ros2/msg/detail/gesture_cmd__type_support_c.cpp.o[0m
+[4.185s] [ 41%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_c.dir/rosidl_typesupport_c/dex_hand_ros2/srv/run_gesture_pid__type_support.cpp.o[0m
+[4.192s] [ 43%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/dex_hand_ros2/msg/detail/motor_state__type_support.c.o[0m
+[4.210s] [ 44%] [32m[1mLinking CXX shared library libdex_hand_ros2__rosidl_typesupport_c.so[0m
+[4.215s] [ 45%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/dex_hand_ros2/msg/detail/pi_dconfig__type_support.c.o[0m
+[4.239s] [ 46%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/dex_hand_ros2/srv/detail/change_id__type_support.c.o[0m
+[4.243s] [ 46%] Built target dex_hand_ros2__rosidl_typesupport_c
+[4.248s] [ 48%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/dex_hand_ros2/msg/detail/motor_state__type_support_c.cpp.o[0m
+[4.267s] [ 49%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/dex_hand_ros2/srv/detail/change_baud__type_support.c.o[0m
+[4.293s] [ 50%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/dex_hand_ros2/srv/change_baud__type_support.cpp.o[0m
+[4.294s] [ 51%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/dex_hand_ros2/srv/detail/add_gesture__type_support.c.o[0m
+[4.306s] [ 53%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/dex_hand_ros2/msg/detail/motor_state__type_support.cpp.o[0m
+[4.325s] [ 54%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/dex_hand_ros2/srv/detail/run_gesture_pid__type_support.c.o[0m
+[4.353s] [ 55%] [32m[1mLinking C shared library libdex_hand_ros2__rosidl_typesupport_introspection_c.so[0m
+[4.375s] [ 55%] Built target dex_hand_ros2__rosidl_typesupport_introspection_c
+[4.380s] [ 58%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/dex_hand_ros2/msg/detail/pi_dconfig__type_support_c.cpp.o[0m
+[4.380s] [ 58%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/dex_hand_ros2/srv/detail/dds_fastrtps/change_id__type_support.cpp.o[0m
+[4.397s] [ 59%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/dex_hand_ros2/srv/add_gesture__type_support.cpp.o[0m
+[4.402s] [ 60%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/dex_hand_ros2/msg/detail/pi_dconfig__type_support.cpp.o[0m
+[4.476s] [ 62%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/dex_hand_ros2/srv/detail/dds_fastrtps/change_baud__type_support.cpp.o[0m
+[4.513s] [ 63%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/dex_hand_ros2/srv/detail/change_id__type_support.cpp.o[0m
+[4.539s] [ 64%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/dex_hand_ros2/srv/detail/dds_fastrtps/add_gesture__type_support.cpp.o[0m
+[4.623s] [ 67%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/dex_hand_ros2/srv/run_gesture_pid__type_support.cpp.o[0m
+[4.624s] [ 67%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/dex_hand_ros2/srv/detail/change_id__type_support_c.cpp.o[0m
+[4.695s] [ 68%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/dex_hand_ros2/srv/detail/dds_fastrtps/run_gesture_pid__type_support.cpp.o[0m
+[4.715s] [ 69%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/dex_hand_ros2/srv/detail/change_baud__type_support_c.cpp.o[0m
+[4.741s] [ 70%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/dex_hand_ros2/srv/detail/add_gesture__type_support_c.cpp.o[0m
+[4.849s] [ 72%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/dex_hand_ros2/srv/detail/change_baud__type_support.cpp.o[0m
+[4.856s] [ 73%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/dex_hand_ros2/srv/detail/add_gesture__type_support.cpp.o[0m
+[4.874s] [ 74%] [32m[1mLinking CXX shared library libdex_hand_ros2__rosidl_typesupport_cpp.so[0m
+[4.905s] [ 74%] Built target dex_hand_ros2__rosidl_typesupport_cpp
+[4.909s] [ 75%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/dex_hand_ros2/srv/detail/run_gesture_pid__type_support_c.cpp.o[0m
+[4.933s] [ 77%] [32mBuilding CXX object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/dex_hand_ros2/srv/detail/run_gesture_pid__type_support.cpp.o[0m
+[5.106s] [ 78%] [32m[1mLinking CXX shared library libdex_hand_ros2__rosidl_typesupport_fastrtps_cpp.so[0m
+[5.171s] [ 78%] Built target dex_hand_ros2__rosidl_typesupport_fastrtps_cpp
+[5.202s] [ 79%] [32m[1mLinking CXX shared library libdex_hand_ros2__rosidl_typesupport_fastrtps_c.so[0m
+[5.244s] [ 81%] [32m[1mLinking CXX shared library libdex_hand_ros2__rosidl_typesupport_introspection_cpp.so[0m
+[5.254s] [ 81%] Built target dex_hand_ros2__rosidl_typesupport_fastrtps_c
+[5.292s] [ 81%] Built target dex_hand_ros2__rosidl_typesupport_introspection_cpp
+[5.301s] [ 81%] Built target dex_hand_ros2
+[5.311s] [ 82%] [34m[1mGenerating Python code for ROS interfaces[0m
+[6.280s] [ 82%] Built target dex_hand_ros2__py
+[6.291s] [ 84%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_py.dir/rosidl_generator_py/dex_hand_ros2/msg/_motor_state_s.c.o[0m
+[6.291s] [ 86%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_py.dir/rosidl_generator_py/dex_hand_ros2/msg/_gesture_cmd_s.c.o[0m
+[6.292s] [ 86%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_py.dir/rosidl_generator_py/dex_hand_ros2/msg/_pi_dconfig_s.c.o[0m
+[6.292s] [ 87%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_py.dir/rosidl_generator_py/dex_hand_ros2/srv/_change_id_s.c.o[0m
+[6.292s] [ 88%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_py.dir/rosidl_generator_py/dex_hand_ros2/srv/_change_baud_s.c.o[0m
+[6.292s] [ 89%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_py.dir/rosidl_generator_py/dex_hand_ros2/srv/_add_gesture_s.c.o[0m
+[6.292s] [ 91%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_generator_py.dir/rosidl_generator_py/dex_hand_ros2/srv/_run_gesture_pid_s.c.o[0m
+[6.385s] [ 92%] [32m[1mLinking C shared library rosidl_generator_py/dex_hand_ros2/libdex_hand_ros2__rosidl_generator_py.so[0m
+[6.408s] [ 92%] Built target dex_hand_ros2__rosidl_generator_py
+[6.418s] [ 96%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/dex_hand_ros2/_dex_hand_ros2_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[6.418s] [ 96%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/dex_hand_ros2/_dex_hand_ros2_s.ep.rosidl_typesupport_c.c.o[0m
+[6.418s] [ 96%] [32mBuilding C object CMakeFiles/dex_hand_ros2__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/dex_hand_ros2/_dex_hand_ros2_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[6.518s] [100%] [32m[1mLinking C shared library rosidl_generator_py/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[6.518s] [100%] [32m[1mLinking C shared library rosidl_generator_py/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[6.518s] [100%] [32m[1mLinking C shared library rosidl_generator_py/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[6.540s] [100%] Built target dex_hand_ros2__rosidl_typesupport_introspection_c__pyext
+[6.540s] [100%] Built target dex_hand_ros2__rosidl_typesupport_c__pyext
+[6.540s] [100%] Built target dex_hand_ros2__rosidl_typesupport_fastrtps_c__pyext
+[6.547s] Invoked command in '/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/airs01/miniconda3/envs/env_ros CONDA_PROMPT_MODIFIER=(env_ros) /home/airs01/miniconda3/envs/env_ros/bin/cmake --build /home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2 -- -j8 -l8
+[6.553s] Invoking command in '/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/airs01/miniconda3/envs/env_ros CONDA_PROMPT_MODIFIER=(env_ros) /home/airs01/miniconda3/envs/env_ros/bin/cmake --install /home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2
+[6.557s] -- Install configuration: ""
+[6.557s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/ament_index/resource_index/rosidl_interfaces/dex_hand_ros2
+[6.557s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2
+[6.557s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg
+[6.557s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/pi_dconfig.h
+[6.557s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_generator_c__visibility_control.h
+[6.557s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/motor_state.h
+[6.557s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail
+[6.557s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/pi_dconfig__functions.c
+[6.557s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__functions.c
+[6.557s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__type_support.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__functions.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/pi_dconfig__functions.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__struct.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/pi_dconfig__type_support.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/pi_dconfig__struct.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__struct.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__functions.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__functions.c
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__type_support.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/gesture_cmd.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/change_baud.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/add_gesture.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_id__struct.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/add_gesture__struct.h
+[6.558s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/run_gesture_pid__type_support.h
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_id__type_support.h
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_baud__functions.c
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/add_gesture__functions.c
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/run_gesture_pid__functions.h
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/run_gesture_pid__struct.h
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_baud__struct.h
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_baud__type_support.h
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/run_gesture_pid__functions.c
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_id__functions.c
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_id__functions.h
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_baud__functions.h
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/add_gesture__functions.h
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/add_gesture__type_support.h
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/change_id.h
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/run_gesture_pid.h
+[6.559s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_generator_c.so
+[6.559s] -- Set runtime path of "/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_generator_c.so" to ""
+[6.560s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2
+[6.560s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg
+[6.560s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail
+[6.560s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__rosidl_typesupport_fastrtps_c.h
+[6.560s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__rosidl_typesupport_fastrtps_c.h
+[6.560s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/pi_dconfig__rosidl_typesupport_fastrtps_c.h
+[6.560s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[6.560s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv
+[6.560s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail
+[6.560s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/add_gesture__rosidl_typesupport_fastrtps_c.h
+[6.560s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_id__rosidl_typesupport_fastrtps_c.h
+[6.560s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/run_gesture_pid__rosidl_typesupport_fastrtps_c.h
+[6.560s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_baud__rosidl_typesupport_fastrtps_c.h
+[6.560s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_fastrtps_c.so
+[6.560s] -- Set runtime path of "/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_fastrtps_c.so" to ""
+[6.560s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2
+[6.560s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg
+[6.560s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[6.561s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/pi_dconfig__type_support.c
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__rosidl_typesupport_introspection_c.h
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__type_support.c
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__type_support.c
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__rosidl_typesupport_introspection_c.h
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/pi_dconfig__rosidl_typesupport_introspection_c.h
+[6.561s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv
+[6.561s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_baud__type_support.c
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_baud__rosidl_typesupport_introspection_c.h
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/run_gesture_pid__rosidl_typesupport_introspection_c.h
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/add_gesture__type_support.c
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_id__rosidl_typesupport_introspection_c.h
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_id__type_support.c
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/add_gesture__rosidl_typesupport_introspection_c.h
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/run_gesture_pid__type_support.c
+[6.561s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_introspection_c.so
+[6.562s] -- Set runtime path of "/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_introspection_c.so" to ""
+[6.562s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_c.so
+[6.562s] -- Set runtime path of "/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_c.so" to ""
+[6.562s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2
+[6.562s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg
+[6.562s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail
+[6.562s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__struct.hpp
+[6.562s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__struct.hpp
+[6.562s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__builder.hpp
+[6.562s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__traits.hpp
+[6.562s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__traits.hpp
+[6.562s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/pi_dconfig__struct.hpp
+[6.562s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__builder.hpp
+[6.562s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/pi_dconfig__builder.hpp
+[6.562s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/pi_dconfig__traits.hpp
+[6.562s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/gesture_cmd.hpp
+[6.562s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/pi_dconfig.hpp
+[6.562s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/motor_state.hpp
+[6.563s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/change_baud.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/change_id.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/run_gesture_pid.hpp
+[6.563s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_id__struct.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/add_gesture__traits.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/run_gesture_pid__builder.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_baud__traits.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_id__builder.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_baud__builder.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_id__traits.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/run_gesture_pid__struct.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_baud__struct.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/add_gesture__struct.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/run_gesture_pid__traits.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/add_gesture__builder.hpp
+[6.563s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/add_gesture.hpp
+[6.564s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2
+[6.564s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg
+[6.564s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[6.564s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail
+[6.564s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/dds_fastrtps
+[6.564s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__rosidl_typesupport_fastrtps_cpp.hpp
+[6.564s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__rosidl_typesupport_fastrtps_cpp.hpp
+[6.564s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/pi_dconfig__rosidl_typesupport_fastrtps_cpp.hpp
+[6.564s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv
+[6.564s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail
+[6.564s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/dds_fastrtps
+[6.564s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_baud__rosidl_typesupport_fastrtps_cpp.hpp
+[6.564s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/add_gesture__rosidl_typesupport_fastrtps_cpp.hpp
+[6.564s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_id__rosidl_typesupport_fastrtps_cpp.hpp
+[6.564s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/run_gesture_pid__rosidl_typesupport_fastrtps_cpp.hpp
+[6.564s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_fastrtps_cpp.so
+[6.564s] -- Set runtime path of "/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_fastrtps_cpp.so" to ""
+[6.564s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2
+[6.564s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg
+[6.565s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail
+[6.565s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__rosidl_typesupport_introspection_cpp.hpp
+[6.565s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/pi_dconfig__rosidl_typesupport_introspection_cpp.hpp
+[6.565s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/motor_state__type_support.cpp
+[6.565s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__type_support.cpp
+[6.565s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/gesture_cmd__rosidl_typesupport_introspection_cpp.hpp
+[6.565s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/msg/detail/pi_dconfig__type_support.cpp
+[6.565s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv
+[6.565s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail
+[6.565s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/add_gesture__rosidl_typesupport_introspection_cpp.hpp
+[6.565s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_baud__type_support.cpp
+[6.565s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/run_gesture_pid__type_support.cpp
+[6.565s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_id__type_support.cpp
+[6.565s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_id__rosidl_typesupport_introspection_cpp.hpp
+[6.565s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/run_gesture_pid__rosidl_typesupport_introspection_cpp.hpp
+[6.565s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/change_baud__rosidl_typesupport_introspection_cpp.hpp
+[6.566s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/include/dex_hand_ros2/dex_hand_ros2/srv/detail/add_gesture__type_support.cpp
+[6.566s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_introspection_cpp.so
+[6.566s] -- Set runtime path of "/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_introspection_cpp.so" to ""
+[6.566s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_cpp.so
+[6.566s] -- Set runtime path of "/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_typesupport_cpp.so" to ""
+[6.566s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/environment/pythonpath.sh
+[6.566s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/environment/pythonpath.dsv
+[6.566s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2-0.1.0-py3.10.egg-info
+[6.566s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2-0.1.0-py3.10.egg-info/SOURCES.txt
+[6.566s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2-0.1.0-py3.10.egg-info/PKG-INFO
+[6.566s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2-0.1.0-py3.10.egg-info/dependency_links.txt
+[6.566s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2-0.1.0-py3.10.egg-info/top_level.txt
+[6.566s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2
+[6.566s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/libdex_hand_ros2__rosidl_generator_py.so
+[6.566s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/_dex_hand_ros2_s.ep.rosidl_typesupport_fastrtps_c.c
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/_dex_hand_ros2_s.ep.rosidl_typesupport_introspection_c.c
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/msg
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/msg/_pi_dconfig_s.c
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/msg/_motor_state_s.c
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/msg/_gesture_cmd_s.c
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/msg/__init__.py
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/msg/_motor_state.py
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/msg/_pi_dconfig.py
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/msg/_gesture_cmd.py
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/__init__.py
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/srv
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/srv/_change_id.py
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/srv/_add_gesture_s.c
+[6.567s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/srv/_change_baud.py
+[6.568s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/srv/_add_gesture.py
+[6.568s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/srv/__init__.py
+[6.568s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/srv/_run_gesture_pid.py
+[6.568s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/srv/_change_baud_s.c
+[6.568s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/srv/_run_gesture_pid_s.c
+[6.568s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/srv/_change_id_s.c
+[6.568s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/_dex_hand_ros2_s.ep.rosidl_typesupport_c.c
+[6.568s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[6.590s] Listing 'lib/python3.10/site-packages/dex_hand_ros2'...
+[6.590s] Can't list 'lib/python3.10/site-packages/dex_hand_ros2'
+[6.593s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[6.593s] -- Set runtime path of "/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[6.593s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[6.593s] -- Set runtime path of "/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[6.593s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[6.594s] -- Set runtime path of "/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[6.594s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_generator_py.so
+[6.594s] -- Set runtime path of "/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/libdex_hand_ros2__rosidl_generator_py.so" to ""
+[6.594s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/msg/GestureCmd.idl
+[6.594s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/msg/MotorState.idl
+[6.594s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/msg/PIDconfig.idl
+[6.594s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/ChangeId.idl
+[6.594s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/ChangeBaud.idl
+[6.594s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/AddGesture.idl
+[6.594s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/RunGesturePid.idl
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/msg/GestureCmd.msg
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/msg/MotorState.msg
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/msg/PIDconfig.msg
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/ChangeId.srv
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/ChangeId_Request.msg
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/ChangeId_Response.msg
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/ChangeBaud.srv
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/ChangeBaud_Request.msg
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/ChangeBaud_Response.msg
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/AddGesture.srv
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/AddGesture_Request.msg
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/AddGesture_Response.msg
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/RunGesturePid.srv
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/RunGesturePid_Request.msg
+[6.595s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/share/dex_hand_ros2/srv/RunGesturePid_Response.msg
+[6.596s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2
+[6.596s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/hand_driver.py
+[6.596s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/msg
+[6.596s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/config_node.py
+[6.596s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/__init__.py
+[6.596s] -- Up-to-date: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/srv
+[6.596s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/hand_node.py
+[6.596s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/scrips
+[6.596s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/._hand_driver.py
+[6.596s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/._hand_node.py
+[6.596s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/python3.10/site-packages/dex_hand_ros2/__pycache__
+[6.596s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/dex_hand_ros2/hand_node
+[6.596s] -- Installing: /home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2/lib/dex_hand_ros2/config_node
+[6.598s] Invoked command in '/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/airs01/miniconda3/envs/env_ros CONDA_PROMPT_MODIFIER=(env_ros) /home/airs01/miniconda3/envs/env_ros/bin/cmake --install /home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2

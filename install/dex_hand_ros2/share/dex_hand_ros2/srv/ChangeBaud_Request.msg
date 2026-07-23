@@ -1,0 +1,1 @@
+string command   # 格式 "target_id>new_baud"

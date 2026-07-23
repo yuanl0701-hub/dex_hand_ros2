@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "dex_hand_ros2__py",
+		"source" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/dex_hand_ros2__py"
+	}
+}

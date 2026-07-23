@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from dex_hand_ros2/dex_hand_ros2/srv/RunGesturePid.srv
+// generated code does not contain a copyright notice
+
+
+module dex_hand_ros2 {
+  module srv {
+    struct RunGesturePid_Request {
+      string gesture_name;
+    };
+    struct RunGesturePid_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

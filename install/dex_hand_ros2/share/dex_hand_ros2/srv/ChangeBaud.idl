@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from dex_hand_ros2/dex_hand_ros2/srv/ChangeBaud.srv
+// generated code does not contain a copyright notice
+
+
+module dex_hand_ros2 {
+  module srv {
+    struct ChangeBaud_Request {
+      @verbatim (language="comment", text=
+        "格式 \"target_id>new_baud\"")
+      string command;
+    };
+    struct ChangeBaud_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

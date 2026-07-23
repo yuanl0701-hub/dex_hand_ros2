@@ -1,2 +1,7 @@
-/root/dex_hand_ws/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2:msg/GestureCmd.idl
-/root/dex_hand_ws/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2:msg/MotorState.idl
+/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2:msg/GestureCmd.idl
+/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2:msg/MotorState.idl
+/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2:msg/PIDconfig.idl
+/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2:srv/ChangeId.idl
+/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2:srv/ChangeBaud.idl
+/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2:srv/AddGesture.idl
+/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2:srv/RunGesturePid.idl

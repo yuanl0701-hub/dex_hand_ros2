@@ -1,0 +1,28 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from dex_hand_ros2/dex_hand_ros2/msg/PIDconfig.msg
+// generated code does not contain a copyright notice
+
+
+module dex_hand_ros2 {
+  module msg {
+    @verbatim (language="comment", text=
+      "dex_hand_ros2/msg/PIDConfig.msg")
+    struct PIDconfig {
+      @verbatim (language="comment", text=
+        "电机ID（1-6）")
+      int32 motor_id;
+
+      @verbatim (language="comment", text=
+        "比例系数")
+      float kp;
+
+      @verbatim (language="comment", text=
+        "积分系数")
+      float ki;
+
+      @verbatim (language="comment", text=
+        "微分系数")
+      float kd;
+    };
+  };
+};

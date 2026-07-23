@@ -1,0 +1,600 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "libdex_hand_ros2__rosidl_typesupport_cpp.so"
+		}
+	],
+	"backtrace" : 5,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"include",
+			"ament_execute_extensions",
+			"rosidl_generate_interfaces",
+			"install",
+			"target_link_libraries",
+			"set_target_properties",
+			"find_package",
+			"add_dependencies",
+			"add_definitions"
+		],
+		"files" : 
+		[
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_typesupport_cpp/cmake/rosidl_typesupport_cpp_generate_interfaces.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake",
+			"CMakeLists.txt",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_runtime_c/cmake/rosidl_runtime_cExport.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_runtime_c/cmake/ament_cmake_export_targets-extras.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_runtime_c/cmake/rosidl_runtime_cConfig.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_typesupport_fastrtps_c/cmake/ament_cmake_export_dependencies-extras.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_typesupport_fastrtps_c/cmake/rosidl_typesupport_fastrtps_cConfig.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_default_generators/cmake/rosidl_default_generators-extras.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_default_generators/cmake/rosidl_default_generatorsConfig.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rcutils/cmake/rcutilsExport.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rcutils/cmake/ament_cmake_export_targets-extras.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rcutils/cmake/rcutilsConfig.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_runtime_c/cmake/ament_cmake_export_dependencies-extras.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_generator_cpp/cmake/rosidl_generator_cpp_generate_interfaces.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/ament_cmake_ros/cmake/ament_cmake_ros-extras.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/ament_cmake_ros/cmake/ament_cmake_rosConfig.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_typesupport_fastrtps_c/cmake/rosidl_typesupport_fastrtps_c_generate_interfaces.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 3,
+				"line" : 15,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 286,
+				"parent" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 48,
+				"parent" : 2
+			},
+			{
+				"file" : 0,
+				"parent" : 3
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 87,
+				"parent" : 4
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 140,
+				"parent" : 4
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 129,
+				"parent" : 4
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 129,
+				"parent" : 4
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 129,
+				"parent" : 4
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 121,
+				"parent" : 4
+			},
+			{
+				"command" : 7,
+				"file" : 3,
+				"line" : 10,
+				"parent" : 0
+			},
+			{
+				"file" : 12,
+				"parent" : 11
+			},
+			{
+				"command" : 1,
+				"file" : 12,
+				"line" : 41,
+				"parent" : 12
+			},
+			{
+				"file" : 11,
+				"parent" : 13
+			},
+			{
+				"command" : 7,
+				"file" : 11,
+				"line" : 21,
+				"parent" : 14
+			},
+			{
+				"file" : 10,
+				"parent" : 15
+			},
+			{
+				"command" : 1,
+				"file" : 10,
+				"line" : 41,
+				"parent" : 16
+			},
+			{
+				"file" : 9,
+				"parent" : 17
+			},
+			{
+				"command" : 7,
+				"file" : 9,
+				"line" : 13,
+				"parent" : 18
+			},
+			{
+				"file" : 8,
+				"parent" : 19
+			},
+			{
+				"command" : 1,
+				"file" : 8,
+				"line" : 41,
+				"parent" : 20
+			},
+			{
+				"file" : 7,
+				"parent" : 21
+			},
+			{
+				"command" : 7,
+				"file" : 7,
+				"line" : 21,
+				"parent" : 22
+			},
+			{
+				"file" : 6,
+				"parent" : 23
+			},
+			{
+				"command" : 1,
+				"file" : 6,
+				"line" : 41,
+				"parent" : 24
+			},
+			{
+				"file" : 5,
+				"parent" : 25
+			},
+			{
+				"command" : 1,
+				"file" : 5,
+				"line" : 9,
+				"parent" : 26
+			},
+			{
+				"file" : 4,
+				"parent" : 27
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 61,
+				"parent" : 28
+			},
+			{
+				"command" : 1,
+				"file" : 6,
+				"line" : 41,
+				"parent" : 24
+			},
+			{
+				"file" : 16,
+				"parent" : 30
+			},
+			{
+				"command" : 7,
+				"file" : 16,
+				"line" : 21,
+				"parent" : 31
+			},
+			{
+				"file" : 15,
+				"parent" : 32
+			},
+			{
+				"command" : 1,
+				"file" : 15,
+				"line" : 41,
+				"parent" : 33
+			},
+			{
+				"file" : 14,
+				"parent" : 34
+			},
+			{
+				"command" : 1,
+				"file" : 14,
+				"line" : 9,
+				"parent" : 35
+			},
+			{
+				"file" : 13,
+				"parent" : 36
+			},
+			{
+				"command" : 6,
+				"file" : 13,
+				"line" : 61,
+				"parent" : 37
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 48,
+				"parent" : 2
+			},
+			{
+				"file" : 17,
+				"parent" : 39
+			},
+			{
+				"command" : 8,
+				"file" : 17,
+				"line" : 127,
+				"parent" : 40
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 98,
+				"parent" : 4
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 48,
+				"parent" : 2
+			},
+			{
+				"file" : 20,
+				"parent" : 43
+			},
+			{
+				"command" : 7,
+				"file" : 20,
+				"line" : 21,
+				"parent" : 44
+			},
+			{
+				"file" : 19,
+				"parent" : 45
+			},
+			{
+				"command" : 1,
+				"file" : 19,
+				"line" : 41,
+				"parent" : 46
+			},
+			{
+				"file" : 18,
+				"parent" : 47
+			},
+			{
+				"command" : 9,
+				"file" : 18,
+				"line" : 25,
+				"parent" : 48
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 118,
+				"parent" : 4
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 92,
+				"parent" : 4
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-std=gnu++14 -fPIC"
+				},
+				{
+					"backtrace" : 42,
+					"fragment" : "-Wall"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"define" : "ROSIDL_TYPESUPPORT_CPP_BUILDING_DLL"
+				},
+				{
+					"backtrace" : 49,
+					"define" : "ROS_PACKAGE_NAME=\"dex_hand_ros2\""
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 50,
+					"path" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_generator_cpp"
+				},
+				{
+					"backtrace" : 50,
+					"isSystem" : true,
+					"path" : "/home/airs01/miniconda3/envs/env_ros/include/std_msgs"
+				},
+				{
+					"backtrace" : 50,
+					"isSystem" : true,
+					"path" : "/home/airs01/miniconda3/envs/env_ros/include/builtin_interfaces"
+				},
+				{
+					"backtrace" : 50,
+					"isSystem" : true,
+					"path" : "/home/airs01/miniconda3/envs/env_ros/include/rosidl_runtime_cpp"
+				},
+				{
+					"backtrace" : 50,
+					"isSystem" : true,
+					"path" : "/home/airs01/miniconda3/envs/env_ros/include/rosidl_runtime_c"
+				},
+				{
+					"backtrace" : 50,
+					"isSystem" : true,
+					"path" : "/home/airs01/miniconda3/envs/env_ros/include/rcutils"
+				},
+				{
+					"backtrace" : 50,
+					"isSystem" : true,
+					"path" : "/home/airs01/miniconda3/envs/env_ros/include/rosidl_typesupport_interface"
+				},
+				{
+					"backtrace" : 50,
+					"isSystem" : true,
+					"path" : "/home/airs01/miniconda3/envs/env_ros/include/geometry_msgs"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "/home/airs01/miniconda3/envs/env_ros/include/rosidl_typesupport_cpp"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "/home/airs01/miniconda3/envs/env_ros/include/rosidl_typesupport_c"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					51
+				],
+				"standard" : "14"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 41,
+			"id" : "dex_hand_ros2__cpp::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "dex_hand_ros2__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 6,
+				"path" : "lib"
+			},
+			{
+				"backtrace" : 6,
+				"path" : "lib"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2"
+		}
+	},
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/home/airs01/miniconda3/envs/env_ros/lib:",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 7,
+				"fragment" : "/home/airs01/miniconda3/envs/env_ros/lib/libgeometry_msgs__rosidl_typesupport_cpp.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "/home/airs01/miniconda3/envs/env_ros/lib/libstd_msgs__rosidl_typesupport_cpp.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 9,
+				"fragment" : "/home/airs01/miniconda3/envs/env_ros/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/home/airs01/miniconda3/envs/env_ros/lib/librosidl_typesupport_cpp.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/home/airs01/miniconda3/envs/env_ros/lib/librosidl_typesupport_c.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "/home/airs01/miniconda3/envs/env_ros/lib/librosidl_runtime_c.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 29,
+				"fragment" : "/home/airs01/miniconda3/envs/env_ros/lib/librcutils.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 38,
+				"fragment" : "-ldl",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 38,
+				"fragment" : "-lrt",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-Wl,-rpath-link,/home/airs01/miniconda3/envs/env_ros/lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "dex_hand_ros2__rosidl_typesupport_cpp",
+	"nameOnDisk" : "libdex_hand_ros2__rosidl_typesupport_cpp.so",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				7
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_typesupport_cpp/dex_hand_ros2/msg/gesture_cmd__type_support.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_typesupport_cpp/dex_hand_ros2/msg/motor_state__type_support.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_typesupport_cpp/dex_hand_ros2/msg/pi_dconfig__type_support.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_typesupport_cpp/dex_hand_ros2/srv/change_id__type_support.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_typesupport_cpp/dex_hand_ros2/srv/change_baud__type_support.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_typesupport_cpp/dex_hand_ros2/srv/add_gesture__type_support.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_typesupport_cpp/dex_hand_ros2/srv/run_gesture_pid__type_support.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_typesupport_cpp/dex_hand_ros2/msg/gesture_cmd__type_support.cpp.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

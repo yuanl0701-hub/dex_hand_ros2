@@ -7,6 +7,5 @@
 #include "dex_hand_ros2/msg/detail/gesture_cmd__struct.hpp"
 #include "dex_hand_ros2/msg/detail/gesture_cmd__builder.hpp"
 #include "dex_hand_ros2/msg/detail/gesture_cmd__traits.hpp"
-#include "dex_hand_ros2/msg/detail/gesture_cmd__type_support.hpp"
 
 #endif  // DEX_HAND_ROS2__MSG__GESTURE_CMD_HPP_

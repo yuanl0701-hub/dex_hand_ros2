@@ -1,0 +1,1000 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install",
+			"ament_index_register_resource",
+			"rosidl_generate_interfaces",
+			"include",
+			"ament_execute_extensions",
+			"ament_environment_hooks",
+			"_ament_cmake_python_register_environment_hook",
+			"ament_python_install_package",
+			"_ament_cmake_python_install_package"
+		],
+		"files" : 
+		[
+			"/home/airs01/miniconda3/envs/env_ros/share/ament_cmake_core/cmake/index/ament_index_register_resource.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake",
+			"CMakeLists.txt",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_generator_c/cmake/rosidl_generator_c_generate_interfaces.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_typesupport_fastrtps_c/cmake/rosidl_typesupport_fastrtps_c_generate_interfaces.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_typesupport_introspection_c/cmake/rosidl_typesupport_introspection_c_generate_interfaces.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c_generate_interfaces.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_generator_cpp/cmake/rosidl_generator_cpp_generate_interfaces.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_typesupport_fastrtps_cpp/cmake/rosidl_typesupport_fastrtps_cpp_generate_interfaces.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_typesupport_introspection_cpp/cmake/rosidl_typesupport_introspection_cpp_generate_interfaces.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_typesupport_cpp/cmake/rosidl_typesupport_cpp_generate_interfaces.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/ament_cmake_core/cmake/environment_hooks/ament_environment_hooks.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/ament_cmake_python/cmake/ament_cmake_python-extras.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/ament_cmake_python/cmake/ament_python_install_package.cmake",
+			"/home/airs01/miniconda3/envs/env_ros/share/rosidl_generator_py/cmake/rosidl_generator_py_generate_interfaces.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 15,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 252,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 105,
+				"parent" : 2
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 286,
+				"parent" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 4,
+				"line" : 48,
+				"parent" : 4
+			},
+			{
+				"file" : 3,
+				"parent" : 5
+			},
+			{
+				"command" : 0,
+				"file" : 3,
+				"line" : 149,
+				"parent" : 6
+			},
+			{
+				"command" : 0,
+				"file" : 3,
+				"line" : 164,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 4,
+				"line" : 48,
+				"parent" : 4
+			},
+			{
+				"file" : 5,
+				"parent" : 9
+			},
+			{
+				"command" : 0,
+				"file" : 5,
+				"line" : 151,
+				"parent" : 10
+			},
+			{
+				"command" : 0,
+				"file" : 5,
+				"line" : 167,
+				"parent" : 10
+			},
+			{
+				"command" : 3,
+				"file" : 4,
+				"line" : 48,
+				"parent" : 4
+			},
+			{
+				"file" : 6,
+				"parent" : 13
+			},
+			{
+				"command" : 0,
+				"file" : 6,
+				"line" : 141,
+				"parent" : 14
+			},
+			{
+				"command" : 0,
+				"file" : 6,
+				"line" : 146,
+				"parent" : 14
+			},
+			{
+				"command" : 3,
+				"file" : 4,
+				"line" : 48,
+				"parent" : 4
+			},
+			{
+				"file" : 7,
+				"parent" : 17
+			},
+			{
+				"command" : 0,
+				"file" : 7,
+				"line" : 141,
+				"parent" : 18
+			},
+			{
+				"command" : 3,
+				"file" : 4,
+				"line" : 48,
+				"parent" : 4
+			},
+			{
+				"file" : 8,
+				"parent" : 20
+			},
+			{
+				"command" : 0,
+				"file" : 8,
+				"line" : 137,
+				"parent" : 21
+			},
+			{
+				"command" : 3,
+				"file" : 4,
+				"line" : 48,
+				"parent" : 4
+			},
+			{
+				"file" : 9,
+				"parent" : 23
+			},
+			{
+				"command" : 0,
+				"file" : 9,
+				"line" : 169,
+				"parent" : 24
+			},
+			{
+				"command" : 0,
+				"file" : 9,
+				"line" : 185,
+				"parent" : 24
+			},
+			{
+				"command" : 3,
+				"file" : 4,
+				"line" : 48,
+				"parent" : 4
+			},
+			{
+				"file" : 10,
+				"parent" : 27
+			},
+			{
+				"command" : 0,
+				"file" : 10,
+				"line" : 139,
+				"parent" : 28
+			},
+			{
+				"command" : 0,
+				"file" : 10,
+				"line" : 145,
+				"parent" : 28
+			},
+			{
+				"command" : 3,
+				"file" : 4,
+				"line" : 48,
+				"parent" : 4
+			},
+			{
+				"file" : 11,
+				"parent" : 31
+			},
+			{
+				"command" : 0,
+				"file" : 11,
+				"line" : 140,
+				"parent" : 32
+			},
+			{
+				"command" : 3,
+				"file" : 4,
+				"line" : 48,
+				"parent" : 4
+			},
+			{
+				"file" : 15,
+				"parent" : 34
+			},
+			{
+				"command" : 7,
+				"file" : 15,
+				"line" : 125,
+				"parent" : 35
+			},
+			{
+				"command" : 6,
+				"file" : 14,
+				"line" : 38,
+				"parent" : 36
+			},
+			{
+				"command" : 5,
+				"file" : 13,
+				"line" : 36,
+				"parent" : 37
+			},
+			{
+				"command" : 0,
+				"file" : 12,
+				"line" : 70,
+				"parent" : 38
+			},
+			{
+				"command" : 0,
+				"file" : 12,
+				"line" : 87,
+				"parent" : 38
+			},
+			{
+				"command" : 8,
+				"file" : 14,
+				"line" : 39,
+				"parent" : 36
+			},
+			{
+				"command" : 0,
+				"file" : 14,
+				"line" : 154,
+				"parent" : 41
+			},
+			{
+				"command" : 0,
+				"file" : 14,
+				"line" : 181,
+				"parent" : 41
+			},
+			{
+				"command" : 0,
+				"file" : 14,
+				"line" : 191,
+				"parent" : 41
+			},
+			{
+				"command" : 0,
+				"file" : 15,
+				"line" : 255,
+				"parent" : 35
+			},
+			{
+				"command" : 0,
+				"file" : 15,
+				"line" : 255,
+				"parent" : 35
+			},
+			{
+				"command" : 0,
+				"file" : 15,
+				"line" : 255,
+				"parent" : 35
+			},
+			{
+				"command" : 0,
+				"file" : 15,
+				"line" : 275,
+				"parent" : 35
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 309,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 309,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 309,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 309,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 309,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 309,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 309,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 320,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 2,
+				"line" : 34,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 2,
+				"line" : 41,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 2,
+				"line" : 46,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "share/ament_index/resource_index/rosidl_interfaces",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/ament_cmake_index/share/ament_index/resource_index/rosidl_interfaces/dex_hand_ros2"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 7,
+			"component" : "Unspecified",
+			"destination" : "include/dex_hand_ros2/dex_hand_ros2",
+			"paths" : 
+			[
+				{
+					"from" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_generator_c/dex_hand_ros2",
+					"to" : "."
+				}
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 8,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libdex_hand_ros2__rosidl_generator_c.so"
+			],
+			"targetId" : "dex_hand_ros2__rosidl_generator_c::@6890427a1f51a3e7e1df",
+			"targetIndex" : 5,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 11,
+			"component" : "Unspecified",
+			"destination" : "include/dex_hand_ros2/dex_hand_ros2",
+			"paths" : 
+			[
+				{
+					"from" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_typesupport_fastrtps_c/dex_hand_ros2",
+					"to" : "."
+				}
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 12,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libdex_hand_ros2__rosidl_typesupport_fastrtps_c.so"
+			],
+			"targetId" : "dex_hand_ros2__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+			"targetIndex" : 10,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 15,
+			"component" : "Unspecified",
+			"destination" : "include/dex_hand_ros2/dex_hand_ros2",
+			"paths" : 
+			[
+				{
+					"from" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_typesupport_introspection_c/dex_hand_ros2",
+					"to" : "."
+				}
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 16,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libdex_hand_ros2__rosidl_typesupport_introspection_c.so"
+			],
+			"targetId" : "dex_hand_ros2__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+			"targetIndex" : 13,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 19,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libdex_hand_ros2__rosidl_typesupport_c.so"
+			],
+			"targetId" : "dex_hand_ros2__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+			"targetIndex" : 7,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 22,
+			"component" : "Unspecified",
+			"destination" : "include/dex_hand_ros2/dex_hand_ros2",
+			"paths" : 
+			[
+				{
+					"from" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_generator_cpp/dex_hand_ros2",
+					"to" : "."
+				}
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 25,
+			"component" : "Unspecified",
+			"destination" : "include/dex_hand_ros2/dex_hand_ros2",
+			"paths" : 
+			[
+				{
+					"from" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_typesupport_fastrtps_cpp/dex_hand_ros2",
+					"to" : "."
+				}
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 26,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libdex_hand_ros2__rosidl_typesupport_fastrtps_cpp.so"
+			],
+			"targetId" : "dex_hand_ros2__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+			"targetIndex" : 12,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 29,
+			"component" : "Unspecified",
+			"destination" : "include/dex_hand_ros2/dex_hand_ros2",
+			"paths" : 
+			[
+				{
+					"from" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_typesupport_introspection_cpp/dex_hand_ros2",
+					"to" : "."
+				}
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 30,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libdex_hand_ros2__rosidl_typesupport_introspection_cpp.so"
+			],
+			"targetId" : "dex_hand_ros2__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+			"targetIndex" : 15,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 33,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libdex_hand_ros2__rosidl_typesupport_cpp.so"
+			],
+			"targetId" : "dex_hand_ros2__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+			"targetIndex" : 9,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 39,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/environment",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/ament_cmake_environment_hooks/pythonpath.sh"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 40,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/environment",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/ament_cmake_environment_hooks/pythonpath.dsv"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 42,
+			"component" : "Unspecified",
+			"destination" : "lib/python3.10/site-packages/dex_hand_ros2-0.1.0-py3.10.egg-info",
+			"paths" : 
+			[
+				{
+					"from" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/ament_cmake_python/dex_hand_ros2/dex_hand_ros2.egg-info",
+					"to" : "."
+				}
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 43,
+			"component" : "Unspecified",
+			"destination" : "lib/python3.10/site-packages/dex_hand_ros2",
+			"paths" : 
+			[
+				{
+					"from" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_generator_py/dex_hand_ros2",
+					"to" : "."
+				}
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 44,
+			"component" : "Unspecified",
+			"type" : "code"
+		},
+		{
+			"backtrace" : 45,
+			"component" : "Unspecified",
+			"destination" : "lib/python3.10/site-packages/dex_hand_ros2",
+			"paths" : 
+			[
+				"rosidl_generator_py/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so"
+			],
+			"targetId" : "dex_hand_ros2__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+			"targetIndex" : 11,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 46,
+			"component" : "Unspecified",
+			"destination" : "lib/python3.10/site-packages/dex_hand_ros2",
+			"paths" : 
+			[
+				"rosidl_generator_py/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so"
+			],
+			"targetId" : "dex_hand_ros2__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+			"targetIndex" : 14,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 47,
+			"component" : "Unspecified",
+			"destination" : "lib/python3.10/site-packages/dex_hand_ros2",
+			"paths" : 
+			[
+				"rosidl_generator_py/dex_hand_ros2/dex_hand_ros2_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so"
+			],
+			"targetId" : "dex_hand_ros2__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+			"targetIndex" : 8,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 48,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"rosidl_generator_py/dex_hand_ros2/libdex_hand_ros2__rosidl_generator_py.so"
+			],
+			"targetId" : "dex_hand_ros2__rosidl_generator_py::@6890427a1f51a3e7e1df",
+			"targetIndex" : 6,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 49,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/msg",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2/msg/GestureCmd.idl"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 50,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/msg",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2/msg/MotorState.idl"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 51,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/msg",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2/msg/PIDconfig.idl"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 52,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2/srv/ChangeId.idl"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 53,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2/srv/ChangeBaud.idl"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 54,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2/srv/AddGesture.idl"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 55,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_adapter/dex_hand_ros2/srv/RunGesturePid.idl"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 56,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/msg",
+			"paths" : 
+			[
+				"dex_hand_ros2/msg/GestureCmd.msg"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 57,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/msg",
+			"paths" : 
+			[
+				"dex_hand_ros2/msg/MotorState.msg"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 58,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/msg",
+			"paths" : 
+			[
+				"dex_hand_ros2/msg/PIDconfig.msg"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 59,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"dex_hand_ros2/srv/ChangeId.srv"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 60,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_cmake/dex_hand_ros2/srv/ChangeId_Request.msg"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 61,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_cmake/dex_hand_ros2/srv/ChangeId_Response.msg"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 62,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"dex_hand_ros2/srv/ChangeBaud.srv"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 63,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_cmake/dex_hand_ros2/srv/ChangeBaud_Request.msg"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 64,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_cmake/dex_hand_ros2/srv/ChangeBaud_Response.msg"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 65,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"dex_hand_ros2/srv/AddGesture.srv"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 66,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_cmake/dex_hand_ros2/srv/AddGesture_Request.msg"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 67,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_cmake/dex_hand_ros2/srv/AddGesture_Response.msg"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 68,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"dex_hand_ros2/srv/RunGesturePid.srv"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 69,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_cmake/dex_hand_ros2/srv/RunGesturePid_Request.msg"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 70,
+			"component" : "Unspecified",
+			"destination" : "share/dex_hand_ros2/srv",
+			"paths" : 
+			[
+				"/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/rosidl_cmake/dex_hand_ros2/srv/RunGesturePid_Response.msg"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 71,
+			"component" : "Unspecified",
+			"destination" : "lib/python3.10/site-packages/dex_hand_ros2",
+			"paths" : 
+			[
+				{
+					"from" : "dex_hand_ros2",
+					"to" : "."
+				}
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 72,
+			"component" : "Unspecified",
+			"destination" : "lib/dex_hand_ros2",
+			"paths" : 
+			[
+				{
+					"from" : "dex_hand_ros2/scrips/hand_node.sh",
+					"to" : "hand_node"
+				}
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 73,
+			"component" : "Unspecified",
+			"destination" : "lib/dex_hand_ros2",
+			"paths" : 
+			[
+				{
+					"from" : "dex_hand_ros2/scrips/config_node.sh",
+					"to" : "config_node"
+				}
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	}
+}

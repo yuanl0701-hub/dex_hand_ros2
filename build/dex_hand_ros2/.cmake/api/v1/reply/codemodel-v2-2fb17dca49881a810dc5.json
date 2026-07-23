@@ -1,0 +1,233 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-9762a700b702abd6da7b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "dex_hand_ros2__py",
+					"jsonFile" : "directory-dex_hand_ros2__py-8cc52823df6275dc69c8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/dex_hand_ros2__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "dex_hand_ros2",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_dex_hand_ros2_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_dex_hand_ros2_egg-a0cd2acade059a8ad268.json",
+					"name" : "ament_cmake_python_build_dex_hand_ros2_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_dex_hand_ros2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_dex_hand_ros2-b3c7ca5b7c3373285df0.json",
+					"name" : "ament_cmake_python_copy_dex_hand_ros2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2-e23557a62c6716099f55.json",
+					"name" : "dex_hand_ros2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2__cpp-10267b6075544339a525.json",
+					"name" : "dex_hand_ros2__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "dex_hand_ros2__py::@522424b8561784ba1307",
+					"jsonFile" : "target-dex_hand_ros2__py-39293a666b334f058900.json",
+					"name" : "dex_hand_ros2__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2__rosidl_generator_c-352331d47a51a32539cc.json",
+					"name" : "dex_hand_ros2__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2__rosidl_generator_py-3c229fa167363b3976c7.json",
+					"name" : "dex_hand_ros2__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2__rosidl_typesupport_c-a9ce8f151badb38737f6.json",
+					"name" : "dex_hand_ros2__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2__rosidl_typesupport_c__pyext-1dd090a4bb2dc566e3e5.json",
+					"name" : "dex_hand_ros2__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2__rosidl_typesupport_cpp-2cdbb751e52387c5b7f5.json",
+					"name" : "dex_hand_ros2__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2__rosidl_typesupport_fastrtps_c-89a8bb49a4eb2951e605.json",
+					"name" : "dex_hand_ros2__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2__rosidl_typesupport_fastrtps_c__pyext-dd452c72c8dd99db8a1f.json",
+					"name" : "dex_hand_ros2__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2__rosidl_typesupport_fastrtps_cpp-cefaa2c614430676d5fc.json",
+					"name" : "dex_hand_ros2__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2__rosidl_typesupport_introspection_c-c374d6ba05a3c46e8a68.json",
+					"name" : "dex_hand_ros2__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2__rosidl_typesupport_introspection_c__pyext-b5dd1ec0c5b9053ead64.json",
+					"name" : "dex_hand_ros2__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2__rosidl_typesupport_introspection_cpp-56bfb7e70f749369105b.json",
+					"name" : "dex_hand_ros2__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dex_hand_ros2_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dex_hand_ros2_uninstall-28bef3bb09220eff2cbf.json",
+					"name" : "dex_hand_ros2_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-7b05022bce5085106bb9.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2",
+		"source" : "/home/airs01/yl/ros2_ws_v1.0/src/dex_hand_ros2"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}

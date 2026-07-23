@@ -1,9 +1,0 @@
-setup.py
-dex_hand_ros2/__init__.py
-dex_hand_ros2.egg-info/PKG-INFO
-dex_hand_ros2.egg-info/SOURCES.txt
-dex_hand_ros2.egg-info/dependency_links.txt
-dex_hand_ros2.egg-info/top_level.txt
-dex_hand_ros2/msg/__init__.py
-dex_hand_ros2/msg/_gesture_cmd.py
-dex_hand_ros2/msg/_motor_state.py

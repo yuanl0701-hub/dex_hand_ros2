@@ -1,8 +1,8 @@
-# Install script for directory: /root/dex_hand_ws/build/dex_hand_ros2/dex_hand_ros2__py
+# Install script for directory: /home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/dex_hand_ros2__py
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/root/dex_hand_ws/install/dex_hand_ros2")
+  set(CMAKE_INSTALL_PREFIX "/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

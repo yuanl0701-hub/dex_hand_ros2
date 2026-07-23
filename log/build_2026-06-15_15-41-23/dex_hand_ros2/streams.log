@@ -1,0 +1,6 @@
+[0.023s] Invoking command in '/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/airs01/miniconda3/envs/env_ros CONDA_PROMPT_MODIFIER=(env_ros) /home/airs01/miniconda3/envs/env_ros/bin/cmake --build /home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2 -- -j8 -l8
+[0.063s] [0mCMake Error: The current CMakeCache.txt directory /home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2/CMakeCache.txt is different than the directory /root/dex_hand_ws/build/dex_hand_ros2 where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
+[0.334s] [0mCMake Error: The source directory "/root/dex_hand_ws/src/dex_hand_ros2" does not exist.
+[0.334s] Specify --help for usage, or press the help button on the CMake GUI.[0m
+[0.373s] gmake: *** [Makefile:963：cmake_check_build_system] 错误 1
+[0.380s] Invoked command in '/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/airs01/miniconda3/envs/env_ros CONDA_PROMPT_MODIFIER=(env_ros) /home/airs01/miniconda3/envs/env_ros/bin/cmake --build /home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2 -- -j8 -l8

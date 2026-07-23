@@ -7,6 +7,5 @@
 #include "dex_hand_ros2/msg/detail/motor_state__struct.hpp"
 #include "dex_hand_ros2/msg/detail/motor_state__builder.hpp"
 #include "dex_hand_ros2/msg/detail/motor_state__traits.hpp"
-#include "dex_hand_ros2/msg/detail/motor_state__type_support.hpp"
 
 #endif  // DEX_HAND_ROS2__MSG__MOTOR_STATE_HPP_

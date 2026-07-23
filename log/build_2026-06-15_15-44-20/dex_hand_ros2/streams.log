@@ -1,0 +1,31 @@
+[0.007s] Invoking command in '/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/airs01/miniconda3/envs/env_ros CONDA_PROMPT_MODIFIER=(env_ros) /home/airs01/miniconda3/envs/env_ros/bin/cmake /home/airs01/yl/ros2_ws_v1.0/src/dex_hand_ros2 -DCMAKE_INSTALL_PREFIX=/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2
+[0.677s] -- The C compiler identification is GNU 11.4.0
+[1.411s] -- The CXX compiler identification is GNU 11.4.0
+[1.491s] -- Detecting C compiler ABI info
+[1.771s] -- Detecting C compiler ABI info - done
+[1.785s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.805s] -- Detecting C compile features
+[1.806s] -- Detecting C compile features - done
+[1.816s] -- Detecting CXX compiler ABI info
+[1.999s] -- Detecting CXX compiler ABI info - done
+[2.009s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[2.009s] -- Detecting CXX compile features
+[2.009s] -- Detecting CXX compile features - done
+[2.013s] -- Found ament_cmake: 1.3.3 (/home/airs01/miniconda3/envs/env_ros/share/ament_cmake/cmake)
+[2.766s] -- Found Python3: /home/airs01/miniconda3/envs/env_ros/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[2.871s] -- Found rosidl_default_generators: 1.2.0 (/home/airs01/miniconda3/envs/env_ros/share/rosidl_default_generators/cmake)
+[2.875s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.883s] -- Found rosidl_adapter: 3.1.4 (/home/airs01/miniconda3/envs/env_ros/share/rosidl_adapter/cmake)
+[2.929s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.970s] -- Found std_msgs: 4.2.3 (/home/airs01/miniconda3/envs/env_ros/share/std_msgs/cmake)
+[3.038s] -- Found geometry_msgs: 4.2.3 (/home/airs01/miniconda3/envs/env_ros/share/geometry_msgs/cmake)
+[3.080s] [31mCMake Error at /home/airs01/miniconda3/envs/env_ros/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:93 (message):
+[3.080s]   rosidl_generate_interfaces() the passed file 'msg/GestureCmd.msg' doesn't
+[3.080s]   exist relative to the CMAKE_CURRENT_SOURCE_DIR
+[3.080s]   '/home/airs01/yl/ros2_ws_v1.0/src/dex_hand_ros2'
+[3.080s] Call Stack (most recent call first):
+[3.080s]   CMakeLists.txt:15 (rosidl_generate_interfaces)
+[3.080s] 
+[3.080s] [0m
+[3.080s] -- Configuring incomplete, errors occurred!
+[3.084s] Invoked command in '/home/airs01/yl/ros2_ws_v1.0/build/dex_hand_ros2' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/airs01/miniconda3/envs/env_ros CONDA_PROMPT_MODIFIER=(env_ros) /home/airs01/miniconda3/envs/env_ros/bin/cmake /home/airs01/yl/ros2_ws_v1.0/src/dex_hand_ros2 -DCMAKE_INSTALL_PREFIX=/home/airs01/yl/ros2_ws_v1.0/install/dex_hand_ros2

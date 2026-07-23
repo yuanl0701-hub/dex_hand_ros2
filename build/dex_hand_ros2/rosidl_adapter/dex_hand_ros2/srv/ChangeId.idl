@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from dex_hand_ros2/dex_hand_ros2/srv/ChangeId.srv
+// generated code does not contain a copyright notice
+
+
+module dex_hand_ros2 {
+  module srv {
+    struct ChangeId_Request {
+      @verbatim (language="comment", text=
+        "请求：格式 \"old_id>new_id\"")
+      string command;
+    };
+    struct ChangeId_Response {
+      @verbatim (language="comment", text=
+        "响应：是否成功")
+      boolean success;
+
+      @verbatim (language="comment", text=
+        "响应：提示信息")
+      string message;
+    };
+  };
+};
