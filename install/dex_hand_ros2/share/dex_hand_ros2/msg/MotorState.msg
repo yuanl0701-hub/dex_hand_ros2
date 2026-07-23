@@ -1,4 +1,0 @@
-int32 motor_id       # 电机ID（1-6）
-int32 position       # 电机当前位置
-float32 velocity     # 电机当前速度（可选，暂用不到）
-bool connected       # 电机连接状态

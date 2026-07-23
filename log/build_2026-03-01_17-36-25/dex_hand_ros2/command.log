@@ -1,6 +1,0 @@
-Invoking command in '/root/dex_hand_ws/build/dex_hand_ros2': CMAKE_PREFIX_PATH=/root/dex_hand_ws/install/dex_hand_ros2:/opt/ros/humble /usr/bin/cmake /root/dex_hand_ws/src/dex_hand_ros2 -DCMAKE_INSTALL_PREFIX=/root/dex_hand_ws/install/dex_hand_ros2
-Invoked command in '/root/dex_hand_ws/build/dex_hand_ros2' returned '0': CMAKE_PREFIX_PATH=/root/dex_hand_ws/install/dex_hand_ros2:/opt/ros/humble /usr/bin/cmake /root/dex_hand_ws/src/dex_hand_ros2 -DCMAKE_INSTALL_PREFIX=/root/dex_hand_ws/install/dex_hand_ros2
-Invoking command in '/root/dex_hand_ws/build/dex_hand_ros2': CMAKE_PREFIX_PATH=/root/dex_hand_ws/install/dex_hand_ros2:/opt/ros/humble /usr/bin/cmake --build /root/dex_hand_ws/build/dex_hand_ros2 -- -j10 -l10
-Invoked command in '/root/dex_hand_ws/build/dex_hand_ros2' returned '0': CMAKE_PREFIX_PATH=/root/dex_hand_ws/install/dex_hand_ros2:/opt/ros/humble /usr/bin/cmake --build /root/dex_hand_ws/build/dex_hand_ros2 -- -j10 -l10
-Invoking command in '/root/dex_hand_ws/build/dex_hand_ros2': CMAKE_PREFIX_PATH=/root/dex_hand_ws/install/dex_hand_ros2:/opt/ros/humble /usr/bin/cmake --install /root/dex_hand_ws/build/dex_hand_ros2
-Invoked command in '/root/dex_hand_ws/build/dex_hand_ros2' returned '0': CMAKE_PREFIX_PATH=/root/dex_hand_ws/install/dex_hand_ros2:/opt/ros/humble /usr/bin/cmake --install /root/dex_hand_ws/build/dex_hand_ros2

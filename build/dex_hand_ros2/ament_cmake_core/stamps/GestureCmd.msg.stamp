@@ -1,2 +1,0 @@
-string gesture    # 手势指令
-float32 speed     # 执行速度（0.0~1.0

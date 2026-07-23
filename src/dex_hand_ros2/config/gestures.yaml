@@ -1,0 +1,25 @@
+{
+  "gestures": [
+    {
+      "name": "open",
+      "description": "Legacy fully open normalized pose",
+      "duration": 0.5,
+      "units": "normalized_percent",
+      "positions": {"1": 100, "2": 100, "3": 100, "4": 100, "5": 100, "6": 100}
+    },
+    {
+      "name": "fist",
+      "description": "Legacy fully closed normalized pose",
+      "duration": 0.5,
+      "units": "normalized_percent",
+      "positions": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0}
+    },
+    {
+      "name": "vgesture",
+      "description": "Legacy V pose; motor mapping is not anatomical evidence",
+      "duration": 0.5,
+      "units": "normalized_percent",
+      "positions": {"1": 100, "2": 0, "3": 100, "4": 0, "5": 0, "6": 0}
+    }
+  ]
+}
