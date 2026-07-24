@@ -1,5 +1,9 @@
 # DEX 灵巧手 ROS2 控制项目 — 优化报告
 
+> Historical note: this file describes the generated 2026 snapshot and is not
+> current verification. Use `docs/IMPLEMENTATION_STATUS.md` and
+> `docs/CHANGELOG_IMPLEMENTATION.md` for the audited source state.
+
 ---
 
 ## 一、Bug 修复

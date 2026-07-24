@@ -1,0 +1,17 @@
+# Thesis Traceability
+
+The LaTeX template currently contains no Chapters 3–7. “Section” below denotes
+the recommended future chapter role, not existing prose.
+
+| Thesis Section | Supported Claim | Code Evidence | Test Evidence | Required Figure | Required Experiment | Readiness |
+|---|---|---|---|---|---|---|
+| Chapter 3: architecture | Layered ROS/core/driver design exists | `controller.py`, `driver.py`, `hand_node.py` | Pure core suite | Package and command-flow diagrams | ROS fake launch | Partially ready |
+| Chapter 3: ROS interfaces | Compatibility topics/services are defined | `msg/`, `srv/`, `hand_node.py` | None locally | Node topology | ROS interface/launch test | Blocked by environment |
+| Chapter 4: communication | Strict Modbus/Feetech validation is implemented | `protocols.py`, `real_drivers.py` | Fake transport tests | Packet diagrams | Hardware packet verification | Partially ready |
+| Chapter 4: safety | Limits, watchdog, and latched software stop exist | `safety.py` | Safety unit tests | Safety state diagram | Hardware stop-response test | Partially ready |
+| Chapter 5: gesture control | Validated gesture representation exists | `gestures.py`, `gestures.yaml` | Gesture tests | Gesture data-flow figure | Mock/ROS gesture run | Partially ready |
+| Chapter 5: trajectories | Quintic multi-axis generation exists | `trajectory.py` | Boundary and sampling tests | Position/velocity/acceleration/jerk plots | Algorithm export | Ready for technical drafting |
+| Chapter 5: PID | Deterministic saturated PID exists | `pid.py`, `controller.py` | PID/mock convergence tests | Block/control-response figures | Mock then hardware response | Partially ready |
+| Chapter 6: kinematics | No supportable claim | None | None | Finger-chain diagram | FK/IK validation | Blocked by missing information |
+| Chapter 6: visualization | No supportable claim | None | None | RViz/TF figure | RViz launch | Blocked by missing information |
+| Chapter 7: evaluation | Test methodology and schemas exist | `experiment.py`, `EXPERIMENT_PLAN.md` | Export test | Result plots after execution | ROS/hardware experiments | Blocked by experiments |
