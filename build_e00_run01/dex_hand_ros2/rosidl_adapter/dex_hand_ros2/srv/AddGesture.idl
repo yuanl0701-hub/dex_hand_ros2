@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from dex_hand_ros2/srv/AddGesture.srv
+// generated code does not contain a copyright notice
+
+
+module dex_hand_ros2 {
+  module srv {
+    struct AddGesture_Request {
+      string name;
+
+      sequence<int32> positions;
+
+      string description;
+
+      double duration;
+    };
+    struct AddGesture_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

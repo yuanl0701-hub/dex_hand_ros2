@@ -1,0 +1,57 @@
+2026-07-24T10:57:55+00:00
+Linux airs01-Precision-3630-Tower 6.8.0-111-generic #111~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue Apr 14 17:13:45 UTC  x86_64 x86_64 x86_64 GNU/Linux
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 22.04.5 LTS
+Release:	22.04
+Codename:	jammy
+架构：                                   x86_64
+CPU 运行模式：                           32-bit, 64-bit
+Address sizes:                           39 bits physical, 48 bits virtual
+字节序：                                 Little Endian
+CPU:                                     8
+在线 CPU 列表：                          0-7
+厂商 ID：                                GenuineIntel
+型号名称：                               Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz
+CPU 系列：                               6
+型号：                                   158
+每个核的线程数：                         1
+每个座的核数：                           8
+座：                                     1
+步进：                                   13
+CPU 最大 MHz：                           4700.0000
+CPU 最小 MHz：                           800.0000
+BogoMIPS：                               6000.00
+标记：                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp vnmi md_clear flush_l1d arch_capabilities ibpb_exit_to_user
+虚拟化：                                 VT-x
+L1d 缓存：                               256 KiB (8 instances)
+L1i 缓存：                               256 KiB (8 instances)
+L2 缓存：                                2 MiB (8 instances)
+L3 缓存：                                12 MiB (1 instance)
+NUMA 节点：                              1
+NUMA 节点0 CPU：                         0-7
+Vulnerability Gather data sampling:      Mitigation; Microcode
+Vulnerability Indirect target selection: Mitigation; Aligned branch/return thunks
+Vulnerability Itlb multihit:             KVM: Mitigation: VMX disabled
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Mitigation; Clear CPU buffers; SMT disabled
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
+Vulnerability Srbds:                     Mitigation; Microcode
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Mitigation; TSX disabled
+Vulnerability Vmscape:                   Mitigation; IBPB before exit to userspace
+               total        used        free      shared  buff/cache   available
+内存：       31Gi       5.1Gi        10Gi       712Mi        15Gi        25Gi
+交换：      2.0Gi          0B       2.0Gi
+Failed to initialize NVML: Driver/library version mismatch
+NVML library version: 580.173
+Python 3.10.12
+ROS_DISTRO=humble
+RMW_IMPLEMENTATION=not_explicitly_set

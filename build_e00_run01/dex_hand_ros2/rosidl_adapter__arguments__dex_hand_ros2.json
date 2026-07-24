@@ -1,0 +1,12 @@
+{
+  "package_name": "dex_hand_ros2",
+  "non_idl_tuples": [
+    "/home/airs01/yl/dex_hand_ros2/src/dex_hand_ros2:msg/GestureCmd.msg",
+    "/home/airs01/yl/dex_hand_ros2/src/dex_hand_ros2:msg/MotorState.msg",
+    "/home/airs01/yl/dex_hand_ros2/src/dex_hand_ros2:msg/PIDconfig.msg",
+    "/home/airs01/yl/dex_hand_ros2/src/dex_hand_ros2:srv/AddGesture.srv",
+    "/home/airs01/yl/dex_hand_ros2/src/dex_hand_ros2:srv/ChangeBaud.srv",
+    "/home/airs01/yl/dex_hand_ros2/src/dex_hand_ros2:srv/ChangeId.srv",
+    "/home/airs01/yl/dex_hand_ros2/src/dex_hand_ros2:srv/RunGesturePid.srv"
+  ]
+}

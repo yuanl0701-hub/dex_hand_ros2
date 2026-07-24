@@ -1,0 +1,14 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from dex_hand_ros2/msg/GestureCmd.msg
+// generated code does not contain a copyright notice
+
+
+module dex_hand_ros2 {
+  module msg {
+    struct GestureCmd {
+      string gesture;
+
+      float speed;
+    };
+  };
+};
