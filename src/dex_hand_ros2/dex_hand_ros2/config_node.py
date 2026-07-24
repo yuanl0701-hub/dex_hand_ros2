@@ -8,7 +8,7 @@ import sys
 import rclpy
 from rclpy.node import Node
 
-from dex_hand_ros2.srv import ChangeBaud, ChangeId
+from dex_hand_interfaces.srv import ChangeBaud, ChangeId
 
 from .driver import DriverConfig
 from .factory import create_driver

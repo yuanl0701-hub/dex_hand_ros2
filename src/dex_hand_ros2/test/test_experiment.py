@@ -24,3 +24,13 @@ def test_trajectory_export_has_units_and_metadata(tmp_path):
     loaded = json.loads(metadata_path.read_text(encoding="utf-8"))
     assert loaded["data_kind"] == "algorithm_output"
     assert loaded["git_commit"] == "test-commit"
+
+
+def test_virtual_backend_measurement_kind_is_explicitly_supported():
+    metadata = ExperimentMetadata.create(
+        data_kind="ros2_virtual_backend_measurement",
+        units="milliseconds",
+        git_commit="test-commit",
+        configuration={"driver_type": "fake"},
+    )
+    assert metadata.data_kind == "ros2_virtual_backend_measurement"

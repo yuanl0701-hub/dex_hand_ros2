@@ -11,6 +11,15 @@ from typing import Iterable
 
 from .trajectory import TrajectoryPoint
 
+DATA_KINDS = {
+    "algorithm_output",
+    "mock_fixture",
+    "ros2_virtual_backend_measurement",
+    "environment_record",
+    "isaac_sim_measurement",
+    "hardware_measurement",
+}
+
 
 @dataclass(frozen=True)
 class ExperimentMetadata:
@@ -31,7 +40,7 @@ class ExperimentMetadata:
         git_commit: str,
         configuration: dict[str, object],
     ) -> ExperimentMetadata:
-        if data_kind not in {"algorithm_output", "mock_fixture", "hardware_measurement"}:
+        if data_kind not in DATA_KINDS:
             raise ValueError("unsupported data_kind")
         if not units or not git_commit:
             raise ValueError("units and git_commit are required")

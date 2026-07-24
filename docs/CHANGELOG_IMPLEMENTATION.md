@@ -46,3 +46,19 @@
 
 ROS 2 build, launch, and hardware tests were not run and are not recorded as
 passing.
+# 2026-07-24 — Humble interface split and thesis experiment automation
+
+- Pulled Ubuntu evidence commit `cd0657a` with fast-forward-only Git semantics.
+- Confirmed the Humble duplicate-target failure caused by generating interfaces
+  and installing Python code under the same `dex_hand_ros2` package name.
+- Split messages and services into `dex_hand_interfaces`; updated Python
+  imports and package dependencies.
+- Removed committed colcon build/install/log caches while retaining raw E00
+  failure evidence.
+- Corrected an unverified historical summary that incorrectly claimed the
+  split and three successful builds had already occurred.
+- Added Ubuntu bootstrap and one-command E00--E07 experiment collection.
+- Added machine-readable metadata, raw CSV, summary tables, dependency-free SVG
+  figures, evidence index, checksums, and archive generation.
+- Local status: pure/static validation pending in this change; ROS 2 Humble
+  execution remains to be verified on Ubuntu.

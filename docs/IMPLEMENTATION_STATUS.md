@@ -13,11 +13,11 @@ build products.
 | Feetech backend | Implemented but not verified | Status/checksum validation tested with fake transport | `real_drivers.py` | Device response behavior unverified | Hardware test |
 | Mock backend | Implemented and verified | Deterministic state and validation tests | `driver.py`, `test_driver.py` | No physical dynamics | Keep claims limited to functional simulation |
 | ROS 2 nodes | Implemented but not verified | Static source inspection | `hand_node.py`, `config_node.py` | `rclpy` unavailable on macOS | Build and launch on ROS 2 Humble |
-| ROS 2 interfaces | Implemented but not verified | Interface files and inventory | `msg/`, `srv/` | No generated interfaces locally | Run `colcon build` |
+| ROS 2 interfaces | Implemented but not verified | Dedicated interface package and inventory | `src/dex_hand_interfaces/msg/`, `srv/` | Post-split Humble build not yet captured | Run the Ubuntu experiment suite |
 | State feedback | Implemented but not verified | Worker-based state polling publishes each motor | `hand_node.py` | Physical frequency/latency unknown | ROS and hardware test |
 | Command handling | Implemented but not verified | ROS callbacks delegate to tested core | `hand_node.py`, `controller.py` | ROS integration unavailable | Launch tests |
 | Parameters | Implemented but not verified | Declared parameters and YAML | `hand.yaml`, `hand_node.py` | Dynamic parameter updates unsupported | Target validation |
-| QoS | Implemented but not verified | Reliable, keep-last, depth 10 in node | `hand_node.py` | No network testing | ROS QoS test |
+| QoS | Implemented but not verified | Reliable default plus startup-selectable best-effort/depth and automated comparison | `hand_node.py`, `ros_experiment.py` | No Ubuntu result yet; single-host test only | Run full Ubuntu suite |
 | Launch system | Implemented but not verified | Fake-safe launch file | `hand.launch.py` | ROS launch unavailable | Target smoke test |
 | Safety limits | Implemented and verified | Boundary/non-finite/rate tests | `safety.py`, `test_safety.py` | Normalized, not physical limits | Obtain physical limits |
 | Emergency stop | Implemented but not verified | Core latch verified; ROS service static | `safety.py`, `hand_node.py` | No hardware torque-off semantics | Define hardware-safe stop |
@@ -30,5 +30,5 @@ build products.
 | PID | Implemented and verified | Deterministic saturation/convergence tests | `pid.py`, `test_pid.py` | Gains not hardware tuned | Conduct controlled tuning |
 | Visualization | Blocked by missing information | No model or RViz config | — | URDF/meshes/frames absent | Supply model, then add RViz |
 | Automated tests | Implemented and verified | Pure test suite passes locally | `test/` | ROS/hardware tests blocked | Run target suite |
-| Experiments | Partially implemented | Algorithm export with metadata | `experiment.py`, `experiments/` | No real measurements | Execute approved experiments |
+| Experiments | Partially implemented | One-command E00--E07 collectors, analysis, and evidence indexing | `scripts/run_thesis_experiments.sh`, `tools/`, `experiments/` | ROS runtime execution pending on Ubuntu; no hardware | Execute full Ubuntu suite |
 | Documentation | Implemented and verified | Requested audit documents present | `docs/` | Must track later target results | Update after each run |

@@ -1,15 +1,20 @@
+Record status: historical failure evidence
+
 Failure category:
 ROS 2 Humble build-structure incompatibility
 
 Observed result:
-CMake duplicate custom target error
+CMake duplicate custom target error.
 
 Root cause:
 The same package generated ROS interfaces and installed a Python package
 under the identical package name.
 
 Corrective action:
-ROS interfaces were moved into dex_hand_interfaces.
+The source tree was subsequently changed to move ROS interfaces into the
+separate dex_hand_interfaces package.
 
-Verification:
-Three isolated post-fix builds were executed.
+Verification status:
+Not verified by the historical files in this directory. Run the automated
+thesis experiment suite on Ubuntu and use its post-fix E00 outputs before
+claiming successful or reproducible builds.

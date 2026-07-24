@@ -17,7 +17,7 @@ tooling, and thesis traceability documentation.
 ## Package structure
 
 - `src/dex_hand_ros2/dex_hand_ros2/`: Python implementation.
-- `src/dex_hand_ros2/msg/`, `srv/`: compatibility ROS interfaces.
+- `src/dex_hand_interfaces/msg/`, `srv/`: compatibility ROS interfaces.
 - `src/dex_hand_ros2/config/`, `launch/`: runtime configuration.
 - `src/dex_hand_ros2/test/`: pure and ROS-aware tests.
 - `docs/`: audits, plans, evidence logs, and thesis traceability.
@@ -37,7 +37,7 @@ Target ROS 2 environment:
 
 ```bash
 rosdep install --from-paths src --ignore-src -r -y --rosdistro humble
-colcon build --symlink-install --packages-select dex_hand_ros2
+colcon build --symlink-install --packages-up-to dex_hand_ros2
 source install/setup.bash
 colcon test --packages-select dex_hand_ros2
 colcon test-result --verbose
@@ -61,6 +61,7 @@ colcon test-result --verbose
 - Do not run destructive Git commands, rewrite history, commit, or push unless
   explicitly requested.
 - Do not require real hardware by default; the mock backend is the safe default.
+- Never commit colcon build/install/log trees or generated experiment runs.
 
 ## Academic integrity and status
 

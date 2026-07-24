@@ -8,5 +8,11 @@ __pycache__/
 build/
 install/
 log/
+build_*/
+install_*/
+log_*/
 *.egg-info/
 dist/
+experiments/runs/
+experiments/archives/
+.experiment_work/

@@ -14,8 +14,8 @@ from rclpy.qos import HistoryPolicy, QoSProfile, ReliabilityPolicy
 from std_msgs.msg import Int32MultiArray, String
 from std_srvs.srv import SetBool, Trigger
 
-from dex_hand_ros2.msg import GestureCmd, MotorState, PIDconfig
-from dex_hand_ros2.srv import AddGesture, RunGesturePid
+from dex_hand_interfaces.msg import GestureCmd, MotorState, PIDconfig
+from dex_hand_interfaces.srv import AddGesture, RunGesturePid
 
 from .driver import DriverConfig
 from .factory import create_driver
@@ -63,9 +63,9 @@ class DexHandROS2Node(Node):
             )
 
         qos = QoSProfile(
-            reliability=ReliabilityPolicy.RELIABLE,
+            reliability=self._reliability_policy(),
             history=HistoryPolicy.KEEP_LAST,
-            depth=10,
+            depth=int(self.get_parameter("qos_depth").value),
         )
         self.status_pub = self.create_publisher(String, "/dex_hand/status", qos)
         self.motor_state_pub = self.create_publisher(MotorState, "/dex_hand/motor_state", qos)
@@ -127,9 +127,22 @@ class DexHandROS2Node(Node):
             "pid_ki": 0.1,
             "pid_kd": 0.05,
             "gesture_file": "",
+            "qos_reliability": "reliable",
+            "qos_depth": 10,
         }
         for name, value in defaults.items():
             self.declare_parameter(name, value)
+
+    def _reliability_policy(self) -> ReliabilityPolicy:
+        value = str(self.get_parameter("qos_reliability").value).strip().lower()
+        depth = int(self.get_parameter("qos_depth").value)
+        if depth <= 0:
+            raise ValueError("qos_depth must be positive")
+        if value == "reliable":
+            return ReliabilityPolicy.RELIABLE
+        if value == "best_effort":
+            return ReliabilityPolicy.BEST_EFFORT
+        raise ValueError("qos_reliability must be reliable or best_effort")
 
     def _submit(self, label: str, operation: Callable[[], object]) -> bool:
         if self._command_future is not None and not self._command_future.done():
@@ -245,6 +258,10 @@ class DexHandROS2Node(Node):
                 "safety_state": status.state.value,
                 "reason": status.reason,
                 "gesture_count": len(self.hand.get_gesture_list()),
+                "qos_reliability": str(
+                    self.get_parameter("qos_reliability").value
+                ),
+                "qos_depth": int(self.get_parameter("qos_depth").value),
             },
             sort_keys=True,
         )

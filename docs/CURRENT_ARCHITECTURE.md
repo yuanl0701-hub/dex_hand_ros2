@@ -4,7 +4,8 @@
 
 ```mermaid
 flowchart TB
-  ROS["ROS 2 adapters"] --> Controller["HandController"]
+  Interfaces["dex_hand_interfaces (msg/srv)"] --> ROS["dex_hand_ros2 ROS adapters"]
+  ROS --> Controller["HandController"]
   Controller --> Safety["SafetyController"]
   Controller --> Gestures["GestureLibrary"]
   Controller --> Trajectory["Quintic trajectories"]
@@ -14,6 +15,8 @@ flowchart TB
   Driver --> Real["MPD20 / HTS20L / Feetech"]
   Real --> Protocols["Modbus RTU / Feetech protocols"]
   Protocols --> Serial["Injected or pyserial transport"]
+  Experiment["Thesis experiment client"] --> Interfaces
+  Experiment --> Evidence["CSV / JSON / SVG evidence bundle"]
 ```
 
 ## Node topology

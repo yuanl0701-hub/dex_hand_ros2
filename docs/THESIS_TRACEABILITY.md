@@ -6,7 +6,7 @@ the recommended future chapter role, not existing prose.
 | Thesis Section | Supported Claim | Code Evidence | Test Evidence | Required Figure | Required Experiment | Readiness |
 |---|---|---|---|---|---|---|
 | Chapter 3: architecture | Layered ROS/core/driver design exists | `controller.py`, `driver.py`, `hand_node.py` | Pure core suite | Package and command-flow diagrams | ROS fake launch | Partially ready |
-| Chapter 3: ROS interfaces | Compatibility topics/services are defined | `msg/`, `srv/`, `hand_node.py` | None locally | Node topology | ROS interface/launch test | Blocked by environment |
+| Chapter 3: ROS interfaces | Compatibility topics/services are defined | `src/dex_hand_interfaces/msg/`, `srv/`, `hand_node.py` | None locally | Node topology | ROS interface/launch test | Blocked by environment |
 | Chapter 4: communication | Strict Modbus/Feetech validation is implemented | `protocols.py`, `real_drivers.py` | Fake transport tests | Packet diagrams | Hardware packet verification | Partially ready |
 | Chapter 4: safety | Limits, watchdog, and latched software stop exist | `safety.py` | Safety unit tests | Safety state diagram | Hardware stop-response test | Partially ready |
 | Chapter 5: gesture control | Validated gesture representation exists | `gestures.py`, `gestures.yaml` | Gesture tests | Gesture data-flow figure | Mock/ROS gesture run | Partially ready |

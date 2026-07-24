@@ -4,7 +4,7 @@
 import rclpy
 from rclpy.node import Node
 
-from dex_hand_ros2.msg import GestureCmd
+from dex_hand_interfaces.msg import GestureCmd
 
 
 class GestureCLI(Node):
