@@ -63,9 +63,23 @@ export ISAAC_SIM_PATH=~/isaacsim
 test -x "$ISAAC_SIM_PATH/python.sh" && echo "Isaac Sim path: OK"
 ```
 
-如果你的安装目录不同，请替换为实际路径。不要把项目的 Conda 环境强行注入
-Isaac Sim；启动脚本使用 Isaac Sim 自带的 Python，并在启动前加载系统安装的
-ROS 2 Humble。
+如果你的安装目录不同，请替换为实际路径。
+
+如果 Isaac Sim 4.5 本身安装在 Conda 中，应使用 Python 3.10 环境。使用
+Isaac Sim 安装包自带 `environment.yml` 的方式时，先执行 NVIDIA 提供的环境
+设置脚本：
+
+```bash
+conda activate isaac-sim
+source /你的/isaac-sim-4.5.0/setup_conda_env.sh
+
+python --version
+python -c "import isaacsim; print('Isaac Sim Python: OK')"
+```
+
+通过 `pip install isaacsim[all]==4.5.0` 安装的环境通常不需要
+`setup_conda_env.sh`。启动脚本会自动检测活动 Conda 环境中的 `isaacsim`，
+也可以通过 `--isaac-python` 明确指定。
 
 ## 2. 仓库内置 Revo2 资产
 
@@ -95,6 +109,17 @@ cd ~/yl/dex_hand_ros2
 export ISAAC_SIM_PATH=~/isaacsim
 ./scripts/run_isaacsim.sh
 ```
+
+Conda 安装方式在激活 Isaac Sim 环境的终端运行：
+
+```bash
+conda activate isaac-sim
+cd ~/yl/dex_hand_ros2
+./scripts/run_isaacsim.sh --isaac-python "$(command -v python)"
+```
+
+脚本仍使用 `/opt/ros/humble/bin/ros2` 启动系统 ROS 节点；Conda Python
+只负责运行 Isaac Sim。两者通过 DDS 通信，不要求位于同一个 Python 环境。
 
 脚本会依次完成：
 
@@ -269,6 +294,32 @@ export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 unset ROS_DOMAIN_ID
 ./scripts/run_isaacsim.sh
 ```
+
+如果使用两个独立终端手动启动，必须确保两端设置一致：
+
+```bash
+export ROS_DOMAIN_ID=0
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+```
+
+不要在一端设置非零 `ROS_DOMAIN_ID` 而另一端保持默认，也不要让两端使用不同的
+DDS 实现。
+
+### Conda 环境中的 ROS 2 Bridge 无法加载
+
+确认 Conda 使用 Python 3.10，并在同一终端加载 ROS 2 后再启动：
+
+```bash
+conda activate isaac-sim
+source /opt/ros/humble/setup.bash
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+python -c "import isaacsim; print('isaacsim import: OK')"
+```
+
+本项目跨入 Isaac Sim 的接口只有标准 `sensor_msgs/JointState`，Isaac Sim
+进程不需要导入 `dex_hand_interfaces`。若 Bridge 仍无法加载，检查 Conda
+环境是否安装了 Isaac Sim 的 `all` 或 `ros2` bundle，并查看 Console 中
+`isaacsim.ros2.bridge` 的动态库错误。
 
 ### 结束仿真
 

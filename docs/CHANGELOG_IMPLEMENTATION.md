@@ -24,6 +24,9 @@
   hardware wiring.
 - Added Ubuntu one-command startup, a complete gesture-catalogue demonstration
   script, dependency bootstrap updates and a focused operating guide.
+- Added Conda/PIP Isaac Sim 4.5 runtime detection and an explicit
+  `--isaac-python` override. The system ROS 2 process and Conda Isaac Sim
+  process remain separate while inheriting one DDS domain and RMW selection.
 
 Actual results:
 

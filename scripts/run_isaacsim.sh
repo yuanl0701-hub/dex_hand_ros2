@@ -5,6 +5,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 ISAAC_DIR="${ISAAC_SIM_PATH:-${HOME}/isaacsim}"
+ISAAC_PYTHON="${ISAAC_PYTHON:-}"
 HEADLESS=false
 SKIP_BUILD=false
 SAVE_STAGE=""
@@ -19,6 +20,7 @@ Usage: ./scripts/run_isaacsim.sh [options]
 
 Options:
   --isaac-sim-path PATH  Isaac Sim 4.5 directory containing python.sh
+  --isaac-python PATH    Conda/Python executable containing Isaac Sim 4.5
   --headless             Run Isaac Sim without a viewport
   --skip-build           Reuse the existing ROS 2 install directory
   --revo2-usd PATH       Use the supplied Revo2 articulated USD instead of Xacro
@@ -29,6 +31,8 @@ Options:
 The ISAAC_SIM_PATH environment variable is used when --isaac-sim-path is not
 given. Its default is ~/isaacsim. The repository's bundled Revo2 right-hand
 asset is selected by default; REVO2_USD_PATH or --revo2-usd can override it.
+When an active Conda environment contains the isaacsim package, its Python is
+selected automatically. ISAAC_PYTHON or --isaac-python can select it explicitly.
 EOF
 }
 
@@ -37,6 +41,11 @@ while (($#)); do
     --isaac-sim-path)
       [[ $# -ge 2 ]] || { echo "Missing value for --isaac-sim-path" >&2; exit 2; }
       ISAAC_DIR="$2"
+      shift 2
+      ;;
+    --isaac-python)
+      [[ $# -ge 2 ]] || { echo "Missing value for --isaac-python" >&2; exit 2; }
+      ISAAC_PYTHON="$2"
       shift 2
       ;;
     --headless)
@@ -81,17 +90,29 @@ if [[ ! -f /opt/ros/humble/setup.bash ]]; then
   echo "ROS 2 Humble was not found at /opt/ros/humble/setup.bash." >&2
   exit 2
 fi
-if [[ ! -x "${ISAAC_DIR}/python.sh" ]]; then
-  echo "Isaac Sim python.sh was not found at: ${ISAAC_DIR}/python.sh" >&2
-  echo "Set ISAAC_SIM_PATH or pass --isaac-sim-path." >&2
-  exit 2
-fi
 if ! command -v setsid >/dev/null; then
   echo "The required setsid command is unavailable (install util-linux)." >&2
   exit 2
 fi
 if [[ -n "$REVO2_USD" && ! -f "$REVO2_USD" ]]; then
   echo "Revo2 USD was not found at: $REVO2_USD" >&2
+  exit 2
+fi
+
+if [[ -n "$ISAAC_PYTHON" ]]; then
+  if [[ ! -x "$ISAAC_PYTHON" ]]; then
+    echo "Isaac Sim Python is not executable: $ISAAC_PYTHON" >&2
+    exit 2
+  fi
+elif [[ -n "${CONDA_PREFIX:-}" ]] \
+  && command -v python >/dev/null \
+  && python -c 'import importlib.util, sys; sys.exit(0 if importlib.util.find_spec("isaacsim") else 1)'; then
+  ISAAC_PYTHON="$(command -v python)"
+elif [[ -x "${ISAAC_DIR}/python.sh" ]]; then
+  ISAAC_PYTHON="${ISAAC_DIR}/python.sh"
+else
+  echo "No Isaac Sim Python runtime was found." >&2
+  echo "Activate its Conda environment, pass --isaac-python, or set ISAAC_SIM_PATH." >&2
   exit 2
 fi
 
@@ -204,7 +225,7 @@ if [[ -n "$SAVE_STAGE" ]]; then
 fi
 
 echo "ROS controller is ready (log: $ROS_LOG)"
-echo "Starting Isaac Sim from: $ISAAC_DIR"
+echo "Isaac Sim Python:       $ISAAC_PYTHON"
 echo "Gesture command topic: /dex_hand/gesture_cmd"
 echo "Isaac command topic:   $COMMAND_TOPIC"
 echo "Isaac state topic:     $STATE_TOPIC"
@@ -214,4 +235,4 @@ else
   echo "Simulation asset:      nominal Xacro/URDF"
 fi
 
-"${ISAAC_DIR}/python.sh" "${ISAAC_ARGS[@]}"
+"$ISAAC_PYTHON" "${ISAAC_ARGS[@]}"

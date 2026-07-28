@@ -95,6 +95,13 @@ export ISAAC_SIM_PATH=~/isaacsim
 ./scripts/run_isaacsim.sh
 ```
 
+For a Conda/Python installation of Isaac Sim 4.5:
+
+```bash
+conda activate isaac-sim
+./scripts/run_isaacsim.sh --isaac-python "$(command -v python)"
+```
+
 Keep Isaac Sim running, then use a second terminal:
 
 ```bash
