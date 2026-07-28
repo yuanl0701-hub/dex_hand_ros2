@@ -111,10 +111,12 @@ Keep Isaac Sim running, then use a second terminal:
 The controller publishes commands on `/dex_hand/joint_command`; Isaac Sim
 publishes articulation feedback separately on `/isaac_joint_states` to avoid a
 command-feedback loop. The supported Revo2 right-hand asset has six driven
-joints and five PhysX mimic joints. At startup, the five mimic references are
-rebound to their composed `/World/Revo2` joint paths, so all finger segments
-move while the external control interface remains six-motor. Its authored
-geometry and physics are used,
+joints and five authored PhysX mimic joints. Because the supplied compliant
+mimic constraints are not stable in every Isaac Sim 4.5 runtime, startup
+replaces them with deterministic software coupling: six logical motor states
+fan out to eleven joint targets. The external control interface therefore
+remains six-motor while all finger segments move. Its authored geometry,
+limits, masses and collisions are used,
 but the project's logical-motor-to-anatomical-joint mapping remains a
 visualization assumption rather than verified hardware wiring.
 The complete Revo2 dependency set is bundled under

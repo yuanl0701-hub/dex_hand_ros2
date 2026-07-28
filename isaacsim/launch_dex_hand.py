@@ -37,15 +37,16 @@ REVO2_MIMIC_BINDINGS = (
 )
 
 
-def configure_revo2_mimic_bindings(stage, joints_path: str, sdf_path_type) -> list[str]:
-    """Re-author Revo2 mimic targets at their composed stage paths.
+def configure_revo2_software_coupling(
+    stage, joints_path: str, usd_physics
+) -> list[str]:
+    """Replace unstable asset mimic constraints with deterministic drives.
 
-    The supplied USD uses absolute relationship targets in its source layer.
-    Referencing that layer below ``/World/Revo2`` should remap them, but
-    explicitly authoring the composed targets avoids a PhysX 4.5 failure mode
-    where the distal joint is parsed without a valid in-articulation reference.
-    The relationship leaves the articulation with six commanded DOFs: distal
-    joints remain passive followers rather than additional motors.
+    The external controller still has six independent logical motors. It
+    publishes eleven joint targets by fanning each finger motor out to its
+    proximal and distal joints. The asset's PhysX mimic schemas must therefore
+    be removed before physics parsing, otherwise their constraints compete
+    with the explicit distal position targets.
     """
     descriptions: list[str] = []
     for distal, proximal, axis, gearing in REVO2_MIMIC_BINDINGS:
@@ -63,27 +64,33 @@ def configure_revo2_mimic_bindings(stage, joints_path: str, sdf_path_type) -> li
             raise RuntimeError(
                 f"{distal_path} does not apply the expected {schema_name}"
             )
-
-        property_prefix = f"physxMimicJoint:{axis}"
-        reference = distal_prim.GetRelationship(
-            f"{property_prefix}:referenceJoint"
-        )
-        if not reference:
-            raise RuntimeError(f"{distal_path} has no mimic reference relationship")
-        reference.SetTargets([sdf_path_type(proximal_path)])
-
-        gearing_attr = distal_prim.GetAttribute(f"{property_prefix}:gearing")
-        offset_attr = distal_prim.GetAttribute(f"{property_prefix}:offset")
-        if not gearing_attr or not offset_attr:
-            raise RuntimeError(f"{distal_path} has incomplete mimic coefficients")
-        gearing_attr.Set(float(gearing))
-        offset_attr.Set(0.0)
-
-        targets = [str(path) for path in reference.GetTargets()]
-        if targets != [proximal_path]:
+        if not distal_prim.RemoveAppliedSchema(schema_name):
             raise RuntimeError(
-                f"failed to compose mimic target for {distal}: {targets}"
+                f"failed to remove conflicting mimic schema from {distal_path}"
             )
+        if schema_name in {str(item) for item in distal_prim.GetAppliedSchemas()}:
+            raise RuntimeError(f"mimic schema remains active on {distal_path}")
+
+        reference_drive = usd_physics.DriveAPI(proximal_prim, "angular")
+        if not reference_drive:
+            raise RuntimeError(f"{proximal_path} has no angular position drive")
+        distal_drive = usd_physics.DriveAPI.Apply(distal_prim, "angular")
+        if not distal_drive:
+            raise RuntimeError(f"failed to add angular drive to {distal_path}")
+
+        stiffness = reference_drive.GetStiffnessAttr().Get()
+        damping = reference_drive.GetDampingAttr().Get()
+        max_force = reference_drive.GetMaxForceAttr().Get()
+        drive_type = reference_drive.GetTypeAttr().Get()
+        if stiffness is None or damping is None or max_force is None:
+            raise RuntimeError(f"{proximal_path} has incomplete drive parameters")
+        distal_drive.CreateStiffnessAttr(float(stiffness))
+        distal_drive.CreateDampingAttr(float(damping))
+        distal_drive.CreateMaxForceAttr(float(max_force))
+        distal_drive.CreateTypeAttr(drive_type or "force")
+        distal_drive.CreateTargetPositionAttr(0.0)
+        distal_drive.CreateTargetVelocityAttr(0.0)
+
         descriptions.append(f"{distal} <- {-gearing:g} * {proximal}")
     return descriptions
 
@@ -169,7 +176,7 @@ def main() -> int:
     import omni.graph.core as og
     import omni.kit.commands
     import omni.usd
-    from pxr import Gf, Sdf, UsdGeom, UsdLux
+    from pxr import Gf, UsdGeom, UsdLux, UsdPhysics
 
     if ARGS.drive_stiffness <= 0 or ARGS.drive_damping < 0:
         raise ValueError("drive stiffness must be positive and damping non-negative")
@@ -191,7 +198,7 @@ def main() -> int:
         Gf.Vec3f(-35.0, 25.0, 20.0)
     )
 
-    mimic_bindings: list[str] = []
+    coupling_descriptions: list[str] = []
     if ARGS.urdf:
         from isaacsim.asset.importer.urdf import _urdf
 
@@ -250,7 +257,7 @@ def main() -> int:
         )
         transform_prim_path = ARGS.usd_root_path
         asset_description = str(usd_path)
-        controlled_joints = REVO2_ACTIVE_JOINTS
+        controlled_joints = REVO2_ACTIVE_JOINTS + REVO2_MIMIC_JOINTS
 
         joints_path = f"{ARGS.usd_root_path.rstrip('/')}/joints"
         missing_joints = [
@@ -263,8 +270,8 @@ def main() -> int:
                 "USD is not the supported 6-active/5-mimic Revo2 right hand; "
                 f"missing joints: {', '.join(missing_joints)}"
             )
-        mimic_bindings = configure_revo2_mimic_bindings(
-            stage, joints_path, Sdf.Path
+        coupling_descriptions = configure_revo2_software_coupling(
+            stage, joints_path, UsdPhysics
         )
 
     robot_prim = stage.GetPrimAtPath(prim_path)
@@ -370,12 +377,13 @@ def main() -> int:
         "DEX hand loaded in Isaac Sim\n"
         f"  asset: {asset_description}\n"
         f"  articulation: {prim_path}\n"
+        f"  logical motor inputs: {6 if ARGS.usd else len(controlled_joints)}\n"
         f"  controlled joints: {', '.join(controlled_joints)}\n"
         f"  command topic: {ARGS.command_topic}\n"
         f"  state topic: {ARGS.state_topic}\n"
         + (
-            "  passive coupling: "
-            + "; ".join(mimic_bindings)
+            "  six-input software coupling: "
+            + "; ".join(coupling_descriptions)
             + "\n"
             if ARGS.usd
             else ""

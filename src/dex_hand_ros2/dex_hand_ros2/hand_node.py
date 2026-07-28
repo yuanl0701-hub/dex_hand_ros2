@@ -186,6 +186,7 @@ class DexHandROS2Node(Node):
                 "motor_1_joint", "motor_2_joint", "motor_3_joint",
                 "motor_4_joint", "motor_5_joint", "motor_6_joint",
             ],
+            "joint_motor_ids": [1, 2, 3, 4, 5, 6],
             "joint_min_rad": [0.0] * 6,
             "joint_max_rad": [1.2, 1.2, 1.2, 1.2, 1.2, 0.8],
             # Nominal visualization convention: legacy open=100 is extended.
@@ -379,19 +380,31 @@ class DexHandROS2Node(Node):
             list(self.get_parameter(name).value)
             for name in (
                 "joint_names",
+                "joint_motor_ids",
                 "joint_min_rad",
                 "joint_max_rad",
                 "joint_directions",
                 "joint_offsets_rad",
             )
         ]
-        count = len(self.driver.config.motor_ids)
+        count = len(arrays[0])
         if any(len(values) != count for values in arrays):
-            raise ValueError("all joint mapping arrays must match motor_ids length")
-        names, minima, maxima, directions, offsets = arrays
+            raise ValueError("all joint mapping arrays must have equal lengths")
+        names, source_motor_ids, minima, maxima, directions, offsets = arrays
+        configured_motor_ids = set(self.driver.config.motor_ids)
+        unknown_motor_ids = {
+            int(motor_id)
+            for motor_id in source_motor_ids
+            if int(motor_id) not in configured_motor_ids
+        }
+        if unknown_motor_ids:
+            raise ValueError(
+                "joint_motor_ids contains unconfigured motors: "
+                + ", ".join(str(item) for item in sorted(unknown_motor_ids))
+            )
         return [
             MotorJointMapping(
-                motor_id=motor_id,
+                motor_id=int(source_motor_ids[index]),
                 joint_name=str(names[index]),
                 normalized_min=self.driver.config.position_min,
                 normalized_max=self.driver.config.position_max,
@@ -400,7 +413,7 @@ class DexHandROS2Node(Node):
                 direction=int(directions[index]),
                 offset_rad=float(offsets[index]),
             )
-            for index, motor_id in enumerate(self.driver.config.motor_ids)
+            for index in range(count)
         ]
 
     def publish_status(self) -> None:

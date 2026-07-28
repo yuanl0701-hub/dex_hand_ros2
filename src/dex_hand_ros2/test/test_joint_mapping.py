@@ -48,3 +48,29 @@ def test_joint_state_arrays_and_nominal_forward_kinematics():
     x, y = planar_fingertip(0.0)
     assert x == pytest.approx(0.097)
     assert y == pytest.approx(0.0)
+
+
+def test_one_motor_can_fan_out_to_coupled_virtual_joints():
+    mappings = [
+        MotorJointMapping(
+            1,
+            "finger_proximal_joint",
+            joint_min_rad=0.0,
+            joint_max_rad=1.41,
+            direction=-1,
+        ),
+        MotorJointMapping(
+            1,
+            "finger_distal_joint",
+            joint_min_rad=0.0,
+            joint_max_rad=1.41 * 1.155,
+            direction=-1,
+        ),
+    ]
+    names, positions, velocities = map_joint_state(
+        mappings, {1: 0.0}, {1: -10.0}
+    )
+    assert names == ["finger_proximal_joint", "finger_distal_joint"]
+    assert positions == pytest.approx([1.41, 1.41 * 1.155])
+    assert positions[1] == pytest.approx(1.155 * positions[0])
+    assert velocities[1] == pytest.approx(1.155 * velocities[0])

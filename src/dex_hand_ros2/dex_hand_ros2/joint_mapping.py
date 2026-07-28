@@ -73,8 +73,6 @@ def map_joint_state(
     velocities: Mapping[int, float] | None = None,
 ) -> tuple[list[str], list[float], list[float]]:
     """Return ordered JointState-compatible name, position and velocity arrays."""
-    if len({item.motor_id for item in mappings}) != len(mappings):
-        raise ValueError("motor IDs in mappings must be unique")
     if len({item.joint_name for item in mappings}) != len(mappings):
         raise ValueError("joint names in mappings must be unique")
     velocities = velocities or {}
