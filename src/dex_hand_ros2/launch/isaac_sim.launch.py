@@ -9,7 +9,7 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
-from launch_ros.parameter_descriptions import ParameterValue
+from launch_ros.parameter_descriptions import ParameterFile, ParameterValue
 
 
 def generate_launch_description() -> LaunchDescription:
@@ -22,6 +22,10 @@ def generate_launch_description() -> LaunchDescription:
             DeclareLaunchArgument(
                 "joint_command_topic",
                 default_value="/dex_hand/joint_command",
+            ),
+            DeclareLaunchArgument(
+                "config_file",
+                default_value=config,
             ),
             DeclareLaunchArgument(
                 "simulation_update_rate",
@@ -37,7 +41,10 @@ def generate_launch_description() -> LaunchDescription:
                 name="dex_hand_node",
                 output="screen",
                 parameters=[
-                    config,
+                    ParameterFile(
+                        LaunchConfiguration("config_file"),
+                        allow_substs=True,
+                    ),
                     {
                         "gesture_file": gesture_file,
                         "joint_command_topic": LaunchConfiguration(

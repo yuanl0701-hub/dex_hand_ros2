@@ -11,6 +11,17 @@
 - Added an Isaac Sim 4.5 standalone script that imports the expanded URDF,
   configures position drives, creates the official ROS 2 joint-state
   subscriber/publisher Action Graph and starts the simulation timeline.
+- Added direct support for the supplied Revo2 right-hand USD. Its complete
+  four-layer dependency closure is bundled under `assets/revo2_right_hand/`
+  with SHA-256 checksums and provenance notes, so an Ubuntu Git checkout does
+  not require a second asset transfer. Its
+  six authored drive joints receive the logical motor commands and its five
+  authored PhysX mimic joints remain asset-controlled. Startup rejects a USD
+  that does not contain the complete expected 6-active/5-mimic joint set.
+- Added a Revo2-specific mapping whose joint limits are converted from the
+  degrees authored in `revo2_right_hand_physics.usd` to ROS radians. The
+  mapping is explicitly labelled as a visualization adapter, not verified
+  hardware wiring.
 - Added Ubuntu one-command startup, a complete gesture-catalogue demonstration
   script, dependency bootstrap updates and a focused operating guide.
 
@@ -23,6 +34,8 @@ Actual results:
 | Isolated Humble build | 2 packages passed |
 | Isaac ROS launch | `/dex_hand/joint_command` published six named joints |
 | Gesture endpoint test | `open` approximately 0 rad; `fist` approximately 1.2 rad (joint 6: 0.8 rad) |
+| Revo2 asset audit | 6 active drive joints and 5 PhysX mimic joints found |
+| Revo2 mapping test | `vgesture` extended index/middle and flexed the other four active joints to authored limits |
 | Isaac Sim 4.5 runtime/viewpoint | Pending execution on the Ubuntu/RTX 3090 device |
 
 The ROS 2 command path is verified. A visible Isaac Sim gesture transition and

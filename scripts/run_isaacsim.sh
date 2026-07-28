@@ -10,6 +10,8 @@ SKIP_BUILD=false
 SAVE_STAGE=""
 COMMAND_TOPIC="/dex_hand/joint_command"
 STATE_TOPIC="/isaac_joint_states"
+BUNDLED_REVO2_USD="$ROOT_DIR/assets/revo2_right_hand/revo2_right_hand.usd"
+REVO2_USD="${REVO2_USD_PATH:-$BUNDLED_REVO2_USD}"
 
 usage() {
   cat <<'EOF'
@@ -19,11 +21,14 @@ Options:
   --isaac-sim-path PATH  Isaac Sim 4.5 directory containing python.sh
   --headless             Run Isaac Sim without a viewport
   --skip-build           Reuse the existing ROS 2 install directory
+  --revo2-usd PATH       Use the supplied Revo2 articulated USD instead of Xacro
+  --nominal-xacro        Use the lightweight Xacro instead of bundled Revo2 USD
   --save-stage PATH      Export the prepared stage to a USD file
   --help                 Show this help
 
 The ISAAC_SIM_PATH environment variable is used when --isaac-sim-path is not
-given. Its default is ~/isaacsim.
+given. Its default is ~/isaacsim. The repository's bundled Revo2 right-hand
+asset is selected by default; REVO2_USD_PATH or --revo2-usd can override it.
 EOF
 }
 
@@ -40,6 +45,15 @@ while (($#)); do
       ;;
     --skip-build)
       SKIP_BUILD=true
+      shift
+      ;;
+    --revo2-usd)
+      [[ $# -ge 2 ]] || { echo "Missing value for --revo2-usd" >&2; exit 2; }
+      REVO2_USD="$2"
+      shift 2
+      ;;
+    --nominal-xacro)
+      REVO2_USD=""
       shift
       ;;
     --save-stage)
@@ -76,6 +90,10 @@ if ! command -v setsid >/dev/null; then
   echo "The required setsid command is unavailable (install util-linux)." >&2
   exit 2
 fi
+if [[ -n "$REVO2_USD" && ! -f "$REVO2_USD" ]]; then
+  echo "Revo2 USD was not found at: $REVO2_USD" >&2
+  exit 2
+fi
 
 cd "$ROOT_DIR"
 set +u
@@ -109,10 +127,17 @@ mkdir -p "$GENERATED_DIR" "$LOG_DIR"
 
 XACRO_PATH="$ROOT_DIR/src/dex_hand_ros2/urdf/virtual_dex_hand.urdf.xacro"
 URDF_PATH="$GENERATED_DIR/virtual_dex_hand.urdf"
-xacro "$XACRO_PATH" -o "$URDF_PATH"
+CONFIG_FILE="$ROOT_DIR/src/dex_hand_ros2/config/isaac_sim.yaml"
+
+if [[ -n "$REVO2_USD" ]]; then
+  CONFIG_FILE="$ROOT_DIR/src/dex_hand_ros2/config/revo2_right_hand.yaml"
+else
+  xacro "$XACRO_PATH" -o "$URDF_PATH"
+fi
 
 ROS_LOG="$LOG_DIR/ros_controller.log"
 setsid ros2 launch dex_hand_ros2 isaac_sim.launch.py \
+  config_file:="$CONFIG_FILE" \
   joint_command_topic:="$COMMAND_TOPIC" \
   >"$ROS_LOG" 2>&1 &
 ROS_PID=$!
@@ -163,10 +188,14 @@ fi
 
 ISAAC_ARGS=(
   "$ROOT_DIR/isaacsim/launch_dex_hand.py"
-  --urdf "$URDF_PATH"
   --command-topic "$COMMAND_TOPIC"
   --state-topic "$STATE_TOPIC"
 )
+if [[ -n "$REVO2_USD" ]]; then
+  ISAAC_ARGS+=(--usd "$REVO2_USD")
+else
+  ISAAC_ARGS+=(--urdf "$URDF_PATH")
+fi
 if [[ "$HEADLESS" == true ]]; then
   ISAAC_ARGS+=(--headless)
 fi
@@ -179,5 +208,10 @@ echo "Starting Isaac Sim from: $ISAAC_DIR"
 echo "Gesture command topic: /dex_hand/gesture_cmd"
 echo "Isaac command topic:   $COMMAND_TOPIC"
 echo "Isaac state topic:     $STATE_TOPIC"
+if [[ -n "$REVO2_USD" ]]; then
+  echo "Simulation asset:      Revo2 USD ($REVO2_USD)"
+else
+  echo "Simulation asset:      nominal Xacro/URDF"
+fi
 
 "${ISAAC_DIR}/python.sh" "${ISAAC_ARGS[@]}"

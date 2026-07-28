@@ -103,8 +103,12 @@ Keep Isaac Sim running, then use a second terminal:
 
 The controller publishes commands on `/dex_hand/joint_command`; Isaac Sim
 publishes articulation feedback separately on `/isaac_joint_states` to avoid a
-command-feedback loop. The imported geometry, inertia, collision, and drive
-values are nominal simulation assumptions rather than hardware calibration.
+command-feedback loop. The supported Revo2 right-hand asset has six driven
+joints and five PhysX mimic joints. Its authored geometry and physics are used,
+but the project's logical-motor-to-anatomical-joint mapping remains a
+visualization assumption rather than verified hardware wiring.
+The complete Revo2 dependency set is bundled under
+`assets/revo2_right_hand/`, so a normal Git clone needs no external asset path.
 See `docs/ISAAC_SIM_4_5_GUIDE.md` for installation, verification, and
 troubleshooting.
 
