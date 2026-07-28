@@ -203,6 +203,58 @@ ros2 topic pub --once /dex_hand/gesture_cmd \
   "{gesture: 'fist', speed: 0.8}"
 ```
 
+注意 YAML 的冒号后必须有空格。下面这种写法是错误的：
+
+```text
+{gesture:'open', speed:0.8}
+```
+
+否则 ROS 2 会把 `gesture:'open'` 识别成字段名并报告：
+
+```text
+GestureCmd object has no attribute 'gesture:'open''
+```
+
+## 4.1 浏览器控制界面
+
+保持 Isaac Sim 启动终端运行，在第二个终端执行：
+
+```bash
+cd ~/yl/dex_hand_ros2
+./scripts/run_hand_web_ui.sh
+```
+
+浏览器会自动打开：
+
+```text
+http://127.0.0.1:8765
+```
+
+界面包含：
+
+- 九个手势按钮、速度调节和自动演示；
+- 六个逻辑电机的独立位置/PID滑块；
+- PID 参数配置和临时手势创建；
+- 软件急停、恢复、模拟电机复位；
+- 仿真故障注入与清除；
+- ROS 控制状态、六电机位置与速度反馈。
+
+如果不希望自动打开浏览器：
+
+```bash
+./scripts/run_hand_web_ui.sh --no-browser
+```
+
+修改端口：
+
+```bash
+./scripts/run_hand_web_ui.sh --port 8080
+```
+
+默认只监听 `127.0.0.1`。界面没有登录认证，不要用 `--host 0.0.0.0`
+暴露到不可信网络。关闭界面服务时，在运行该脚本的终端按 `Ctrl+C`；这不会
+关闭 Isaac Sim 或主控制节点。
+
 ## 5. 验收检查
 
 在第二个终端加载环境：

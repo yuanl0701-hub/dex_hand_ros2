@@ -10,11 +10,12 @@ install(PROGRAMS
   scripts/hand_node
   scripts/config_node
   scripts/gesture_cli
+  scripts/hand_web_ui
   scripts/ros_experiment
   DESTINATION lib/${PROJECT_NAME}
 )
 
-install(DIRECTORY config launch urdf rviz
+install(DIRECTORY config launch urdf rviz web
   DESTINATION share/${PROJECT_NAME}
 )
 

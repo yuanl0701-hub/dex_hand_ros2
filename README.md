@@ -108,6 +108,18 @@ Keep Isaac Sim running, then use a second terminal:
 ./scripts/demo_isaacsim_gestures.sh
 ```
 
+Or start the localhost browser control panel:
+
+```bash
+./scripts/run_hand_web_ui.sh
+```
+
+The page opens at `http://127.0.0.1:8765` and provides gesture buttons,
+six-motor sliders, PID controls, emergency-stop/recovery, simulation reset,
+fault injection and live controller feedback without requiring repeated
+terminal commands. It binds to localhost by default and has no authentication;
+do not expose it to an untrusted network.
+
 The controller publishes commands on `/dex_hand/joint_command`; Isaac Sim
 publishes articulation feedback separately on `/isaac_joint_states` to avoid a
 command-feedback loop. The supported Revo2 right-hand asset has six driven
