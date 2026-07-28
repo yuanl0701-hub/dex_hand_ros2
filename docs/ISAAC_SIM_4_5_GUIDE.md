@@ -35,6 +35,12 @@ Revo2 右手 USD 包含 6 个带位置驱动的主动关节和 5 个 PhysX mimic
 六电机控制接口和手势的解剖可读性。当前“逻辑电机编号到解剖关节”的对应关系
 仍是软件可视化适配，不是通过真实 Revo2 接线或 SDK 标定得到的硬件映射。
 
+启动器会在 USD 被引用到 `/World/Revo2` 后，重新写入五个 mimic 关系的组合
+路径。这样可以避免源资产中的绝对 `referenceJoint` 路径在 Isaac Sim 4.5
+解析 articulation 时失效。控制器仍然只发布六个主动关节；四个手指 distal
+关节以 `1.155` 倍跟随各自 proximal 关节，拇指 distal 关节以 `1.0` 倍跟随
+拇指 proximal 关节。这是机械耦合，不会把系统变成 11 电机控制。
+
 | 逻辑电机 | Revo2 主动关节 | 上限 |
 |---:|---|---:|
 | 1 | `right_index_proximal_joint` | 80.787° |
@@ -130,7 +136,8 @@ cd ~/yl/dex_hand_ros2
 5. 创建 ROS 2 Action Graph 并播放仿真。
 
 第一次启动 Isaac Sim 可能较慢。成功后终端会显示 `DEX hand loaded in Isaac
-Sim`，并列出 Revo2 的六个受控关节。视口中应出现完整 Revo2 右手。
+Sim`，列出 Revo2 的六个受控关节，并显示五条 `passive coupling`。视口中
+应出现完整 Revo2 右手。
 
 如果 Isaac Sim 不在 `~/isaacsim`：
 
@@ -271,6 +278,39 @@ tail -n 100 .isaacsim/logs/ros_controller.log
 
 如果日志显示缺少 Revo2 关节，确认加载的是
 `revo2_right_hand.usd`，而不是 `_base.usd` 或 `_physics.usd` 单独一层。
+
+### 只有掌指关节运动，指尖前关节不跟随
+
+这表示六个 ROS 命令已经生效，但 PhysX 没有建立 distal mimic 约束。先确认
+启动终端包含类似输出：
+
+```text
+passive coupling: right_index_distal_joint <- 1.155 * right_index_proximal_joint; ...
+```
+
+若没有该行，更新项目后重新启动；不能只在旧的 Isaac Sim Stage 中重新运行
+手势。启动器必须在物理时间轴开始前重建 mimic 关系：
+
+```bash
+cd ~/yl/dex_hand_ros2
+git pull --ff-only origin main
+
+conda activate env_isaaclab
+./scripts/run_isaacsim.sh \
+  --skip-build \
+  --isaac-python "$CONDA_PREFIX/bin/python"
+```
+
+然后在第二个终端运行：
+
+```bash
+cd ~/yl/dex_hand_ros2
+./scripts/demo_isaacsim_gestures.sh open fist open
+```
+
+`fist` 时 proximal 和 distal 两节都应弯曲，`open` 时两节都应恢复。不要给五个
+distal 关节添加独立 Angular Drive，也不要把它们加入六电机 ROS 命令；独立
+drive 会与 mimic 约束竞争，破坏“六个执行器、十一关节”的机械模型。
 
 ### 模型呈白色或材质缺失
 

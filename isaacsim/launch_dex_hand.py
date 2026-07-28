@@ -28,6 +28,64 @@ REVO2_MIMIC_JOINTS = (
     "right_pinky_distal_joint",
     "right_thumb_distal_joint",
 )
+REVO2_MIMIC_BINDINGS = (
+    ("right_index_distal_joint", "right_index_proximal_joint", "rotY", -1.155),
+    ("right_ring_distal_joint", "right_ring_proximal_joint", "rotY", -1.155),
+    ("right_middle_distal_joint", "right_middle_proximal_joint", "rotY", -1.155),
+    ("right_pinky_distal_joint", "right_pinky_proximal_joint", "rotY", -1.155),
+    ("right_thumb_distal_joint", "right_thumb_proximal_joint", "rotX", -1.0),
+)
+
+
+def configure_revo2_mimic_bindings(stage, joints_path: str, sdf_path_type) -> list[str]:
+    """Re-author Revo2 mimic targets at their composed stage paths.
+
+    The supplied USD uses absolute relationship targets in its source layer.
+    Referencing that layer below ``/World/Revo2`` should remap them, but
+    explicitly authoring the composed targets avoids a PhysX 4.5 failure mode
+    where the distal joint is parsed without a valid in-articulation reference.
+    The relationship leaves the articulation with six commanded DOFs: distal
+    joints remain passive followers rather than additional motors.
+    """
+    descriptions: list[str] = []
+    for distal, proximal, axis, gearing in REVO2_MIMIC_BINDINGS:
+        distal_path = f"{joints_path}/{distal}"
+        proximal_path = f"{joints_path}/{proximal}"
+        distal_prim = stage.GetPrimAtPath(distal_path)
+        proximal_prim = stage.GetPrimAtPath(proximal_path)
+        if not distal_prim.IsValid() or not proximal_prim.IsValid():
+            raise RuntimeError(
+                f"cannot bind Revo2 mimic joint {distal}: missing composed joint prim"
+            )
+
+        schema_name = f"PhysxMimicJointAPI:{axis}"
+        if schema_name not in {str(item) for item in distal_prim.GetAppliedSchemas()}:
+            raise RuntimeError(
+                f"{distal_path} does not apply the expected {schema_name}"
+            )
+
+        property_prefix = f"physxMimicJoint:{axis}"
+        reference = distal_prim.GetRelationship(
+            f"{property_prefix}:referenceJoint"
+        )
+        if not reference:
+            raise RuntimeError(f"{distal_path} has no mimic reference relationship")
+        reference.SetTargets([sdf_path_type(proximal_path)])
+
+        gearing_attr = distal_prim.GetAttribute(f"{property_prefix}:gearing")
+        offset_attr = distal_prim.GetAttribute(f"{property_prefix}:offset")
+        if not gearing_attr or not offset_attr:
+            raise RuntimeError(f"{distal_path} has incomplete mimic coefficients")
+        gearing_attr.Set(float(gearing))
+        offset_attr.Set(0.0)
+
+        targets = [str(path) for path in reference.GetTargets()]
+        if targets != [proximal_path]:
+            raise RuntimeError(
+                f"failed to compose mimic target for {distal}: {targets}"
+            )
+        descriptions.append(f"{distal} <- {-gearing:g} * {proximal}")
+    return descriptions
 
 
 def parse_args() -> argparse.Namespace:
@@ -111,7 +169,7 @@ def main() -> int:
     import omni.graph.core as og
     import omni.kit.commands
     import omni.usd
-    from pxr import Gf, UsdGeom, UsdLux
+    from pxr import Gf, Sdf, UsdGeom, UsdLux
 
     if ARGS.drive_stiffness <= 0 or ARGS.drive_damping < 0:
         raise ValueError("drive stiffness must be positive and damping non-negative")
@@ -133,6 +191,7 @@ def main() -> int:
         Gf.Vec3f(-35.0, 25.0, 20.0)
     )
 
+    mimic_bindings: list[str] = []
     if ARGS.urdf:
         from isaacsim.asset.importer.urdf import _urdf
 
@@ -204,6 +263,9 @@ def main() -> int:
                 "USD is not the supported 6-active/5-mimic Revo2 right hand; "
                 f"missing joints: {', '.join(missing_joints)}"
             )
+        mimic_bindings = configure_revo2_mimic_bindings(
+            stage, joints_path, Sdf.Path
+        )
 
     robot_prim = stage.GetPrimAtPath(prim_path)
     if not robot_prim.IsValid():
@@ -311,7 +373,14 @@ def main() -> int:
         f"  controlled joints: {', '.join(controlled_joints)}\n"
         f"  command topic: {ARGS.command_topic}\n"
         f"  state topic: {ARGS.state_topic}\n"
-        "Keep the timeline playing, then publish a gesture from ROS 2.",
+        + (
+            "  passive coupling: "
+            + "; ".join(mimic_bindings)
+            + "\n"
+            if ARGS.usd
+            else ""
+        )
+        + "Keep the timeline playing, then publish a gesture from ROS 2.",
         flush=True,
     )
 

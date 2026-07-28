@@ -18,6 +18,10 @@
   six authored drive joints receive the logical motor commands and its five
   authored PhysX mimic joints remain asset-controlled. Startup rejects a USD
   that does not contain the complete expected 6-active/5-mimic joint set.
+- The launcher re-authors all five mimic `referenceJoint` relationships at
+  their composed `/World/Revo2/joints/...` paths before PhysX parses the
+  articulation. This preserves six commanded DOFs while ensuring the distal
+  finger links follow their proximal drives in Isaac Sim 4.5.
 - Added a Revo2-specific mapping whose joint limits are converted from the
   degrees authored in `revo2_right_hand_physics.usd` to ROS radians. The
   mapping is explicitly labelled as a visualization adapter, not verified

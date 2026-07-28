@@ -35,8 +35,9 @@
        right_thumb_proximal_joint]
 
     # Limits were read from revo2_right_hand_physics.usd and converted from
-    # authored degrees to radians. Distal joints use the USD's PhysX mimic
-    # relations and must not be commanded as additional motors.
+    # authored degrees to radians. Distal joints remain passive: the Isaac Sim
+    # launcher explicitly rebinds their PhysX mimic relations at the composed
+    # /World/Revo2 paths, so they are not commanded as additional motors.
     joint_min_rad: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     joint_max_rad: [1.409999841, 1.409999841, 1.409999841,
                     1.409999841, 1.569999933, 1.029999949]
