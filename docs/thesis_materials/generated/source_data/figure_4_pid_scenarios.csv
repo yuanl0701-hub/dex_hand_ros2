@@ -1,0 +1,13 @@
+scenario,controller,start,target,dt_s,iterations,converged,final_measurement,final_abs_error,peak_abs_effort,saturation_count,evidence_scope
+P_0_100,P,0.000000,100.000000,0.020000,104,True,98.012087,1.987913,100.000000,26,deterministic_algorithm_output
+P_100_0,P,100.000000,0.000000,0.020000,104,True,1.987913,1.987913,100.000000,26,deterministic_algorithm_output
+P_25_75,P,25.000000,75.000000,0.020000,79,True,73.012087,1.987913,100.000000,1,deterministic_algorithm_output
+P_75_25,P,75.000000,25.000000,0.020000,79,True,26.987913,1.987913,100.000000,1,deterministic_algorithm_output
+PI_0_100,PI,0.000000,100.000000,0.020000,95,True,98.042722,1.957278,100.000000,26,deterministic_algorithm_output
+PI_100_0,PI,100.000000,0.000000,0.020000,95,True,1.957278,1.957278,100.000000,26,deterministic_algorithm_output
+PI_25_75,PI,25.000000,75.000000,0.020000,70,True,73.042722,1.957278,100.000000,1,deterministic_algorithm_output
+PI_75_25,PI,75.000000,25.000000,0.020000,70,True,26.957278,1.957278,100.000000,1,deterministic_algorithm_output
+PID_0_100,PID,0.000000,100.000000,0.020000,98,True,98.098242,1.901758,100.000000,24,deterministic_algorithm_output
+PID_100_0,PID,100.000000,0.000000,0.020000,98,True,1.901758,1.901758,100.000000,24,deterministic_algorithm_output
+PID_25_75,PID,25.000000,75.000000,0.020000,73,True,73.009753,1.990247,100.000000,1,deterministic_algorithm_output
+PID_75_25,PID,75.000000,25.000000,0.020000,73,True,26.990247,1.990247,100.000000,1,deterministic_algorithm_output

@@ -1,0 +1,25 @@
+{
+  "archive": "/Users/yuanlei/Downloads/20260724T114059Z_2e70cf1_full.tar.gz",
+  "archive_sha256": "47920f495003c87861902d370fc900138ba4f8929b442b1628c52972fc453f3d",
+  "archive_root": "20260724T114059Z_2e70cf1_full",
+  "generator": "/Users/yuanlei/MINE/MECH_6048/dex_hand_ros2/docs/thesis_materials/make_paper_materials.py",
+  "included_experiments": [
+    "E00",
+    "E01",
+    "E02",
+    "E03",
+    "E04",
+    "E05",
+    "E06"
+  ],
+  "excluded_experiments": {
+    "E07": "Resource monitor sampled the ros2 CLI wrapper rather than the child dex_hand_node process."
+  },
+  "statistical_unit": {
+    "E03": "five independent runs per condition; 600 sequential technical observations per run",
+    "E04": "20 technical repetitions in one experiment session per safety mechanism",
+    "E05": "15 deterministic algorithm scenarios",
+    "E06": "four deterministic set-point scenarios per controller"
+  },
+  "data_exclusions": "None. The 408.009 ms E03 observation is retained."
+}

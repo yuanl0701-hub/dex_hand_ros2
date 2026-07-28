@@ -1,0 +1,8 @@
+experiment,verification_item,total,passed,scope
+E00,Isolated workspace builds,3,3,Software build
+E01,colcon tests,36,36,Automated software tests
+E01,pytest tests,35,35,Automated software tests
+E02,Functional cases,9,9,Virtual backend
+E04,Safety-state repetitions,40,40,Software state only
+E05,Quintic trajectory scenarios,15,15,Deterministic algorithm
+E06,Controller scenarios,12,12,Ideal integrator model

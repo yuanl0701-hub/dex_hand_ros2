@@ -8,6 +8,8 @@ from dex_hand_ros2.driver import (
     DriverValidationError,
     MockMotorDriver,
 )
+from dex_hand_ros2.factory import create_driver
+from dex_hand_ros2.sim_driver import SimulatedMotorDriver
 
 
 def test_driver_config_rejects_invalid_domains():
@@ -53,3 +55,12 @@ def test_mock_id_change_updates_configuration():
     assert driver.change_id(1, 7)
     assert driver.config.motor_ids == (7, 2, 3, 4, 5, 6)
     assert driver.get_position(7) == 0.0
+
+
+def test_factory_selects_simulated_and_rejects_unknown():
+    driver = create_driver(
+        "simulated", "", 115200, timeout=0.1, retries=0, config=DriverConfig()
+    )
+    assert isinstance(driver, SimulatedMotorDriver)
+    with pytest.raises(ValueError):
+        create_driver("unknown", "", 115200, timeout=0.1, retries=0, config=DriverConfig())

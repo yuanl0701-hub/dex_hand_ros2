@@ -1,0 +1,7 @@
+int32 motor_id
+string fault_type
+float64 value
+bool enabled
+---
+bool success
+string message

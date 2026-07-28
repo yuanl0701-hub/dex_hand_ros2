@@ -1,0 +1,3 @@
+test,technical_repetitions_n,successful,mean_ms,sd_ms,median_ms,p95_ms,min_ms,max_ms,scope
+watchdog_state_transition,20,20,1154.803605,60.613068,1149.689420,1205.675845,1098.616145,1299.748506,software_state_only
+emergency_stop_service_to_status,20,20,96.920743,1.599079,96.264227,99.680058,95.222850,99.862372,software_state_only

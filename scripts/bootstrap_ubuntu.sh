@@ -19,6 +19,8 @@ sudo apt install -y \
   python3-rosdep \
   python3-serial \
   ros-humble-rmw-fastrtps-cpp \
+  ros-humble-sensor-msgs \
+  ros-humble-xacro \
   stress-ng
 
 if [[ ! -f /etc/ros/rosdep/sources.list.d/20-default.list ]]; then

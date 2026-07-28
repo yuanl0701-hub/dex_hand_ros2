@@ -12,6 +12,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/ChangeBaud.srv"
   "srv/ChangeId.srv"
   "srv/RunGesturePid.srv"
+  "srv/SetSimFault.srv"
 )
 
 ament_export_dependencies(rosidl_default_runtime)

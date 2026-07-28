@@ -1,0 +1,27 @@
+/**:
+  ros__parameters:
+    driver_type: simulated
+    motor_ids: [1, 2, 3, 4, 5, 6]
+    position_min: 0.0        # normalized percent
+    position_max: 100.0     # normalized percent
+    simulation_update_rate: 100.0  # Hz
+    status_pub_freq: 10.0           # Hz
+    command_watchdog_timeout: 30.0  # s; allows scripted gesture sequences
+    sim_time_constant: 0.20         # s, assumed first-order plant
+    sim_max_velocity: 250.0         # normalized percent / s
+    sim_max_acceleration: 1500.0    # normalized percent / s^2
+    sim_command_delay: 0.0          # s
+    sim_deadband: 0.0               # normalized percent
+    sim_measurement_noise_std: 0.0  # normalized percent
+    sim_command_noise_std: 0.0      # normalized percent
+    sim_random_seed: 6048
+    sim_deterministic_mode: true
+    sim_initial_position: 0.0       # normalized percent
+    joint_names: [motor_1_joint, motor_2_joint, motor_3_joint,
+                  motor_4_joint, motor_5_joint, motor_6_joint]
+    joint_min_rad: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    joint_max_rad: [1.2, 1.2, 1.2, 1.2, 1.2, 0.8]
+    # Visualization convention only: legacy open=100 maps to extension (0 rad),
+    # while fist=0 maps to flexion (the nominal positive joint limit).
+    joint_directions: [-1, -1, -1, -1, -1, -1]
+    joint_offsets_rad: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]

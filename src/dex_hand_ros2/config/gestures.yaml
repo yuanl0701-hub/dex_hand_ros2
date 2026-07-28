@@ -20,6 +20,48 @@
       "duration": 0.5,
       "units": "normalized_percent",
       "positions": {"1": 100, "2": 0, "3": 100, "4": 0, "5": 0, "6": 0}
+    },
+    {
+      "name": "pinch_two",
+      "description": "Two-finger pinch inspired by the Revo2 built-in gesture set; illustrative simulation preset",
+      "duration": 0.6,
+      "units": "normalized_percent",
+      "positions": {"1": 35, "2": 100, "3": 100, "4": 100, "5": 25, "6": 25}
+    },
+    {
+      "name": "pinch_three",
+      "description": "Three-finger pinch inspired by the Revo2 built-in gesture set; illustrative simulation preset",
+      "duration": 0.6,
+      "units": "normalized_percent",
+      "positions": {"1": 35, "2": 100, "3": 35, "4": 100, "5": 25, "6": 25}
+    },
+    {
+      "name": "pinch_side",
+      "description": "Side-pinch pose inspired by the Revo2 built-in gesture set; illustrative simulation preset",
+      "duration": 0.6,
+      "units": "normalized_percent",
+      "positions": {"1": 20, "2": 15, "3": 15, "4": 15, "5": 20, "6": 80}
+    },
+    {
+      "name": "point",
+      "description": "Single-finger pointing pose inspired by the Revo2 built-in gesture set; do not press objects",
+      "duration": 0.5,
+      "units": "normalized_percent",
+      "positions": {"1": 100, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0}
+    },
+    {
+      "name": "thumbs_up",
+      "description": "Thumbs-up communication pose for the software gesture library",
+      "duration": 0.5,
+      "units": "normalized_percent",
+      "positions": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 100, "6": 100}
+    },
+    {
+      "name": "gesture_666",
+      "description": "Thumb-and-little-finger communication pose based on the supplied BrainCo gesture catalogue",
+      "duration": 0.5,
+      "units": "normalized_percent",
+      "positions": {"1": 0, "2": 0, "3": 0, "4": 100, "5": 100, "6": 100}
     }
   ]
 }

@@ -11,6 +11,7 @@ from .pid import PIDConfig, PIDController
 from .protocols import FeetechProtocol, ModbusRTUProtocol
 from .real_drivers import FeetechDriver, HTS20LDriver, MPD20Driver
 from .safety import SafetyController
+from .sim_driver import SimulatedMotorConfig, SimulatedMotorDriver
 
 FakeMotorDriver = MockMotorDriver
 
@@ -72,4 +73,6 @@ __all__ = [
     "PIDConfig",
     "PIDController",
     "RoboticHand",
+    "SimulatedMotorConfig",
+    "SimulatedMotorDriver",
 ]

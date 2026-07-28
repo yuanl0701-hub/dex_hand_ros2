@@ -9,17 +9,21 @@ import sys
 from typing import Callable
 
 import rclpy
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from rclpy.qos import HistoryPolicy, QoSProfile, ReliabilityPolicy
+from sensor_msgs.msg import JointState
 from std_msgs.msg import Int32MultiArray, String
 from std_srvs.srv import SetBool, Trigger
 
 from dex_hand_interfaces.msg import GestureCmd, MotorState, PIDconfig
-from dex_hand_interfaces.srv import AddGesture, RunGesturePid
+from dex_hand_interfaces.srv import AddGesture, RunGesturePid, SetSimFault
 
 from .driver import DriverConfig
 from .factory import create_driver
 from .hand_driver import RoboticHand
+from .joint_mapping import MotorJointMapping, map_joint_state
+from .sim_driver import SimulatedMotorConfig, SimulatedMotorDriver
 
 
 class DexHandROS2Node(Node):
@@ -44,6 +48,22 @@ class DexHandROS2Node(Node):
             timeout=float(self.get_parameter("serial_timeout").value),
             retries=int(self.get_parameter("serial_retries").value),
             config=config,
+            simulation_config=SimulatedMotorConfig(
+                time_constant=float(self.get_parameter("sim_time_constant").value),
+                max_velocity=float(self.get_parameter("sim_max_velocity").value),
+                max_acceleration=float(self.get_parameter("sim_max_acceleration").value),
+                command_delay=float(self.get_parameter("sim_command_delay").value),
+                deadband=float(self.get_parameter("sim_deadband").value),
+                measurement_noise_std=float(
+                    self.get_parameter("sim_measurement_noise_std").value
+                ),
+                command_noise_std=float(
+                    self.get_parameter("sim_command_noise_std").value
+                ),
+                random_seed=int(self.get_parameter("sim_random_seed").value),
+                deterministic_mode=bool(self.get_parameter("sim_deterministic_mode").value),
+                initial_position=float(self.get_parameter("sim_initial_position").value),
+            ),
         )
         if not self.driver.connect():
             raise RuntimeError("selected motor backend failed to connect")
@@ -69,6 +89,14 @@ class DexHandROS2Node(Node):
         )
         self.status_pub = self.create_publisher(String, "/dex_hand/status", qos)
         self.motor_state_pub = self.create_publisher(MotorState, "/dex_hand/motor_state", qos)
+        joint_command_topic = str(
+            self.get_parameter("joint_command_topic").value
+        ).strip()
+        if not joint_command_topic:
+            raise ValueError("joint_command_topic must not be empty")
+        self.joint_state_pub = self.create_publisher(
+            JointState, joint_command_topic, qos
+        )
         self.create_subscription(
             GestureCmd, "/dex_hand/gesture_cmd", self.gesture_cmd_callback, qos
         )
@@ -94,11 +122,24 @@ class DexHandROS2Node(Node):
             self.run_gesture_pid_callback,
         )
         self.create_service(SetBool, "/dex_hand/emergency_stop", self.emergency_stop_callback)
+        self.create_service(Trigger, "/dex_hand/sim/reset", self.sim_reset_callback)
+        self.create_service(
+            SetSimFault, "/dex_hand/sim/set_fault", self.sim_set_fault_callback
+        )
+        self.create_service(
+            Trigger, "/dex_hand/sim/clear_faults", self.sim_clear_faults_callback
+        )
 
         self._worker = ThreadPoolExecutor(max_workers=1, thread_name_prefix="dex-hand")
         self._command_future: Future[object] | None = None
         self._state_future: Future[object] | None = None
         self.create_timer(1.0 / status_frequency, self.publish_status)
+        update_rate = float(self.get_parameter("simulation_update_rate").value)
+        if update_rate <= 0:
+            raise ValueError("simulation_update_rate must be positive")
+        self._sim_period = 1.0 / update_rate
+        if isinstance(self.driver, SimulatedMotorDriver):
+            self.create_timer(self._sim_period, self._simulation_step_callback)
         self.create_timer(
             min(
                 0.25,
@@ -129,6 +170,27 @@ class DexHandROS2Node(Node):
             "gesture_file": "",
             "qos_reliability": "reliable",
             "qos_depth": 10,
+            "simulation_update_rate": 100.0,
+            "sim_time_constant": 0.2,
+            "sim_max_velocity": 250.0,
+            "sim_max_acceleration": 1500.0,
+            "sim_command_delay": 0.0,
+            "sim_deadband": 0.0,
+            "sim_measurement_noise_std": 0.0,
+            "sim_command_noise_std": 0.0,
+            "sim_random_seed": 6048,
+            "sim_deterministic_mode": True,
+            "sim_initial_position": 0.0,
+            "joint_command_topic": "/joint_states",
+            "joint_names": [
+                "motor_1_joint", "motor_2_joint", "motor_3_joint",
+                "motor_4_joint", "motor_5_joint", "motor_6_joint",
+            ],
+            "joint_min_rad": [0.0] * 6,
+            "joint_max_rad": [1.2, 1.2, 1.2, 1.2, 1.2, 0.8],
+            # Nominal visualization convention: legacy open=100 is extended.
+            "joint_directions": [-1] * 6,
+            "joint_offsets_rad": [0.0] * 6,
         }
         for name, value in defaults.items():
             self.declare_parameter(name, value)
@@ -249,22 +311,127 @@ class DexHandROS2Node(Node):
             response.message = "controller recovered" if response.success else "recovery rejected"
         return response
 
+    def sim_reset_callback(self, request: object, response: Trigger.Response):
+        del request
+        if not isinstance(self.driver, SimulatedMotorDriver):
+            response.success = False
+            response.message = "selected backend is not simulated"
+            return response
+        self.driver.reset()
+        response.success = True
+        response.message = "simulated plant reset"
+        return response
+
+    def sim_clear_faults_callback(self, request: object, response: Trigger.Response):
+        del request
+        if not isinstance(self.driver, SimulatedMotorDriver):
+            response.success = False
+            response.message = "selected backend is not simulated"
+            return response
+        self.driver.clear_faults()
+        response.success = True
+        response.message = "all simulated faults cleared"
+        return response
+
+    def sim_set_fault_callback(
+        self, request: SetSimFault.Request, response: SetSimFault.Response
+    ):
+        if not isinstance(self.driver, SimulatedMotorDriver):
+            response.success = False
+            response.message = "selected backend is not simulated"
+            return response
+        try:
+            if request.enabled:
+                self.driver.inject_fault(
+                    int(request.motor_id), str(request.fault_type), float(request.value)
+                )
+                response.message = (
+                    f"fault {request.fault_type} enabled on motor {request.motor_id}"
+                )
+            else:
+                self.driver.clear_faults(int(request.motor_id))
+                response.message = f"fault cleared on motor {request.motor_id}"
+            response.success = True
+        except Exception as exc:
+            response.success = False
+            response.message = str(exc)
+        return response
+
+    def _simulation_step_callback(self) -> None:
+        if not isinstance(self.driver, SimulatedMotorDriver):
+            return
+        states = self.driver.step(self._sim_period)
+        names, positions, velocities = map_joint_state(
+            self._joint_mappings(),
+            {motor_id: state.actual_position for motor_id, state in states.items()},
+            {motor_id: state.velocity for motor_id, state in states.items()},
+        )
+        message = JointState()
+        message.header.stamp = self.get_clock().now().to_msg()
+        message.name = names
+        message.position = positions
+        message.velocity = velocities
+        message.effort = []
+        self.joint_state_pub.publish(message)
+
+    def _joint_mappings(self) -> list[MotorJointMapping]:
+        arrays = [
+            list(self.get_parameter(name).value)
+            for name in (
+                "joint_names",
+                "joint_min_rad",
+                "joint_max_rad",
+                "joint_directions",
+                "joint_offsets_rad",
+            )
+        ]
+        count = len(self.driver.config.motor_ids)
+        if any(len(values) != count for values in arrays):
+            raise ValueError("all joint mapping arrays must match motor_ids length")
+        names, minima, maxima, directions, offsets = arrays
+        return [
+            MotorJointMapping(
+                motor_id=motor_id,
+                joint_name=str(names[index]),
+                normalized_min=self.driver.config.position_min,
+                normalized_max=self.driver.config.position_max,
+                joint_min_rad=float(minima[index]),
+                joint_max_rad=float(maxima[index]),
+                direction=int(directions[index]),
+                offset_rad=float(offsets[index]),
+            )
+            for index, motor_id in enumerate(self.driver.config.motor_ids)
+        ]
+
     def publish_status(self) -> None:
         status = self.hand.safety.status
         message = String()
-        message.data = json.dumps(
-            {
-                "connected": self.driver.is_connected(),
-                "safety_state": status.state.value,
-                "reason": status.reason,
-                "gesture_count": len(self.hand.get_gesture_list()),
-                "qos_reliability": str(
-                    self.get_parameter("qos_reliability").value
-                ),
-                "qos_depth": int(self.get_parameter("qos_depth").value),
-            },
-            sort_keys=True,
-        )
+        payload = {
+            "connected": self.driver.is_connected(),
+            "safety_state": status.state.value,
+            "reason": status.reason,
+            "gesture_count": len(self.hand.get_gesture_list()),
+            "qos_reliability": str(self.get_parameter("qos_reliability").value),
+            "qos_depth": int(self.get_parameter("qos_depth").value),
+            "joint_command_topic": str(
+                self.get_parameter("joint_command_topic").value
+            ),
+        }
+        if isinstance(self.driver, SimulatedMotorDriver):
+            states = self.driver.snapshot()
+            payload["simulation"] = {
+                "running": True,
+                "update_rate_hz": 1.0 / self._sim_period,
+                "simulation_time_s": self.driver.simulation_time,
+                "deterministic_mode": self.driver.simulation_config.deterministic_mode,
+                "targets": {str(i): s.target_position for i, s in states.items()},
+                "actual_positions": {str(i): s.actual_position for i, s in states.items()},
+                "velocities": {str(i): s.velocity for i, s in states.items()},
+                "active_faults": {
+                    str(i): s.fault for i, s in states.items() if s.fault is not None
+                },
+            }
+        message.data = json.dumps(payload, sort_keys=True)
         self.status_pub.publish(message)
         command_idle = self._command_future is None or self._command_future.done()
         state_idle = self._state_future is None or self._state_future.done()
@@ -279,18 +446,24 @@ class DexHandROS2Node(Node):
             self.get_logger().error(f"state poll failed: {exc}")
 
     def _read_and_publish_states(self) -> bool:
+        simulated_states = (
+            self.driver.snapshot() if isinstance(self.driver, SimulatedMotorDriver) else {}
+        )
         for motor_id in self.driver.config.motor_ids:
             position = self.driver.get_position(motor_id)
             state = MotorState()
             state.motor_id = motor_id
             state.position = -1 if position is None else int(round(position))
-            state.velocity = 0.0
+            state.velocity = (
+                float(simulated_states[motor_id].velocity) if simulated_states else 0.0
+            )
             state.connected = self.driver.is_connected()
             self.motor_state_pub.publish(state)
         return True
 
     def _watchdog_callback(self) -> None:
-        if not self.hand.safety.check_watchdog():
+        was_ready = self.hand.safety.status.state.value == "ready"
+        if not self.hand.safety.check_watchdog() and was_ready:
             self.get_logger().warning(self.hand.safety.status.reason)
 
     def destroy_node(self) -> None:
@@ -309,7 +482,7 @@ def main(args: list[str] | None = None) -> None:
     try:
         node = DexHandROS2Node()
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as exc:
         print(f"dex_hand_node failed: {exc}", file=sys.stderr)

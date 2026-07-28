@@ -104,10 +104,70 @@ run_logged() {
 
 stop_owned_process() {
   local pid="$1"
-  if [[ -n "${pid}" ]] && kill -0 "${pid}" 2>/dev/null; then
-    kill -INT "${pid}" 2>/dev/null || true
-    wait "${pid}" 2>/dev/null || true
+  if [[ -z "${pid}" ]] || ! kill -0 "${pid}" 2>/dev/null; then
+    return 0
   fi
+
+  local child_pids=()
+  local targets=()
+  local target=""
+  local signal=""
+  local attempt=0
+  local any_alive=0
+
+  # `ros2 run` is a Python wrapper which owns the actual ROS node as a child.
+  # Signalling only the wrapper can leave the child alive and make `wait`
+  # block forever, so capture and signal both while they are still related.
+  mapfile -t child_pids < <(pgrep -P "${pid}" 2>/dev/null || true)
+  targets=("${child_pids[@]}" "${pid}")
+
+  echo "Stopping owned process tree: ${targets[*]}"
+  for signal in INT TERM KILL; do
+    for target in "${targets[@]}"; do
+      if kill -0 "${target}" 2>/dev/null; then
+        kill "-${signal}" "${target}" 2>/dev/null || true
+      fi
+    done
+
+    for attempt in $(seq 1 50); do
+      any_alive=0
+      for target in "${targets[@]}"; do
+        if kill -0 "${target}" 2>/dev/null; then
+          any_alive=1
+          break
+        fi
+      done
+      if [[ ${any_alive} -eq 0 ]]; then
+        wait "${pid}" 2>/dev/null || true
+        return 0
+      fi
+      sleep 0.1
+    done
+    echo "Process tree did not exit after SIG${signal}; escalating."
+  done
+
+  # SIGKILL guarantees termination except for an uninterruptible kernel wait.
+  # Reap the wrapper only after every bounded escalation attempt has run.
+  wait "${pid}" 2>/dev/null || true
+}
+
+wait_owned_process() {
+  local pid="$1"
+  local timeout_seconds="$2"
+  local attempt=0
+  local max_attempts=$((timeout_seconds * 10))
+
+  for attempt in $(seq 1 "${max_attempts}"); do
+    if ! kill -0 "${pid}" 2>/dev/null; then
+      wait "${pid}"
+      return $?
+    fi
+    sleep 0.1
+  done
+
+  echo "Timed out after ${timeout_seconds}s waiting for PID ${pid}."
+  stop_owned_process "${pid}"
+  return 124
 }
 
 cleanup() {
@@ -291,7 +351,7 @@ if [[ ${BUILD_READY} -eq 1 ]]; then
       --duration "${RESOURCE_DURATION}" \
       --condition command_load_20hz \
       --output "${RUN_DIR}/E07_resources/command_load_20hz.csv"
-    wait "${LOAD_PID}"
+    wait_owned_process "${LOAD_PID}" "$((RESOURCE_DURATION + 30))"
     load_code=$?
     if [[ ${load_code} -eq 0 ]]; then
       record_status E07 load_client completed 0 \

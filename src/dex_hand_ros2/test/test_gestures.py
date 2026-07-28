@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 import pytest
 
@@ -54,3 +55,40 @@ def test_json_compatible_yaml_loading(tmp_path):
 def test_unknown_gesture():
     with pytest.raises(KeyError):
         GestureLibrary(DriverConfig()).get("unknown")
+
+
+def test_packaged_gesture_catalog_is_complete_and_ordered():
+    gesture_file = Path(__file__).parents[1] / "config" / "gestures.yaml"
+    library = GestureLibrary.load(gesture_file, DriverConfig())
+
+    assert library.names() == [
+        "open",
+        "fist",
+        "vgesture",
+        "pinch_two",
+        "pinch_three",
+        "pinch_side",
+        "point",
+        "thumbs_up",
+        "gesture_666",
+    ]
+    for name in library.names():
+        gesture = library.get(name)
+        assert list(gesture.positions) == [1, 2, 3, 4, 5, 6]
+        assert all(0.0 <= value <= 100.0 for value in gesture.positions.values())
+
+
+def test_reference_gesture_vectors_remain_backward_compatible():
+    gesture_file = Path(__file__).parents[1] / "config" / "gestures.yaml"
+    library = GestureLibrary.load(gesture_file, DriverConfig())
+
+    assert list(library.get("open").positions.values()) == [100.0] * 6
+    assert list(library.get("fist").positions.values()) == [0.0] * 6
+    assert list(library.get("vgesture").positions.values()) == [
+        100.0,
+        0.0,
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+    ]

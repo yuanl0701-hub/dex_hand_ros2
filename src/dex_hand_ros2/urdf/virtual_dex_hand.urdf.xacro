@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="virtual_dex_hand">
+  <!-- All dimensions and axes are nominal visualization assumptions (SI units). -->
+  <xacro:property name="palm_x" value="0.090"/>
+  <xacro:property name="palm_y" value="0.075"/>
+  <xacro:property name="palm_z" value="0.018"/>
+  <xacro:property name="finger_length" value="0.075"/>
+  <xacro:property name="finger_width" value="0.014"/>
+  <xacro:property name="finger_depth" value="0.012"/>
+  <xacro:property name="palm_mass" value="0.25"/>
+  <xacro:property name="finger_mass" value="0.03"/>
+
+  <material name="palm_blue"><color rgba="0.12 0.32 0.68 1"/></material>
+  <material name="finger_light"><color rgba="0.72 0.82 0.95 1"/></material>
+  <material name="joint_dark"><color rgba="0.08 0.10 0.14 1"/></material>
+
+  <xacro:macro name="box_inertial" params="mass x y z origin_x:=0 origin_y:=0 origin_z:=0">
+    <inertial>
+      <origin xyz="${origin_x} ${origin_y} ${origin_z}"/>
+      <mass value="${mass}"/>
+      <inertia
+        ixx="${mass * (y*y + z*z) / 12.0}"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="${mass * (x*x + z*z) / 12.0}"
+        iyz="0.0"
+        izz="${mass * (x*x + y*y) / 12.0}"/>
+    </inertial>
+  </xacro:macro>
+
+  <link name="base_link">
+    <visual>
+      <geometry><box size="${palm_x} ${palm_y} ${palm_z}"/></geometry>
+      <material name="palm_blue"/>
+    </visual>
+    <collision>
+      <geometry><box size="${palm_x} ${palm_y} ${palm_z}"/></geometry>
+    </collision>
+    <xacro:box_inertial
+      mass="${palm_mass}"
+      x="${palm_x}"
+      y="${palm_y}"
+      z="${palm_z}"/>
+  </link>
+
+  <xacro:macro name="generic_digit" params="index y length:=0.075">
+    <link name="motor_${index}_link">
+      <visual>
+        <origin xyz="${length/2} 0 0"/>
+        <geometry><box size="${length} ${finger_width} ${finger_depth}"/></geometry>
+        <material name="finger_light"/>
+      </visual>
+      <visual>
+        <geometry><cylinder radius="0.009" length="${finger_width}"/></geometry>
+        <origin rpy="${pi/2} 0 0"/>
+        <material name="joint_dark"/>
+      </visual>
+      <collision>
+        <origin xyz="${length/2} 0 0"/>
+        <geometry><box size="${length} ${finger_width} ${finger_depth}"/></geometry>
+      </collision>
+      <xacro:box_inertial
+        mass="${finger_mass}"
+        x="${length}"
+        y="${finger_width}"
+        z="${finger_depth}"
+        origin_x="${length/2}"/>
+    </link>
+    <joint name="motor_${index}_joint" type="revolute">
+      <parent link="base_link"/>
+      <child link="motor_${index}_link"/>
+      <origin xyz="${palm_x/2} ${y} 0"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="0.0" upper="1.2" effort="1.0" velocity="3.0"/>
+      <dynamics damping="0.08" friction="0.01"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:generic_digit index="1" y="0.029" length="0.070"/>
+  <xacro:generic_digit index="2" y="0.0145" length="0.080"/>
+  <xacro:generic_digit index="3" y="0.0" length="0.085"/>
+  <xacro:generic_digit index="4" y="-0.0145" length="0.078"/>
+  <xacro:generic_digit index="5" y="-0.029" length="0.066"/>
+
+  <!-- Sixth generic coordinate: deliberately not assigned an anatomical name. -->
+  <link name="motor_6_link">
+    <visual>
+      <origin xyz="0.030 0 0"/>
+      <geometry><box size="0.060 ${finger_width} ${finger_depth}"/></geometry>
+      <material name="finger_light"/>
+    </visual>
+    <collision>
+      <origin xyz="0.030 0 0"/>
+      <geometry><box size="0.060 ${finger_width} ${finger_depth}"/></geometry>
+    </collision>
+    <xacro:box_inertial
+      mass="${finger_mass}"
+      x="0.060"
+      y="${finger_width}"
+      z="${finger_depth}"
+      origin_x="0.030"/>
+  </link>
+  <joint name="motor_6_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="motor_6_link"/>
+    <origin xyz="0.010 ${-palm_y/2} 0" rpy="0 0 -0.65"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="0.0" upper="0.8" effort="1.0" velocity="3.0"/>
+    <dynamics damping="0.08" friction="0.01"/>
+  </joint>
+</robot>

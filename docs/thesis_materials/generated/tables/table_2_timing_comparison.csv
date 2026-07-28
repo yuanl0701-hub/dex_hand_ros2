@@ -1,0 +1,4 @@
+condition,independent_runs_n,technical_observations,matched_observations,pooled_mean_ms,pooled_sd_ms,pooled_median_ms,pooled_p95_ms,pooled_p99_ms,pooled_min_ms,pooled_max_ms,mean_state_frequency_hz
+reliable_idle,5,3000,3000,99.796073,2.034200,99.786929,102.091402,102.282726,7.771472,104.198034,9.999819
+best_effort_idle,5,3000,3000,99.827915,1.319936,99.809843,102.178759,102.404322,93.433132,104.944969,10.000121
+cpu_stress,5,3000,3000,100.040310,6.864978,99.946079,107.415978,110.367157,83.877275,408.008595,9.990021

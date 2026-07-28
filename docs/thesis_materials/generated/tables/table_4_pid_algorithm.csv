@@ -1,0 +1,4 @@
+controller,scenarios_n,converged_n,mean_iterations,sd_iterations,mean_final_abs_error_percent,mean_saturation_count,total_saturation_count,evidence_scope
+P,4,4,91.500000,14.433757,1.987913,13.500000,54,deterministic_algorithm_output
+PI,4,4,82.500000,14.433757,1.957278,13.500000,54,deterministic_algorithm_output
+PID,4,4,85.500000,14.433757,1.946003,12.500000,50,deterministic_algorithm_output

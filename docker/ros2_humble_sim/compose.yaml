@@ -1,0 +1,22 @@
+services:
+  ros2-shell:
+    platform: linux/arm64
+    build:
+      context: ../..
+      dockerfile: docker/ros2_humble_sim/Dockerfile
+    image: dex-hand-ros2-humble:local
+    working_dir: /workspace
+    volumes:
+      - ../..:/workspace
+    environment:
+      ROS_DOMAIN_ID: "77"
+      LIBGL_ALWAYS_SOFTWARE: "1"
+    stdin_open: true
+    tty: true
+
+  rviz:
+    extends:
+      service: ros2-shell
+    command: ["/workspace/docker/ros2_humble_sim/start_rviz_novnc.sh"]
+    ports:
+      - "127.0.0.1:6080:6080"
