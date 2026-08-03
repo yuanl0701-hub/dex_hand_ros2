@@ -10,7 +10,7 @@ import sys
 import time
 from typing import Sequence
 
-from ..backends.mpd20 import MPD20Driver, MPD20MotorCalibration
+from ..backends.mpd20 import MPD20Driver, MPD20MotorCalibration, MPD20Telemetry
 from ..core.driver import DriverConfig, DriverValidationError
 
 
@@ -51,6 +51,54 @@ def validate_jog(current_raw: int, target_raw: int, max_delta: int, confirmed: b
         raise DriverValidationError(f"requested raw delta {delta} must be in [1, {max_delta}]")
 
 
+def wait_for_jog_completion(
+    driver: MPD20Driver,
+    motor_id: int,
+    before: MPD20Telemetry,
+    timeout: float,
+    *,
+    poll_interval: float = 0.05,
+    stable_samples: int = 2,
+) -> MPD20Telemetry:
+    """Wait for delayed motion onset and then for a stationary position.
+
+    MPD20 may still report ``moving=false`` in the first feedback frame after a
+    target write.  Treating that first frame as completion immediately cancels
+    the jog when the commissioning tool performs its final hold.
+    """
+    if timeout <= 0 or poll_interval < 0 or stable_samples < 1:
+        raise DriverValidationError("invalid commissioning observation settings")
+    deadline = time.monotonic() + timeout
+    after = before
+    last_position = before.raw_position
+    position_changed = False
+    motion_seen = False
+    stationary_samples = 0
+    while time.monotonic() < deadline:
+        time.sleep(poll_interval)
+        after = driver.read_telemetry(motor_id)
+        if after.raw_position != before.raw_position:
+            position_changed = True
+        if after.moving:
+            motion_seen = True
+            stationary_samples = 0
+        elif position_changed:
+            if motion_seen:
+                return after
+            if after.raw_position == last_position:
+                stationary_samples += 1
+            else:
+                stationary_samples = 0
+            if stationary_samples >= stable_samples:
+                return after
+        last_position = after.raw_position
+    if after.moving:
+        raise RuntimeError("motor remained moving until commissioning timeout")
+    if not position_changed:
+        raise RuntimeError("no motor position change observed before commissioning timeout")
+    raise RuntimeError("motor position did not settle before commissioning timeout")
+
+
 def run_jog(args: argparse.Namespace) -> dict[str, object]:
     if args.timeout <= 0:
         raise DriverValidationError("timeout must be positive")
@@ -81,16 +129,12 @@ def run_jog(args: argparse.Namespace) -> dict[str, object]:
             args.confirm_small_jog,
         )
         driver.set_raw_position(args.motor_id, args.raw_target)
-        deadline = time.monotonic() + args.timeout
-        after = driver.read_telemetry(args.motor_id)
-        while after.moving and time.monotonic() < deadline:
-            time.sleep(0.05)
-            after = driver.read_telemetry(args.motor_id)
-        if after.moving:
-            raise RuntimeError("motor remained moving until commissioning timeout")
+        after = wait_for_jog_completion(driver, args.motor_id, before, args.timeout)
         return {
             "motor_id": args.motor_id,
             "commanded_raw_target": args.raw_target,
+            "position_changed": after.raw_position != before.raw_position,
+            "target_error_raw": after.raw_position - args.raw_target,
             "before": asdict(before),
             "after": asdict(after),
         }
