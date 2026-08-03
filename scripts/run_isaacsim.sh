@@ -148,17 +148,17 @@ mkdir -p "$GENERATED_DIR" "$LOG_DIR"
 
 XACRO_PATH="$ROOT_DIR/src/dex_hand_ros2/urdf/virtual_dex_hand.urdf.xacro"
 URDF_PATH="$GENERATED_DIR/virtual_dex_hand.urdf"
-CONFIG_FILE="$ROOT_DIR/src/dex_hand_ros2/config/isaac_sim.yaml"
+CONFIG_FILE="$ROOT_DIR/src/dex_hand_ros2/config/hand_models/generic_six_axis/ros_parameters.yaml"
 
 if [[ -n "$REVO2_USD" ]]; then
-  CONFIG_FILE="$ROOT_DIR/src/dex_hand_ros2/config/revo2_right_hand.yaml"
+  CONFIG_FILE="$ROOT_DIR/src/dex_hand_ros2/config/hand_models/revo2_right/ros_parameters.yaml"
 else
   xacro "$XACRO_PATH" -o "$URDF_PATH"
 fi
 
 ROS_LOG="$LOG_DIR/ros_controller.log"
 setsid ros2 launch dex_hand_ros2 isaac_sim.launch.py \
-  config_file:="$CONFIG_FILE" \
+  hand_model_config:="$CONFIG_FILE" \
   joint_command_topic:="$COMMAND_TOPIC" \
   >"$ROS_LOG" 2>&1 &
 ROS_PID=$!

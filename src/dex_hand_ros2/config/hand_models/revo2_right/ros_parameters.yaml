@@ -1,32 +1,12 @@
 /**:
   ros__parameters:
-    driver_type: simulated
     motor_ids: [1, 2, 3, 4, 5, 6]
-    position_min: 0.0
-    position_max: 100.0
-    simulation_update_rate: 100.0
-    status_pub_freq: 10.0
-    command_watchdog_timeout: 30.0
-    qos_reliability: reliable
-    qos_depth: 10
-
-    sim_time_constant: 0.20
-    sim_max_velocity: 250.0
-    sim_max_acceleration: 1500.0
-    sim_command_delay: 0.0
-    sim_deadband: 0.0
-    sim_measurement_noise_std: 0.0
-    sim_command_noise_std: 0.0
-    sim_random_seed: 6048
-    sim_deterministic_mode: true
-    sim_initial_position: 0.0
-
+    motor_labels:
+      [index_flexion, ring_flexion, middle_flexion,
+       little_flexion, thumb_opposition, thumb_flexion]
     joint_command_topic: /dex_hand/joint_command
 
-    # Six independent logical motors fan out to eleven simulated joint targets.
-    # The repeated IDs are passive software-coupled joints, not extra motors.
-    # Motors 1 and 3 are index and middle so the legacy vgesture remains
-    # anatomically recognizable. This is not a verified hardware wiring map.
+    # Six logical actuators fan out to eleven modeled joints.
     joint_names:
       [right_index_proximal_joint,
        right_ring_proximal_joint,
@@ -40,10 +20,6 @@
        right_pinky_distal_joint,
        right_thumb_distal_joint]
     joint_motor_ids: [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 6]
-
-    # Limits were read from revo2_right_hand_physics.usd and converted from
-    # authored degrees to radians. Distal targets use the supplied transmission
-    # ratios: 1.155 for the four fingers and 1.0 for the thumb.
     joint_min_rad: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                     0.0, 0.0, 0.0, 0.0, 0.0]
     joint_max_rad: [1.409999841, 1.409999841, 1.409999841,

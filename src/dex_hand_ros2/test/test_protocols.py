@@ -48,6 +48,15 @@ def test_modbus_read_and_response_validation():
     assert transport.writes[0][:6] == bytes.fromhex("010300020001")
 
 
+def test_modbus_read_input_registers_uses_function_04():
+    response = modbus_frame(bytes([1, 4, 2, 0x01, 0xE5]))
+    transport = FakeTransport([response[:3], response[3:]])
+    protocol = ModbusRTUProtocol("fake", 115200, transport_factory=lambda *_: transport)
+    assert protocol.connect()
+    assert protocol.read_input_registers(1, 2) == [485]
+    assert transport.writes[0][:6] == bytes.fromhex("010400020001")
+
+
 def test_modbus_rejects_crc_and_wrong_address():
     bad_crc = bytes([1, 3, 2, 0, 42, 0, 0])
     protocol = ModbusRTUProtocol(

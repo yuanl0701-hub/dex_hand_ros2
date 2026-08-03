@@ -10,8 +10,8 @@ from rclpy.node import Node
 
 from dex_hand_interfaces.srv import ChangeBaud, ChangeId
 
-from .driver import DriverConfig
-from .factory import create_driver
+from .backends.factory import ConnectionSettings, MPD20Settings, create_driver
+from .core.driver import DriverConfig
 
 
 def _parse_change(command: str) -> tuple[int, int]:
@@ -29,15 +29,29 @@ class DexHandConfigNode(Node):
         self.declare_parameter("baudrate", 115200)
         self.declare_parameter("serial_timeout", 0.3)
         self.declare_parameter("serial_retries", 1)
-        self.declare_parameter("motor_ids", [1, 2, 3, 4, 5, 6])
+        self.declare_parameter("motor_ids", [1])
         config = DriverConfig(tuple(int(value) for value in self.get_parameter("motor_ids").value))
+        backend = str(self.get_parameter("driver_type").value).strip().lower()
+        settings = (
+            MPD20Settings(
+                motion_enabled=False,
+                verify_on_connect=False,
+                hold_on_connect=False,
+                require_stationary_on_connect=False,
+            )
+            if backend == "mpd20"
+            else None
+        )
         self.driver = create_driver(
-            str(self.get_parameter("driver_type").value),
-            str(self.get_parameter("serial_port").value),
-            int(self.get_parameter("baudrate").value),
-            timeout=float(self.get_parameter("serial_timeout").value),
-            retries=int(self.get_parameter("serial_retries").value),
+            backend,
             config=config,
+            connection=ConnectionSettings(
+                port=str(self.get_parameter("serial_port").value),
+                baudrate=int(self.get_parameter("baudrate").value),
+                timeout=float(self.get_parameter("serial_timeout").value),
+                retries=int(self.get_parameter("serial_retries").value),
+            ),
+            settings=settings,
         )
         if not self.driver.connect():
             raise RuntimeError("configuration backend failed to connect")
@@ -82,6 +96,7 @@ def main(args: list[str] | None = None) -> None:
         pass
     except Exception as exc:
         print(f"dex_hand_config_node failed: {exc}", file=sys.stderr)
+        raise
     finally:
         if node is not None:
             node.destroy_node()

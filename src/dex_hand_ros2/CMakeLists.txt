@@ -12,6 +12,8 @@ install(PROGRAMS
   scripts/gesture_cli
   scripts/hand_web_ui
   scripts/ros_experiment
+  scripts/mpd20_preflight
+  scripts/mpd20_commission
   DESTINATION lib/${PROJECT_NAME}
 )
 

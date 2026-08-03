@@ -58,7 +58,13 @@ def test_unknown_gesture():
 
 
 def test_packaged_gesture_catalog_is_complete_and_ordered():
-    gesture_file = Path(__file__).parents[1] / "config" / "gestures.yaml"
+    gesture_file = (
+        Path(__file__).parents[1]
+        / "config"
+        / "hand_models"
+        / "generic_six_axis"
+        / "gestures.json"
+    )
     library = GestureLibrary.load(gesture_file, DriverConfig())
 
     assert library.names() == [
@@ -79,7 +85,13 @@ def test_packaged_gesture_catalog_is_complete_and_ordered():
 
 
 def test_reference_gesture_vectors_remain_backward_compatible():
-    gesture_file = Path(__file__).parents[1] / "config" / "gestures.yaml"
+    gesture_file = (
+        Path(__file__).parents[1]
+        / "config"
+        / "hand_models"
+        / "generic_six_axis"
+        / "gestures.json"
+    )
     library = GestureLibrary.load(gesture_file, DriverConfig())
 
     assert list(library.get("open").positions.values()) == [100.0] * 6

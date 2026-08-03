@@ -1,0 +1,13 @@
+/**:
+  ros__parameters:
+    # MPD20 transport and startup behavior shared by deployments.
+    driver_type: mpd20
+    baudrate: 115200
+    serial_timeout: 0.3
+    serial_retries: 2
+
+    # Motion remains disabled unless the launch argument explicitly enables it.
+    hardware_motion_enabled: false
+    hardware_verify_on_connect: true
+    hardware_hold_on_connect: true
+    hardware_require_stationary_on_connect: true

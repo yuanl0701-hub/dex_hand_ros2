@@ -1,0 +1,25 @@
+{
+  "gestures": [
+    {
+      "name": "open",
+      "description": "Calibrated all-axis open endpoint; hardware commissioning only",
+      "duration": 1.0,
+      "units": "normalized_percent",
+      "positions": {"1": 100, "2": 100, "3": 100, "4": 100, "5": 100, "6": 100}
+    },
+    {
+      "name": "half_open",
+      "description": "Mid-stroke commissioning pose",
+      "duration": 1.0,
+      "units": "normalized_percent",
+      "positions": {"1": 50, "2": 50, "3": 50, "4": 50, "5": 50, "6": 50}
+    },
+    {
+      "name": "fist",
+      "description": "Calibrated all-axis closed endpoint; no-load testing first",
+      "duration": 1.0,
+      "units": "normalized_percent",
+      "positions": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0}
+    }
+  ]
+}

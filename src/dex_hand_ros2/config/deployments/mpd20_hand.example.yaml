@@ -1,0 +1,14 @@
+/**:
+  ros__parameters:
+    # INSTANCE CONFIGURATION: copy this file for each physical hand.
+    # Never enable motion until all values below are measured and verified.
+    serial_port: /dev/ttyUSB0
+    # Physical Modbus addresses corresponding, in order, to the logical axes
+    # declared by the selected hand model.
+    mpd20_device_ids: [1, 2, 3, 4, 5, 6]
+
+    # Vendor-wide limits are placeholders, not assembled-hand calibration.
+    mpd20_raw_min: [120, 120, 120, 120, 120, 120]
+    mpd20_raw_max: [850, 850, 850, 850, 850, 850]
+    mpd20_directions: [1, 1, 1, 1, 1, 1]
+    mpd20_max_speeds: [10, 10, 10, 10, 10, 10]

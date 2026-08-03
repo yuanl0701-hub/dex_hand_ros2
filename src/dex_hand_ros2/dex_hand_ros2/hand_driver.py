@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from .controller import HandController
-from .driver import DriverConfig, GenericMotorDriver, MockMotorDriver
-from .gestures import GestureDefinition, GestureLibrary
-from .pid import PIDConfig, PIDController
-from .protocols import FeetechProtocol, ModbusRTUProtocol
-from .real_drivers import FeetechDriver, HTS20LDriver, MPD20Driver
-from .safety import SafetyController
-from .sim_driver import SimulatedMotorConfig, SimulatedMotorDriver
+from .backends import FeetechDriver, HTS20LDriver, MPD20Driver
+from .backends.protocols import FeetechProtocol, ModbusRTUProtocol
+from .core.controller import HandController
+from .core.driver import DriverConfig, GenericMotorDriver, MockMotorDriver
+from .core.gestures import GestureDefinition, GestureLibrary
+from .core.pid import PIDConfig, PIDController
+from .core.safety import SafetyController
+from .simulation.driver import SimulatedMotorConfig, SimulatedMotorDriver
 
 FakeMotorDriver = MockMotorDriver
 

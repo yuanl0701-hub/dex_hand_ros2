@@ -1,7 +1,11 @@
 # DEX Hand ROS 2 Control
 
-This repository contains a safety-oriented ROS 2 control package for a
-six-motor dexterous hand. The safe default is a deterministic mock backend.
+项目构建、仿真、MPD20 实机上线和新增灵巧手的统一流程见
+[`DEPLOYMENT.md`](DEPLOYMENT.md)。该文档也是当前配置分层和部署边界的规范入口。
+
+This repository contains a safety-oriented, layered ROS 2 control package for
+configurable position-controlled dexterous hands. The included reference
+models use six logical motors, and the safe default is a deterministic mock backend.
 Current command units are normalized percent (`0..100`); they are not radians
 and the logical labels `motor_1` through `motor_6` are not anatomical joint
 names.
@@ -11,13 +15,16 @@ names.
 - Driver abstraction and deterministic mock backend.
 - Central input validation, emergency-stop state, watchdog, and rate limits.
 - Modbus RTU and Feetech packet construction/validation with fake transports.
+- MPD20 function-04 feedback, calibrated raw-position mapping, read-only
+  preflight, bounded single-axis commissioning and motion interlocks.
 - Validated gesture library.
 - Multi-axis quintic trajectories.
 - Deterministic PID control.
 - CSV and metadata export for theoretical trajectory output.
 
-These modules are covered by pure Python tests. ROS 2 node execution and real
-hardware behavior are not verified on the current macOS system.
+These modules are covered by pure Python tests. ROS 2 builds, package tests and
+launch installation are verified in the repository's Ubuntu 22.04/Humble
+container. Real MPD20 hardware behavior is not yet verified.
 
 ### Named gesture catalogue
 
@@ -115,7 +122,7 @@ Or start the localhost browser control panel:
 ```
 
 The page opens at `http://127.0.0.1:8765` and provides gesture buttons,
-six-motor sliders, PID controls, emergency-stop/recovery, simulation reset,
+dynamic per-axis sliders, PID controls, emergency-stop/recovery, simulation reset,
 fault injection and live controller feedback without requiring repeated
 terminal commands. It binds to localhost by default and has no authentication;
 do not expose it to an untrusted network.
@@ -160,15 +167,37 @@ On Apple Silicon macOS, use the reproducible Humble container workflow:
 Then open `http://localhost:6080/vnc.html`. Full instructions and the verified
 2026-07-25 run are recorded in `docs/MACOS_SIMULATION_GUIDE.md`.
 
-Real hardware must be selected explicitly:
+## MPD20 physical hand deployment
+
+The physical backend now has a dedicated safe launch. It probes every configured
+ID and rejects motion by default:
 
 ```bash
-ros2 launch dex_hand_ros2 hand.launch.py \
-  driver_type:=mpd20 serial_port:=/dev/ttyUSB0
+ros2 run dex_hand_ros2 mpd20_preflight \
+  --port /dev/serial/by-id/YOUR_ADAPTER --ids 1,2,3,4,5,6
+
+ros2 launch dex_hand_ros2 mpd20_hand.launch.py \
+  serial_port:=/dev/serial/by-id/YOUR_ADAPTER
 ```
 
-Do not run configuration services against powered hardware without confirming
-the device model, protocol, IDs, baud rate, and recovery procedure.
+After one-axis-at-a-time ID assignment, bounded jog testing and per-axis raw-limit
+and direction calibration, use the Ubuntu deployment wrapper with the explicit
+`--enable-motion` gate. The default hardware gesture catalogue contains only
+`open`, `half_open`, and `fist`; the simulation gesture catalogue is not loaded
+on physical hardware.
+
+```bash
+./scripts/deploy_mpd20_ubuntu.sh \
+  --port /dev/serial/by-id/YOUR_ADAPTER \
+  --config src/dex_hand_ros2/config/deployments/lab_hand_001.yaml \
+  --gestures src/dex_hand_ros2/config/hand_models/mpd20_six_axis/commissioning_gestures.json \
+  --enable-motion
+```
+
+See [the MPD20 physical deployment and reuse guide](docs/MPD20_PHYSICAL_DEPLOYMENT.md)
+before applying power. Software stop actively rewrites measured positions as
+targets, but it is not certified torque-off and does not replace a hardware
+power-disconnect emergency stop.
 
 ## Local core tests
 
@@ -176,7 +205,7 @@ the device model, protocol, IDs, baud rate, and recovery procedure.
 PYTHONPATH=src/dex_hand_ros2 pytest -q src/dex_hand_ros2/test
 ruff check src/dex_hand_ros2/dex_hand_ros2 src/dex_hand_ros2/test
 PYTHONPATH=src/dex_hand_ros2 mypy src/dex_hand_ros2/dex_hand_ros2 \
-  --exclude '(hand_node|config_node|gesture_cli)\.py'
+  --exclude '(hand_node|config_node|gesture_cli|hand_web_ui|ros_experiment)\.py'
 ```
 
 See `docs/IMPLEMENTATION_STATUS.md`, `docs/ENVIRONMENT_COMPATIBILITY.md`, and

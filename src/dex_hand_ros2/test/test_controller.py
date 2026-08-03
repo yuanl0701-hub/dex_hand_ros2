@@ -2,6 +2,7 @@ from dex_hand_ros2.driver import DriverConfig, MockMotorDriver
 from dex_hand_ros2.gestures import GestureDefinition, GestureLibrary
 from dex_hand_ros2.controller import HandController
 from dex_hand_ros2.safety import SafetyController
+from dex_hand_ros2.safety import SafetyState
 
 
 def make_controller():
@@ -37,3 +38,25 @@ def test_emergency_stop_rejects_motion_and_recovers():
     assert not controller.run_gesture_smooth("target")
     assert controller.recover()
     assert controller.run_gesture("target")
+
+
+def test_controller_watchdog_reports_stopped_after_successful_hold():
+    class Clock:
+        now = 0.0
+
+        def __call__(self):
+            return self.now
+
+    clock = Clock()
+    config = DriverConfig()
+    driver = MockMotorDriver(config=config)
+    driver.connect()
+    gestures = GestureLibrary(config)
+    gestures.add(GestureDefinition("target", {motor_id: 50 for motor_id in config.motor_ids}))
+    safety = SafetyController(config, watchdog_timeout=1.0, max_rate=1e12, clock=clock)
+    controller = HandController(driver, gestures, safety, sleeper=lambda _: None)
+    assert controller.set_motor_position(1, 0)
+    clock.now = 1.1
+
+    assert not controller.check_watchdog()
+    assert controller.safety.status.state is SafetyState.STOPPED

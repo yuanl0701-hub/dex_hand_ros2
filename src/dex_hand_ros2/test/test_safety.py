@@ -48,5 +48,7 @@ def test_stop_recovery_fault_and_shutdown():
     assert safety.recover()
     safety.fault("test fault")
     assert not safety.recover()
+    safety.emergency_stop("must not downgrade fault")
+    assert safety.status.state is SafetyState.FAULT
     safety.shutdown()
     assert safety.status.state is SafetyState.SHUTDOWN
