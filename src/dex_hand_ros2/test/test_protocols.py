@@ -30,6 +30,37 @@ class FakeTransport:
         self.is_open = False
 
 
+class BufferedSerialTransport:
+    """PySerial-like fake that can append bytes beyond a valid response."""
+
+    def __init__(self, responses):
+        self.is_open = True
+        self.responses = list(responses)
+        self.buffer = bytearray()
+        self.writes = []
+        self.reset_count = 0
+
+    def write(self, data):
+        self.writes.append(bytes(data))
+        self.buffer.extend(self.responses.pop(0))
+        return len(data)
+
+    def read(self, size):
+        result = bytes(self.buffer[:size])
+        del self.buffer[:size]
+        return result
+
+    def reset_input_buffer(self):
+        self.reset_count += 1
+        self.buffer.clear()
+
+    def flush(self):
+        pass
+
+    def close(self):
+        self.is_open = False
+
+
 def modbus_frame(body):
     return body + struct.pack("<H", ModbusRTUProtocol.crc(body))
 
@@ -87,6 +118,18 @@ def test_modbus_write_echo():
     protocol = ModbusRTUProtocol("fake", 115200, transport_factory=lambda *_: transport)
     protocol.connect()
     assert protocol.write_single_register(1, 2, 77)
+
+
+def test_modbus_discards_trailing_padding_before_next_request():
+    first = modbus_frame(bytes.fromhex("0106000200cd")) + b"\x00\x00"
+    second = modbus_frame(bytes.fromhex("010600030005")) + b"\x00\x00"
+    transport = BufferedSerialTransport([first, second])
+    protocol = ModbusRTUProtocol("fake", 115200, transport_factory=lambda *_: transport)
+    protocol.connect()
+
+    assert protocol.write_single_register(1, 2, 205)
+    assert protocol.write_single_register(1, 3, 5)
+    assert transport.reset_count == 2
 
 
 def test_modbus_exception_frame():

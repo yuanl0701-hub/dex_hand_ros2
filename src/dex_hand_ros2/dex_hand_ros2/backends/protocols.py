@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import struct
+import time
 from threading import RLock
 from typing import Callable, Protocol, Sequence
 
@@ -57,6 +58,9 @@ class ModbusRTUProtocol:
         self.baudrate = baudrate
         self.timeout = timeout
         self.retries = retries
+        # Modbus recommends a fixed 1.75 ms silent interval above 19200 baud;
+        # at lower rates use the duration of 3.5 eleven-bit characters.
+        self._inter_frame_delay = max(3.5 * 11.0 / baudrate, 0.00175)
         self._factory = transport_factory
         self._transport: ByteTransport | None = None
         self._lock = RLock()
@@ -101,6 +105,7 @@ class ModbusRTUProtocol:
         last_error: DriverError | None = None
         with self._lock:
             for _ in range(self.retries + 1):
+                self._prepare_serial_request()
                 written = self._transport.write(request)
                 self._transport.flush()
                 if written != len(request):
@@ -126,6 +131,20 @@ class ModbusRTUProtocol:
                     raise DriverError(f"Modbus exception code {header[2]}")
                 return response
         raise last_error or DriverError("serial exchange failed")
+
+    def _prepare_serial_request(self) -> None:
+        """Observe RTU silence and discard bytes left after the prior frame.
+
+        Some transparent MPD20 RS-485 boards append zero padding after a valid
+        function-06 echo.  PySerial leaves those bytes queued, so without this
+        boundary cleanup they become the header of the next Modbus response.
+        """
+        if self._transport is None:
+            return
+        reset_input_buffer = getattr(self._transport, "reset_input_buffer", None)
+        if callable(reset_input_buffer):
+            time.sleep(self._inter_frame_delay)
+            reset_input_buffer()
 
     def _read_registers(
         self,
