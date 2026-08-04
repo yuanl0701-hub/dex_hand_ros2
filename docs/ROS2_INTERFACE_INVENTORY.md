@@ -50,6 +50,7 @@ parameters used by the automated reliable/best-effort comparison.
 | `mpd20_max_speeds` | Parameter | integer array | Input | User/YAML | `dex_hand_node` | N/A | MPD20 startup | Implemented and unit-verified | Vendor scale; physical tuning required |
 | `max_command_rate` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | `SafetyController` | Implemented but not verified | Normalized percent/s |
 | `command_watchdog_timeout` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | `SafetyController` | Implemented but not verified | Hardware value untuned |
+| `command_watchdog_enabled` | Parameter | boolean | Input | Runtime YAML | `dex_hand_node` | N/A | watchdog timer creation | Implemented and config-verified | Disabled for discrete physical direct gestures; hardware E-stop still required |
 | `state_poll_failure_limit` | Parameter | integer | Input | User/YAML | `dex_hand_node` | N/A | state-future callback | Implemented and container-verified | Escalates global polling exceptions; tolerated per-axis MPD20 timeouts are reported separately |
 | `status_pub_freq` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | status timer | Implemented but not verified | Serial polling capacity unknown |
 | `pid_kp` / `pid_ki` / `pid_kd` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | PID initialization | Implemented but not verified | Not hardware tuned |

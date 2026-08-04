@@ -1,10 +1,10 @@
 /**:
   ros__parameters:
-    # Reusable logical definition for a six-axis MPD20 hand. Anatomical labels
-    # stay deliberately neutral until the mechanism/wiring map is documented.
+    # Operator-confirmed physical wiring map for the current MPD20 hand.
     motor_ids: [1, 2, 3, 4, 5, 6]
     motor_labels:
-      [axis_1, axis_2, axis_3, axis_4, axis_5, axis_6]
+      [index_flexion, middle_flexion, ring_flexion,
+       little_flexion, thumb_flexion, thumb_opposition]
     joint_command_topic: /joint_states
     joint_names:
       [axis_1_joint, axis_2_joint, axis_3_joint,

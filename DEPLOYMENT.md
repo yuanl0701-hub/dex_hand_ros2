@@ -154,6 +154,16 @@ hardware_allow_partial_operation: true
 运动速度由 `mpd20_max_speeds` 控制。默认仿真运行使用 `smooth`，继续生成五次轨迹
 中间点。`direct` 减少串口写入和阶梯式跟随，但 Modbus 逐轴写入并非硬件同步广播。
 
+当前 Jazzy 实机可直接使用：
+
+```bash
+./scripts/start_mpd20_jazzy.sh --build --enable-motion
+```
+
+脚本默认使用 `/dev/ttyUSB0`、`lab_hand_001.yaml` 和 MPD20 实体手势文件，检查串口
+权限及占用后启动。后续无需重建时省略 `--build`。动作写入必须显式给出
+`--enable-motion`。
+
 若机械轴定义与 `mpd20_six_axis` 不同，应复制整个手型目录，而不是把轴定义写进
 实体部署文件：
 

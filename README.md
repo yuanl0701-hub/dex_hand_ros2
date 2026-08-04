@@ -182,9 +182,15 @@ ros2 launch dex_hand_ros2 mpd20_hand.launch.py \
 
 After one-axis-at-a-time ID assignment, bounded jog testing and per-axis raw-limit
 and direction calibration, use the Ubuntu deployment wrapper with the explicit
-`--enable-motion` gate. The default hardware gesture catalogue contains only
-`open`, `half_open`, and `fist`; the simulation gesture catalogue is not loaded
-on physical hardware.
+`--enable-motion` gate. The hardware catalogue contains safe-margin `open`,
+`half_open`, `fist`, `vgesture`, `rock`, and `point` poses; the simulation
+gesture catalogue is not loaded on physical hardware.
+
+For the current ROS 2 Jazzy workstation, use the dedicated wrapper:
+
+```bash
+./scripts/start_mpd20_jazzy.sh --build --enable-motion
+```
 
 ```bash
 ./scripts/deploy_mpd20_ubuntu.sh \

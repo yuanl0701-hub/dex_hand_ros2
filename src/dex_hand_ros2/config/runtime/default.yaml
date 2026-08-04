@@ -5,6 +5,7 @@
     position_max: 100.0
     max_command_rate: 1000.0
     command_watchdog_timeout: 1.0
+    command_watchdog_enabled: true
     state_poll_failure_limit: 3
     status_pub_freq: 10.0
     pid_kp: 2.0

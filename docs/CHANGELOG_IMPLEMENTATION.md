@@ -19,12 +19,22 @@
   runtime now uses `direct`, issuing one final command set so MPD20's internal
   position/speed control performs the motion; simulation retains sampled
   quintic trajectories.
+- Added `start_mpd20_jazzy.sh`, a current-workstation wrapper with serial/file
+  validation, optional build, configurable ROS distribution and explicit
+  physical-motion enablement.
+- Recorded the operator-confirmed current-hand mapping (IDs 1--4 finger
+  flexion, ID 5 thumb flexion, ID 6 thumb opposition) and added safe-margin
+  `vgesture`, `rock` and `point` poses. Commands use raw-equivalent 130/840
+  endpoints, thumb-fist raw 400 and neutral ID 6 while it remains unavailable.
+- Added `command_watchdog_enabled`; disabled it in the discrete direct-position
+  physical runtime so idle time after a gesture does not fault on known-offline
+  ID 6. Hardware E-stop remains required.
 - Added `partial_operation_enabled`, `unavailable_motor_ids`, cumulative
   `motor_failure_counts` and `motor_last_errors` to status JSON.
 - A successful later feedback read reapplies the configured speed limit and
   returns the motor to the next command. It does not join a gesture that is
   already in progress.
-- Kept emergency stop, watchdog hold and shutdown strict: failure to hold any
+- Kept operator emergency stop and shutdown hold strict: failure to hold any
   configured actuator is still reported as a fault and is not presented as a
   successful stop.
 
@@ -33,7 +43,7 @@
 | Command/check | Result |
 |---|---|
 | System `python3 -m pytest ...` | Blocked because the system Python has no pytest; not counted as a code failure |
-| `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src/dex_hand_ros2 /opt/anaconda3/bin/python -m pytest -q src/dex_hand_ros2/test` | Passed: 79 tests |
+| `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src/dex_hand_ros2 /opt/anaconda3/bin/python -m pytest -q src/dex_hand_ros2/test` | Passed: 80 tests |
 | `/opt/anaconda3/bin/ruff check` on all changed Python files | Passed |
 | `mypy` on the 39 ROS-independent source files | Passed: no issues found |
 | `git diff --check` | Passed |

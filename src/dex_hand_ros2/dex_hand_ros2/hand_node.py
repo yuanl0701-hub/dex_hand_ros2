@@ -122,13 +122,17 @@ class DexHandROS2Node(Node):
         self._sim_period = 1.0 / update_rate
         if isinstance(self.driver, SimulatedMotorDriver):
             self.create_timer(self._sim_period, self._simulation_step_callback)
-        self.create_timer(
-            min(
-                0.25,
-                float(self.get_parameter("command_watchdog_timeout").value) / 2.0,
-            ),
-            self._watchdog_callback,
+        self._command_watchdog_enabled = bool(
+            self.get_parameter("command_watchdog_enabled").value
         )
+        if self._command_watchdog_enabled:
+            self.create_timer(
+                min(
+                    0.25,
+                    float(self.get_parameter("command_watchdog_timeout").value) / 2.0,
+                ),
+                self._watchdog_callback,
+            )
         self.get_logger().info(
             f"DEX hand ready with backend={self.get_parameter('driver_type').value}"
         )
@@ -149,6 +153,7 @@ class DexHandROS2Node(Node):
             "position_max": 100.0,
             "max_command_rate": 1000.0,
             "command_watchdog_timeout": 1.0,
+            "command_watchdog_enabled": True,
             "state_poll_failure_limit": 3,
             "status_pub_freq": 10.0,
             "pid_kp": 2.0,
@@ -430,6 +435,7 @@ class DexHandROS2Node(Node):
             "motor_ids": list(self.driver.config.motor_ids),
             "gesture_names": self.hand.get_gesture_list(),
             "gesture_execution_mode": self._gesture_execution_mode,
+            "command_watchdog_enabled": self._command_watchdog_enabled,
             "hardware_motion_enabled": (
                 self.driver.motion_enabled if isinstance(self.driver, MPD20Driver) else None
             ),

@@ -50,6 +50,9 @@ def test_configuration_layers_do_not_recombine_hardware_and_hand_data():
     assert "pid_kp" not in deployment
     assert "command_watchdog_timeout" not in deployment
     assert "mpd20_device_ids" in deployment
+    assert "command_watchdog_enabled: false" in (
+        CONFIG_ROOT / "runtime" / "physical_conservative.yaml"
+    ).read_text(encoding="utf-8")
 
 
 def test_legacy_aggregate_configuration_files_are_removed():
