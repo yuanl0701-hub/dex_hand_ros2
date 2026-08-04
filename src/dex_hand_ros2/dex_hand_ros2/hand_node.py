@@ -40,6 +40,11 @@ class DexHandROS2Node(Node):
             float(self.get_parameter("position_max").value),
         )
         self._motor_labels = self._validated_motor_labels(config)
+        self._gesture_execution_mode = str(
+            self.get_parameter("gesture_execution_mode").value
+        ).strip().lower()
+        if self._gesture_execution_mode not in {"direct", "smooth"}:
+            raise ValueError("gesture_execution_mode must be direct or smooth")
         status_frequency = float(self.get_parameter("status_pub_freq").value)
         if status_frequency <= 0:
             raise ValueError("status_pub_freq must be positive")
@@ -150,6 +155,7 @@ class DexHandROS2Node(Node):
             "pid_ki": 0.1,
             "pid_kd": 0.05,
             "gesture_file": "",
+            "gesture_execution_mode": "smooth",
             "qos_reliability": "reliable",
             "qos_depth": 10,
             "joint_command_topic": "/joint_states",
@@ -213,7 +219,11 @@ class DexHandROS2Node(Node):
             return
         self._submit(
             f"gesture {msg.gesture}",
-            lambda: self.hand.run_gesture_smooth(msg.gesture, speed),
+            lambda: self.hand.run_gesture_with_mode(
+                msg.gesture,
+                speed,
+                mode=self._gesture_execution_mode,
+            ),
         )
 
     def motor_pos_callback(self, msg: Int32MultiArray) -> None:
@@ -252,7 +262,13 @@ class DexHandROS2Node(Node):
         del request
 
         def run_demo() -> bool:
-            return all(self.hand.run_gesture_smooth(name) for name in self.hand.get_gesture_list())
+            return all(
+                self.hand.run_gesture_with_mode(
+                    name,
+                    mode=self._gesture_execution_mode,
+                )
+                for name in self.hand.get_gesture_list()
+            )
 
         response.success = self._submit("gesture demo", run_demo)
         response.message = "demo accepted" if response.success else "controller busy"
@@ -413,6 +429,7 @@ class DexHandROS2Node(Node):
             },
             "motor_ids": list(self.driver.config.motor_ids),
             "gesture_names": self.hand.get_gesture_list(),
+            "gesture_execution_mode": self._gesture_execution_mode,
             "hardware_motion_enabled": (
                 self.driver.motion_enabled if isinstance(self.driver, MPD20Driver) else None
             ),

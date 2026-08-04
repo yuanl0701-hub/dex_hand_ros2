@@ -150,6 +150,10 @@ hardware_allow_partial_operation: true
 六轴协调的部署应在自己的覆盖 YAML 中显式设置
 `hardware_allow_partial_operation: false`。急停和退出保持不使用宽松语义。
 
+实体运行覆盖还设置 `gesture_execution_mode: direct`：每轴只写一次手势最终目标，实际
+运动速度由 `mpd20_max_speeds` 控制。默认仿真运行使用 `smooth`，继续生成五次轨迹
+中间点。`direct` 减少串口写入和阶梯式跟随，但 Modbus 逐轴写入并非硬件同步广播。
+
 若机械轴定义与 `mpd20_six_axis` 不同，应复制整个手型目录，而不是把轴定义写进
 实体部署文件：
 

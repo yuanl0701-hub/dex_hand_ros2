@@ -26,6 +26,40 @@ def test_smooth_gesture_reaches_target():
     assert driver.snapshot() == {motor_id: 50.0 for motor_id in range(1, 7)}
 
 
+def test_direct_gesture_writes_only_one_final_command_set():
+    class CountingDriver(MockMotorDriver):
+        def __init__(self, **kwargs):
+            super().__init__(**kwargs)
+            self.command_sets = []
+
+        def set_multiple_positions(self, positions):
+            self.command_sets.append(dict(positions))
+            return super().set_multiple_positions(positions)
+
+    config = DriverConfig()
+    driver = CountingDriver(config=config)
+    driver.connect()
+    gestures = GestureLibrary(config)
+    target = {motor_id: 50 for motor_id in config.motor_ids}
+    gestures.add(GestureDefinition("target", target, duration=1.0))
+    controller = HandController(
+        driver,
+        gestures,
+        SafetyController(config, max_rate=1e12),
+        sleeper=lambda _: None,
+    )
+
+    assert controller.run_gesture_with_mode("target", speed=0.2, mode="direct")
+    assert driver.command_sets == [target]
+    assert driver.snapshot() == {motor_id: 50.0 for motor_id in config.motor_ids}
+
+
+def test_gesture_execution_mode_is_validated():
+    controller, _ = make_controller()
+    with pytest.raises(ValueError, match="must be direct or smooth"):
+        controller.run_gesture_with_mode("target", mode="instantaneous")
+
+
 def test_smooth_gesture_omits_unavailable_motor_in_partial_mode():
     class PartialDriver(MockMotorDriver):
         def get_position(self, motor_id):

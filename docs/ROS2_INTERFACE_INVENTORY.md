@@ -54,6 +54,7 @@ parameters used by the automated reliable/best-effort comparison.
 | `status_pub_freq` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | status timer | Implemented but not verified | Serial polling capacity unknown |
 | `pid_kp` / `pid_ki` / `pid_kd` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | PID initialization | Implemented but not verified | Not hardware tuned |
 | `gesture_file` | Parameter | string | Input | User/YAML | `dex_hand_node` | N/A | `RoboticHand` construction | Implemented but not verified | Startup-only |
+| `gesture_execution_mode` | Parameter | string | Input | Runtime YAML | `dex_hand_node` | N/A | gesture callback | Implemented and unit-verified | `direct` writes final targets once; `smooth` samples a quintic trajectory; startup-only |
 | `qos_reliability` | Parameter | string | Input | User/YAML | `dex_hand_node` | N/A | `_reliability_policy` | Implemented but not verified | `reliable` or `best_effort`; startup-only |
 | `qos_depth` | Parameter | integer | Input | User/YAML | `dex_hand_node` | N/A | QoS construction | Implemented but not verified | Positive; startup-only |
 

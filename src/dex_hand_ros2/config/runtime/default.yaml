@@ -11,5 +11,6 @@
     pid_ki: 0.1
     pid_kd: 0.05
     gesture_file: ""
+    gesture_execution_mode: smooth
     qos_reliability: reliable
     qos_depth: 10

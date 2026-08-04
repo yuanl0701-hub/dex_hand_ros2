@@ -55,6 +55,21 @@ class HandController:
         gesture = self.gestures.get(name)
         return self.set_positions(gesture.positions)
 
+    def run_gesture_with_mode(
+        self,
+        name: str,
+        speed: float = 1.0,
+        *,
+        mode: str = "smooth",
+    ) -> bool:
+        """Run one gesture as a direct setpoint or a sampled smooth trajectory."""
+        normalized_mode = mode.strip().lower()
+        if normalized_mode == "direct":
+            return self.run_gesture(name, speed)
+        if normalized_mode == "smooth":
+            return self.run_gesture_smooth(name, speed)
+        raise ValueError("gesture execution mode must be direct or smooth")
+
     def run_gesture_smooth(
         self,
         name: str,
