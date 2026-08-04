@@ -22,6 +22,9 @@
 - Added `start_mpd20_jazzy.sh`, a current-workstation wrapper with serial/file
   validation, optional build, configurable ROS distribution and explicit
   physical-motion enablement.
+- Updated the localhost browser-control launcher to use the active ROS
+  distribution or Jazzy by default, and added physical `half_open` and `rock`
+  labels to the dynamically discovered gesture buttons.
 - Recorded the operator-confirmed current-hand mapping (IDs 1--4 finger
   flexion, ID 5 thumb flexion, ID 6 thumb opposition) and added safe-margin
   `vgesture`, `rock` and `point` poses. Commands use raw-equivalent 130/840
@@ -46,6 +49,8 @@
 | `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src/dex_hand_ros2 /opt/anaconda3/bin/python -m pytest -q src/dex_hand_ros2/test` | Passed: 80 tests |
 | `/opt/anaconda3/bin/ruff check` on all changed Python files | Passed |
 | `mypy` on the 39 ROS-independent source files | Passed: no issues found |
+| `bash -n scripts/run_hand_web_ui.sh` and `scripts/run_hand_web_ui.sh --help` | Passed |
+| Python HTML parse plus physical gesture-label assertions | Passed |
 | `git diff --check` | Passed |
 | ROS 2 build and physical MPD20 operation | Not run in this macOS workspace; target-host verification remains required |
 

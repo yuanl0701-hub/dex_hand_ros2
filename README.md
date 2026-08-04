@@ -121,6 +121,19 @@ Or start the localhost browser control panel:
 ./scripts/run_hand_web_ui.sh
 ```
 
+For the MPD20 workstation running ROS 2 Jazzy, first keep
+`start_mpd20_jazzy.sh` running, then start the browser panel in a second
+terminal:
+
+```bash
+cd ~/dex_hand/dex_hand_ros2
+./scripts/run_hand_web_ui.sh --ros-distro jazzy
+```
+
+The gesture buttons are discovered from `/dex_hand/status`, so the physical
+`open`, `half_open`, `fist`, `vgesture`, `rock` and `point` poses appear without
+repeated `ros2 topic pub` commands.
+
 The page opens at `http://127.0.0.1:8765` and provides gesture buttons,
 dynamic per-axis sliders, PID controls, emergency-stop/recovery, simulation reset,
 fault injection and live controller feedback without requiring repeated
