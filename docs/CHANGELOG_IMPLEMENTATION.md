@@ -25,13 +25,21 @@
 - Updated the localhost browser-control launcher to use the active ROS
   distribution or Jazzy by default, and added physical `half_open` and `rock`
   labels to the dynamically discovered gesture buttons.
+- Added `readme_ui.md` with the complete MPD20/Jazzy browser workflow, physical
+  versus simulation control boundaries, status interpretation, network safety
+  and troubleshooting; promoted the current hardware and web quick start in
+  the root README.
 - Recorded the operator-confirmed current-hand mapping (IDs 1--4 finger
   flexion, ID 5 thumb flexion, ID 6 thumb opposition) and added safe-margin
   `vgesture`, `rock` and `point` poses. Commands use raw-equivalent 130/840
-  endpoints, thumb-fist raw 400 and neutral ID 6 while it remains unavailable.
+  endpoints, thumb-fist raw 400 and a neutral ID 6 target pending separate
+  opposition-axis travel calibration.
+- Recorded the operator-reported recovery of ID 6 after correcting its baud
+  rate from 9600 to 115200; all six bus IDs and current gesture operation are
+  now reported working on the Jazzy deployment.
 - Added `command_watchdog_enabled`; disabled it in the discrete direct-position
-  physical runtime so idle time after a gesture does not fault on known-offline
-  ID 6. Hardware E-stop remains required.
+  physical runtime so idle time after a gesture does not enter a strict hold
+  path during transient communication dropouts. Hardware E-stop remains required.
 - Added `partial_operation_enabled`, `unavailable_motor_ids`, cumulative
   `motor_failure_counts` and `motor_last_errors` to status JSON.
 - A successful later feedback read reapplies the configured speed limit and
@@ -51,6 +59,8 @@
 | `mypy` on the 39 ROS-independent source files | Passed: no issues found |
 | `bash -n scripts/run_hand_web_ui.sh` and `scripts/run_hand_web_ui.sh --help` | Passed |
 | Python HTML parse plus physical gesture-label assertions | Passed |
+| Python code-fence and local-link validation for the five updated Markdown documents | Passed |
+| Stale ID 6 offline-wording search across root and `docs/` Markdown | Passed: no matches |
 | `git diff --check` | Passed |
 | ROS 2 build and physical MPD20 operation | Not run in this macOS workspace; target-host verification remains required |
 
