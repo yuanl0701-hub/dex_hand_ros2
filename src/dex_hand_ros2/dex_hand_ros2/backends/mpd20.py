@@ -212,6 +212,10 @@ class MPD20Driver(GenericMotorDriver):
     def is_connected(self) -> bool:
         return self._protocol.is_connected()
 
+    def allows_partial_operation(self) -> bool:
+        """Expose the configured per-axis degradation policy to controllers."""
+        return self.allow_partial_operation
+
     def set_single_position(self, motor_id: int, position: float) -> bool:
         self._require_connected()
         self.config.validate_motor_id(motor_id)

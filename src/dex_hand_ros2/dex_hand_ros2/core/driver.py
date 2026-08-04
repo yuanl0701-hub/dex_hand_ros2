@@ -70,6 +70,10 @@ class GenericMotorDriver(ABC):
     def is_connected(self) -> bool:
         """Return whether commands may currently be issued."""
 
+    def allows_partial_operation(self) -> bool:
+        """Return whether controllers may omit motors with unavailable feedback."""
+        return False
+
     @abstractmethod
     def set_single_position(self, motor_id: int, position: float) -> bool:
         """Set one normalized motor position."""

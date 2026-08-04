@@ -204,6 +204,7 @@ MPD20 后端策略默认启用 `hardware_allow_partial_operation=true`。每个 
 离线轴在 `/dex_hand/motor_state` 中报告 `connected=false`、位置 `-1`，并出现在状态 JSON
 的 `unavailable_motor_ids`、`motor_failure_counts` 和 `motor_last_errors` 中。后台反馈重新
 读通后会重设该轴限速，并从**下一条**命令恢复，不会在当前手势中途突然追赶目标。
+若某轴在手势开始前已经离线，平滑轨迹只为其余具有有效起点反馈的轴生成。
 
 这种降级模式不能保证完整手势或抓取几何。若应用要求六轴协调，应在部署覆盖文件中设
 `hardware_allow_partial_operation: false`，恢复任意单轴失败即中止命令的严格模式。

@@ -65,10 +65,23 @@ class HandController:
         if speed <= 0:
             raise ValueError("gesture speed must be positive")
         gesture = self.gestures.get(name)
-        starts = {
-            motor_id: self._required_position(motor_id) for motor_id in self.driver.config.motor_ids
-        }
-        trajectory = MultiAxisQuinticTrajectory(starts, gesture.positions, gesture.duration / speed)
+        starts: dict[int, float] = {}
+        unavailable: list[int] = []
+        for motor_id in self.driver.config.motor_ids:
+            position = self.driver.get_position(motor_id)
+            if position is None:
+                unavailable.append(motor_id)
+            else:
+                starts[motor_id] = float(position)
+        if unavailable and not self.driver.allows_partial_operation():
+            raise DriverError(
+                "gesture start feedback unavailable for motors: "
+                + ", ".join(str(motor_id) for motor_id in unavailable)
+            )
+        if not starts:
+            raise DriverError("gesture start feedback unavailable for every motor")
+        targets = {motor_id: gesture.positions[motor_id] for motor_id in starts}
+        trajectory = MultiAxisQuinticTrajectory(starts, targets, gesture.duration / speed)
         points = trajectory.sample(sample_period)
         for index, point_set in enumerate(points):
             if self.safety.status.state is not SafetyState.READY:

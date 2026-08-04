@@ -12,6 +12,9 @@
 - Changed MPD20 feedback polling in partial mode to publish the failed motor
   with `connected=false` and position `-1` instead of escalating one axis to a
   whole-hand fault.
+- Changed smooth-gesture trajectory construction to omit axes whose start
+  feedback is unavailable when the backend explicitly permits partial
+  operation; strict backends still reject incomplete start feedback.
 - Added `partial_operation_enabled`, `unavailable_motor_ids`, cumulative
   `motor_failure_counts` and `motor_last_errors` to status JSON.
 - A successful later feedback read reapplies the configured speed limit and
@@ -26,7 +29,7 @@
 | Command/check | Result |
 |---|---|
 | System `python3 -m pytest ...` | Blocked because the system Python has no pytest; not counted as a code failure |
-| `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src/dex_hand_ros2 /opt/anaconda3/bin/python -m pytest -q src/dex_hand_ros2/test` | Passed: 75 tests |
+| `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src/dex_hand_ros2 /opt/anaconda3/bin/python -m pytest -q src/dex_hand_ros2/test` | Passed: 77 tests |
 | `/opt/anaconda3/bin/ruff check` on all changed Python files | Passed |
 | `mypy` on the 39 ROS-independent source files | Passed: no issues found |
 | `git diff --check` | Passed |
