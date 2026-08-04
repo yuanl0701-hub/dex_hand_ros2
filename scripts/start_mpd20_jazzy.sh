@@ -100,8 +100,13 @@ if command -v fuser >/dev/null && fuser "${TASK_PORT}" >/dev/null 2>&1; then
   exit 2
 fi
 
+# ROS 2 generated setup files are not guaranteed to be safe under `set -u`:
+# they can read optional environment variables before assigning defaults.
+# Keep nounset enabled for this script, but suspend it while sourcing them.
+set +u
 # shellcheck disable=SC1090
 source "${TASK_ROS_SETUP}"
+set -u
 cd "${TASK_REPO_ROOT}"
 
 if [[ "${TASK_BUILD}" == "true" || ! -f install/setup.bash ]]; then
@@ -117,8 +122,10 @@ if [[ ! -f install/setup.bash ]]; then
   exit 2
 fi
 
+set +u
 # shellcheck disable=SC1091
 source install/setup.bash
+set -u
 
 echo "Starting MPD20 hand"
 echo "  ROS distro: ${TASK_ROS_DISTRO}"
