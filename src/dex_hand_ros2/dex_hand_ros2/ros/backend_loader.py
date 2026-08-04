@@ -33,6 +33,7 @@ BACKEND_PARAMETER_DEFAULTS: dict[str, object] = {
     "hardware_verify_on_connect": True,
     "hardware_hold_on_connect": True,
     "hardware_require_stationary_on_connect": True,
+    "hardware_allow_partial_operation": False,
     # Zero means "reuse the logical IDs"; deployments should override this.
     "mpd20_device_ids": [0],
     "mpd20_raw_min": [120],
@@ -92,6 +93,9 @@ def create_driver_from_parameters(
             hold_on_connect=bool(node.get_parameter("hardware_hold_on_connect").value),
             require_stationary_on_connect=bool(
                 node.get_parameter("hardware_require_stationary_on_connect").value
+            ),
+            allow_partial_operation=bool(
+                node.get_parameter("hardware_allow_partial_operation").value
             ),
         )
     elif normalized in {"sim", "simulated"}:

@@ -100,6 +100,7 @@ class MPD20Driver(GenericMotorDriver):
         verify_on_connect: bool = False,
         hold_on_connect: bool = False,
         require_stationary_on_connect: bool = False,
+        allow_partial_operation: bool = False,
         transport_factory: TransportFactory = default_serial_factory,
     ) -> None:
         super().__init__(config)
@@ -132,6 +133,11 @@ class MPD20Driver(GenericMotorDriver):
         self.verify_on_connect = bool(verify_on_connect)
         self.hold_on_connect = bool(hold_on_connect)
         self.require_stationary_on_connect = bool(require_stationary_on_connect)
+        self.allow_partial_operation = bool(allow_partial_operation)
+        self._unavailable_motor_ids: set[int] = set()
+        self._speed_configured_motor_ids: set[int] = set()
+        self._motor_failure_counts = {motor_id: 0 for motor_id in self.config.motor_ids}
+        self._motor_last_errors: dict[int, str] = {}
         if self.require_stationary_on_connect and not self.verify_on_connect:
             raise DriverValidationError("require_stationary_on_connect requires verify_on_connect")
         self._protocol = ModbusRTUProtocol(
@@ -148,11 +154,22 @@ class MPD20Driver(GenericMotorDriver):
         try:
             if self.verify_on_connect:
                 moving_ids: list[int] = []
+                responding_ids: list[int] = []
                 for motor_id in self.config.motor_ids:
-                    telemetry = self.read_telemetry(motor_id)
+                    try:
+                        telemetry = self.read_telemetry(motor_id)
+                    except DriverError as exc:
+                        if not self.allow_partial_operation:
+                            raise
+                        self._record_motor_failure(motor_id, exc)
+                        continue
                     self.raw_to_position(motor_id, telemetry.raw_position)
+                    responding_ids.append(motor_id)
+                    self._record_motor_success(motor_id)
                     if telemetry.moving:
                         moving_ids.append(motor_id)
+                if self.allow_partial_operation and not responding_ids:
+                    raise DriverError("no MPD20 actuator responded during startup verification")
                 if self.require_stationary_on_connect and moving_ids:
                     if self.motion_enabled and self.hold_on_connect:
                         self.hold_current_position()
@@ -162,9 +179,28 @@ class MPD20Driver(GenericMotorDriver):
                     )
             if self.motion_enabled:
                 if self.hold_on_connect:
-                    self.hold_current_position()
+                    self._hold_current_position(
+                        allow_partial=self.allow_partial_operation
+                    )
+                configured_ids: list[int] = []
                 for motor_id in self.config.motor_ids:
-                    self.set_max_speed(motor_id, self.calibrations[motor_id].max_speed)
+                    if motor_id in self._unavailable_motor_ids:
+                        continue
+                    try:
+                        configured = self.set_max_speed(
+                            motor_id, self.calibrations[motor_id].max_speed
+                        )
+                    except DriverError as exc:
+                        if not self.allow_partial_operation:
+                            raise
+                        self._record_motor_failure(motor_id, exc)
+                        continue
+                    if configured:
+                        configured_ids.append(motor_id)
+                        self._speed_configured_motor_ids.add(motor_id)
+                        self._record_motor_success(motor_id)
+                if self.allow_partial_operation and not configured_ids:
+                    raise DriverError("no MPD20 actuator completed startup configuration")
         except Exception:
             self._protocol.disconnect()
             raise
@@ -180,7 +216,35 @@ class MPD20Driver(GenericMotorDriver):
         self._require_connected()
         self.config.validate_motor_id(motor_id)
         self.config.validate_position(position)
-        return self.set_raw_position(motor_id, self.position_to_raw(motor_id, position))
+        if self.allow_partial_operation and motor_id in self._unavailable_motor_ids:
+            return False
+        try:
+            if self.motion_enabled and motor_id not in self._speed_configured_motor_ids:
+                self.set_max_speed(motor_id, self.calibrations[motor_id].max_speed)
+                self._speed_configured_motor_ids.add(motor_id)
+            written = self.set_raw_position(
+                motor_id, self.position_to_raw(motor_id, position)
+            )
+        except DriverError as exc:
+            if not self.allow_partial_operation:
+                raise
+            self._record_motor_failure(motor_id, exc)
+            return False
+        if written:
+            self._record_motor_success(motor_id)
+        return written
+
+    def set_multiple_positions(self, positions: Mapping[int, float]) -> bool:
+        """Write every reachable axis even when one MPD20 device times out."""
+        if not self.allow_partial_operation:
+            return super().set_multiple_positions(positions)
+        self._require_connected()
+        normalized = self.validate_positions(positions, require_complete=False)
+        successful = 0
+        for motor_id, value in normalized.items():
+            if self.set_single_position(motor_id, value):
+                successful += 1
+        return successful > 0
 
     def set_raw_position(self, motor_id: int, raw_position: int) -> bool:
         """Write a calibrated raw target; intended for bounded commissioning."""
@@ -208,10 +272,21 @@ class MPD20Driver(GenericMotorDriver):
     def get_position(self, motor_id: int) -> Optional[float]:
         self._require_connected()
         self.config.validate_motor_id(motor_id)
-        values = self._protocol.read_input_registers(
-            self._device_id(motor_id), self.PRESENT_POSITION_REGISTER, 1
-        )
-        return self.raw_to_position(motor_id, values[0])
+        try:
+            values = self._protocol.read_input_registers(
+                self._device_id(motor_id), self.PRESENT_POSITION_REGISTER, 1
+            )
+            if self.motion_enabled and motor_id not in self._speed_configured_motor_ids:
+                self.set_max_speed(motor_id, self.calibrations[motor_id].max_speed)
+                self._speed_configured_motor_ids.add(motor_id)
+        except DriverError as exc:
+            if not self.allow_partial_operation:
+                raise
+            self._record_motor_failure(motor_id, exc)
+            return None
+        position = self.raw_to_position(motor_id, values[0])
+        self._record_motor_success(motor_id)
+        return position
 
     def read_telemetry(self, motor_id: int) -> MPD20Telemetry:
         """Read the complete documented function-04 telemetry block."""
@@ -273,10 +348,15 @@ class MPD20Driver(GenericMotorDriver):
 
     def hold_current_position(self) -> bool:
         """Stop commanded travel by rewriting each measured raw position."""
+        return self._hold_current_position(allow_partial=False)
+
+    def _hold_current_position(self, *, allow_partial: bool) -> bool:
+        """Hold reachable axes; only startup may explicitly allow a partial hold."""
         self._require_connected()
         if not self.motion_enabled:
             return True
         failures: list[str] = []
+        held_ids: list[int] = []
         for motor_id in self.config.motor_ids:
             try:
                 raw_position = self._protocol.read_input_registers(
@@ -285,11 +365,49 @@ class MPD20Driver(GenericMotorDriver):
                 self._protocol.write_single_register(
                     self._device_id(motor_id), self.TARGET_POSITION_REGISTER, raw_position
                 )
+                held_ids.append(motor_id)
+                self._record_motor_success(motor_id)
             except Exception as exc:
+                self._record_motor_failure(motor_id, exc)
                 failures.append(f"{motor_id}: {exc}")
-        if failures:
+        if failures and not allow_partial:
             raise DriverError("MPD20 hold failed for " + "; ".join(failures))
-        return True
+        if allow_partial and not held_ids:
+            raise DriverError("MPD20 partial hold failed for every configured actuator")
+        return bool(held_ids)
+
+    def is_motor_available(self, motor_id: int) -> bool:
+        """Report the latest per-axis communication state."""
+        self.config.validate_motor_id(motor_id)
+        return self.is_connected() and motor_id not in self._unavailable_motor_ids
+
+    @property
+    def unavailable_motor_ids(self) -> tuple[int, ...]:
+        """Logical motor IDs currently quarantined after communication failure."""
+        return tuple(
+            motor_id
+            for motor_id in self.config.motor_ids
+            if motor_id in self._unavailable_motor_ids
+        )
+
+    @property
+    def motor_failure_counts(self) -> dict[int, int]:
+        """Cumulative high-level communication failures by logical motor ID."""
+        return dict(self._motor_failure_counts)
+
+    @property
+    def motor_last_errors(self) -> dict[int, str]:
+        """Most recent communication error for each motor that has failed."""
+        return dict(self._motor_last_errors)
+
+    def _record_motor_failure(self, motor_id: int, error: object) -> None:
+        self._unavailable_motor_ids.add(motor_id)
+        self._speed_configured_motor_ids.discard(motor_id)
+        self._motor_failure_counts[motor_id] += 1
+        self._motor_last_errors[motor_id] = str(error)
+
+    def _record_motor_success(self, motor_id: int) -> None:
+        self._unavailable_motor_ids.discard(motor_id)
 
     def change_id(self, old_id: int, new_id: int) -> bool:
         self._require_connected()

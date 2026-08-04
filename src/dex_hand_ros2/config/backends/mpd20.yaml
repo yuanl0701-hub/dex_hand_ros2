@@ -11,3 +11,7 @@
     hardware_verify_on_connect: true
     hardware_hold_on_connect: true
     hardware_require_stationary_on_connect: true
+
+    # Retry each Modbus transaction, then quarantine only the failed axis so
+    # reachable motors can finish the command. Feedback success re-enables it.
+    hardware_allow_partial_operation: true

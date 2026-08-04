@@ -138,6 +138,18 @@ cp src/dex_hand_ros2/config/deployments/mpd20_hand.example.yaml \
 - `mpd20_directions`：确保逻辑方向和手型约定一致；
 - `mpd20_max_speeds`：首次从 5–10 的低速开始。
 
+同型号共享的 MPD20 后端策略默认设置：
+
+```yaml
+serial_retries: 2
+hardware_allow_partial_operation: true
+```
+
+因此单次事务最多尝试三次；仍无响应的轴会被隔离，其他轴继续完成命令。状态话题会报告
+`unavailable_motor_ids` 和逐轴错误计数，反馈恢复后该轴从下一条命令重新加入。需要完整
+六轴协调的部署应在自己的覆盖 YAML 中显式设置
+`hardware_allow_partial_operation: false`。急停和退出保持不使用宽松语义。
+
 若机械轴定义与 `mpd20_six_axis` 不同，应复制整个手型目录，而不是把轴定义写进
 实体部署文件：
 

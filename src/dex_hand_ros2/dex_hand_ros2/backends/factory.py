@@ -36,6 +36,7 @@ class MPD20Settings:
     verify_on_connect: bool = True
     hold_on_connect: bool = True
     require_stationary_on_connect: bool = True
+    allow_partial_operation: bool = False
 
 
 @dataclass(frozen=True)
@@ -86,6 +87,7 @@ def create_driver(
             verify_on_connect=mpd20.verify_on_connect,
             hold_on_connect=mpd20.hold_on_connect,
             require_stationary_on_connect=mpd20.require_stationary_on_connect,
+            allow_partial_operation=mpd20.allow_partial_operation,
         )
     if normalized == "hts20l":
         _require_settings(normalized, settings, type(None))

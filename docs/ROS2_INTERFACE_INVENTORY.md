@@ -44,12 +44,13 @@ parameters used by the automated reliable/best-effort comparison.
 | `hardware_verify_on_connect` | Parameter | boolean | Input | User/YAML | `dex_hand_node` | N/A | `MPD20Driver.connect` | Implemented and container-verified | Function-04 timing pending |
 | `hardware_hold_on_connect` | Parameter | boolean | Input | User/YAML | `dex_hand_node` | N/A | `MPD20Driver.connect` | Implemented and container-verified | Active hold, not torque-off |
 | `hardware_require_stationary_on_connect` | Parameter | boolean | Input | User/YAML | `dex_hand_node` | N/A | `MPD20Driver.connect` | Implemented and container-verified | Moving flag requires hardware verification |
+| `hardware_allow_partial_operation` | Parameter | boolean | Input | User/YAML | `dex_hand_node` | N/A | `MPD20Driver` | Implemented and unit-verified | Enabled by packaged MPD20 backend policy; failed axes are omitted, so coordinated pose completion is not guaranteed |
 | `mpd20_raw_min` / `mpd20_raw_max` | Parameter | integer arrays | Input | User/YAML | `dex_hand_node` | N/A | MPD20 calibration | Implemented and unit-verified | Per-hand mechanical calibration required |
 | `mpd20_directions` | Parameter | integer array | Input | User/YAML | `dex_hand_node` | N/A | MPD20 calibration | Implemented and unit-verified | Values must be -1 or 1 |
 | `mpd20_max_speeds` | Parameter | integer array | Input | User/YAML | `dex_hand_node` | N/A | MPD20 startup | Implemented and unit-verified | Vendor scale; physical tuning required |
 | `max_command_rate` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | `SafetyController` | Implemented but not verified | Normalized percent/s |
 | `command_watchdog_timeout` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | `SafetyController` | Implemented but not verified | Hardware value untuned |
-| `state_poll_failure_limit` | Parameter | integer | Input | User/YAML | `dex_hand_node` | N/A | state-future callback | Implemented and container-verified | Escalates to non-recoverable fault |
+| `state_poll_failure_limit` | Parameter | integer | Input | User/YAML | `dex_hand_node` | N/A | state-future callback | Implemented and container-verified | Escalates global polling exceptions; tolerated per-axis MPD20 timeouts are reported separately |
 | `status_pub_freq` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | status timer | Implemented but not verified | Serial polling capacity unknown |
 | `pid_kp` / `pid_ki` / `pid_kd` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | PID initialization | Implemented but not verified | Not hardware tuned |
 | `gesture_file` | Parameter | string | Input | User/YAML | `dex_hand_node` | N/A | `RoboticHand` construction | Implemented but not verified | Startup-only |

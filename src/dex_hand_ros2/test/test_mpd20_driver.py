@@ -35,6 +35,55 @@ class FakeTransport:
         self.is_open = False
 
 
+class AddressAwareTransport:
+    """Respond by Modbus address so one device can fail without ending the bus."""
+
+    def __init__(self, failing_ids=()):
+        self.is_open = True
+        self.failing_ids = set(failing_ids)
+        self.positions = {1: 485, 2: 485, 3: 485}
+        self.writes = []
+        self.buffer = bytearray()
+
+    def write(self, data):
+        request = bytes(data)
+        self.writes.append(request)
+        address = request[0]
+        function = request[1]
+        self.buffer.clear()
+        if address in self.failing_ids:
+            return len(request)
+        if function == 6:
+            register, value = struct.unpack(">HH", request[2:6])
+            if register == MPD20Driver.TARGET_POSITION_REGISTER:
+                self.positions[address] = value
+            self.buffer.extend(request)
+        elif function == 4:
+            register, count = struct.unpack(">HH", request[2:6])
+            if register == 0 and count == MPD20Driver.TELEMETRY_REGISTER_COUNT:
+                values = [1, 5, self.positions[address], 0, 20, 0, 0, 0]
+            elif register == MPD20Driver.PRESENT_POSITION_REGISTER and count == 1:
+                values = [self.positions[address]]
+            else:
+                raise AssertionError(f"unexpected function-04 request: {request.hex()}")
+            payload = b"".join(struct.pack(">H", value) for value in values)
+            self.buffer.extend(modbus_frame(bytes([address, function, len(payload)]) + payload))
+        else:
+            raise AssertionError(f"unexpected Modbus function: {function}")
+        return len(request)
+
+    def read(self, size):
+        result = bytes(self.buffer[:size])
+        del self.buffer[:size]
+        return result
+
+    def flush(self):
+        pass
+
+    def close(self):
+        self.is_open = False
+
+
 def modbus_frame(body):
     return body + struct.pack("<H", ModbusRTUProtocol.crc(body))
 
@@ -232,3 +281,96 @@ def test_mpd20_device_mapping_rejects_duplicates_and_wrong_logical_keys():
             config=DriverConfig((1, 2)),
             device_ids={1: 10, 2: 10},
         )
+
+
+def test_partial_operation_quarantines_failed_axis_and_continues_batch():
+    transport = AddressAwareTransport(failing_ids={2})
+    driver = MPD20Driver(
+        "fake",
+        config=DriverConfig((1, 2, 3)),
+        motion_enabled=True,
+        verify_on_connect=True,
+        hold_on_connect=True,
+        require_stationary_on_connect=True,
+        allow_partial_operation=True,
+        retries=1,
+        transport_factory=lambda *_: transport,
+    )
+
+    assert driver.connect()
+    assert driver.unavailable_motor_ids == (2,)
+    assert driver.motor_failure_counts[2] >= 1
+
+    before = len(transport.writes)
+    assert driver.set_multiple_positions({1: 25, 2: 25, 3: 25})
+    command_writes = transport.writes[before:]
+    target_addresses = [
+        request[0]
+        for request in command_writes
+        if request[1] == 6
+        and struct.unpack(">H", request[2:4])[0] == MPD20Driver.TARGET_POSITION_REGISTER
+    ]
+    assert target_addresses == [1, 3]
+    assert driver.is_motor_available(1)
+    assert not driver.is_motor_available(2)
+    assert driver.is_motor_available(3)
+
+
+def test_partial_operation_rejoins_motor_after_feedback_recovers():
+    transport = AddressAwareTransport(failing_ids={2})
+    driver = MPD20Driver(
+        "fake",
+        config=DriverConfig((1, 2, 3)),
+        motion_enabled=True,
+        verify_on_connect=True,
+        hold_on_connect=False,
+        allow_partial_operation=True,
+        retries=0,
+        transport_factory=lambda *_: transport,
+    )
+
+    assert driver.connect()
+    assert driver.get_position(2) is None
+    assert driver.unavailable_motor_ids == (2,)
+
+    transport.failing_ids.clear()
+    assert driver.get_position(2) == pytest.approx(50.0)
+    assert driver.unavailable_motor_ids == ()
+    assert driver.set_multiple_positions({1: 40, 2: 40, 3: 40})
+    assert driver.is_motor_available(2)
+
+
+def test_partial_operation_still_rejects_startup_when_every_axis_is_missing():
+    transport = AddressAwareTransport(failing_ids={1, 2, 3})
+    driver = MPD20Driver(
+        "fake",
+        config=DriverConfig((1, 2, 3)),
+        motion_enabled=False,
+        verify_on_connect=True,
+        hold_on_connect=False,
+        allow_partial_operation=True,
+        retries=0,
+        transport_factory=lambda *_: transport,
+    )
+
+    with pytest.raises(DriverError, match="no MPD20 actuator responded"):
+        driver.connect()
+    assert not driver.is_connected()
+
+
+def test_partial_operation_keeps_emergency_hold_strict():
+    transport = AddressAwareTransport(failing_ids={2})
+    driver = MPD20Driver(
+        "fake",
+        config=DriverConfig((1, 2, 3)),
+        motion_enabled=True,
+        verify_on_connect=True,
+        hold_on_connect=False,
+        allow_partial_operation=True,
+        retries=0,
+        transport_factory=lambda *_: transport,
+    )
+
+    assert driver.connect()
+    with pytest.raises(DriverError, match="MPD20 hold failed.*2"):
+        driver.hold_current_position()

@@ -107,6 +107,7 @@ class DexHandROS2Node(Node):
         self._state_future: Future[object] | None = None
         self._state_poll_failures = 0
         self._state_poll_failure_limit = int(self.get_parameter("state_poll_failure_limit").value)
+        self._last_unavailable_motor_ids: tuple[int, ...] = ()
         if self._state_poll_failure_limit <= 0:
             raise ValueError("state_poll_failure_limit must be positive")
         self.create_timer(1.0 / status_frequency, self.publish_status)
@@ -415,6 +416,26 @@ class DexHandROS2Node(Node):
             "hardware_motion_enabled": (
                 self.driver.motion_enabled if isinstance(self.driver, MPD20Driver) else None
             ),
+            "partial_operation_enabled": (
+                self.driver.allow_partial_operation
+                if isinstance(self.driver, MPD20Driver)
+                else None
+            ),
+            "unavailable_motor_ids": (
+                list(self.driver.unavailable_motor_ids)
+                if isinstance(self.driver, MPD20Driver)
+                else []
+            ),
+            "motor_failure_counts": (
+                {str(key): value for key, value in self.driver.motor_failure_counts.items()}
+                if isinstance(self.driver, MPD20Driver)
+                else {}
+            ),
+            "motor_last_errors": (
+                {str(key): value for key, value in self.driver.motor_last_errors.items()}
+                if isinstance(self.driver, MPD20Driver)
+                else {}
+            ),
             "qos_reliability": str(self.get_parameter("qos_reliability").value),
             "qos_depth": int(self.get_parameter("qos_depth").value),
             "joint_command_topic": str(self.get_parameter("joint_command_topic").value),
@@ -468,8 +489,23 @@ class DexHandROS2Node(Node):
             state.motor_id = motor_id
             state.position = -1 if position is None else int(round(position))
             state.velocity = float(simulated_states[motor_id].velocity) if simulated_states else 0.0
-            state.connected = self.driver.is_connected()
+            state.connected = (
+                self.driver.is_motor_available(motor_id)
+                if isinstance(self.driver, MPD20Driver)
+                else self.driver.is_connected()
+            )
             self.motor_state_pub.publish(state)
+        if isinstance(self.driver, MPD20Driver):
+            unavailable = self.driver.unavailable_motor_ids
+            if unavailable != self._last_unavailable_motor_ids:
+                if unavailable:
+                    self.get_logger().warning(
+                        "partial operation: unavailable motor IDs "
+                        + ", ".join(str(motor_id) for motor_id in unavailable)
+                    )
+                elif self._last_unavailable_motor_ids:
+                    self.get_logger().info("all MPD20 motors are responding again")
+                self._last_unavailable_motor_ids = unavailable
         return True
 
     def _watchdog_callback(self) -> None:

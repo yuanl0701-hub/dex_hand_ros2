@@ -1,5 +1,37 @@
 # Implementation Changelog
 
+## 2026-08-04 — MPD20 per-axis communication tolerance
+
+### Implemented
+
+- Added opt-in `hardware_allow_partial_operation` behavior to the MPD20
+  backend and enabled it in the packaged MPD20 backend policy.
+- Kept protocol-level `serial_retries` as the first recovery layer. After
+  retries are exhausted, only the failed logical motor is quarantined; a
+  multi-axis command continues writing every other reachable motor.
+- Changed MPD20 feedback polling in partial mode to publish the failed motor
+  with `connected=false` and position `-1` instead of escalating one axis to a
+  whole-hand fault.
+- Added `partial_operation_enabled`, `unavailable_motor_ids`, cumulative
+  `motor_failure_counts` and `motor_last_errors` to status JSON.
+- A successful later feedback read reapplies the configured speed limit and
+  returns the motor to the next command. It does not join a gesture that is
+  already in progress.
+- Kept emergency stop, watchdog hold and shutdown strict: failure to hold any
+  configured actuator is still reported as a fault and is not presented as a
+  successful stop.
+
+### Commands and actual results
+
+| Command/check | Result |
+|---|---|
+| System `python3 -m pytest ...` | Blocked because the system Python has no pytest; not counted as a code failure |
+| `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src/dex_hand_ros2 /opt/anaconda3/bin/python -m pytest -q src/dex_hand_ros2/test` | Passed: 75 tests |
+| `/opt/anaconda3/bin/ruff check` on all changed Python files | Passed |
+| `mypy` on the 39 ROS-independent source files | Passed: no issues found |
+| `git diff --check` | Passed |
+| ROS 2 build and physical MPD20 operation | Not run in this macOS workspace; target-host verification remains required |
+
 ## 2026-07-30 — Reusable architecture and layered deployment
 
 ### Implemented

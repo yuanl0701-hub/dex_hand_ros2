@@ -199,9 +199,19 @@ ros2 service call /dex_hand/emergency_stop std_srvs/srv/SetBool "{data: true}"
 ros2 service call /dex_hand/emergency_stop std_srvs/srv/SetBool "{data: false}"
 ```
 
-连续三次反馈失败会进入不可恢复 `fault`，需要检查串口/供电后重启节点。看门狗超时会
-进入可人工恢复的 `stopped`。首次验收必须记录命令时间、反馈位置、移动标志、急停请求
-到停止的时间，并在空载通过后再逐级增加负载。
+MPD20 后端策略默认启用 `hardware_allow_partial_operation=true`。每个 Modbus 事务会先按
+`serial_retries` 重试；耗尽后只把该轴标记为离线，当前多轴命令继续驱动其他在线轴。
+离线轴在 `/dex_hand/motor_state` 中报告 `connected=false`、位置 `-1`，并出现在状态 JSON
+的 `unavailable_motor_ids`、`motor_failure_counts` 和 `motor_last_errors` 中。后台反馈重新
+读通后会重设该轴限速，并从**下一条**命令恢复，不会在当前手势中途突然追赶目标。
+
+这种降级模式不能保证完整手势或抓取几何。若应用要求六轴协调，应在部署覆盖文件中设
+`hardware_allow_partial_operation: false`，恢复任意单轴失败即中止命令的严格模式。
+无论采用哪种模式，急停、看门狗和节点退出的主动保持仍是严格路径：任何轴无法确认保持
+都会报告 `fault`，不能视为可靠停止。看门狗超时会进入可人工恢复的 `stopped`。
+
+首次验收必须记录命令时间、反馈位置、移动标志、掉线轴、重试次数、急停请求到停止的
+时间，并在空载通过后再逐级增加负载。
 
 ## 10. 实机验收清单
 
