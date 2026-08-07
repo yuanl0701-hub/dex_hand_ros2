@@ -1,0 +1,14 @@
+/**:
+  ros__parameters:
+    driver_type: simulated
+    simulation_update_rate: 100.0
+    sim_time_constant: 0.20
+    sim_max_velocity: 250.0
+    sim_max_acceleration: 1500.0
+    sim_command_delay: 0.0
+    sim_deadband: 0.0
+    sim_measurement_noise_std: 0.0
+    sim_command_noise_std: 0.0
+    sim_random_seed: 6048
+    sim_deterministic_mode: true
+    sim_initial_position: 0.0

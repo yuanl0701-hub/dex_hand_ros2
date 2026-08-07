@@ -1,9 +1,9 @@
 # ROS 2 Interface Inventory
 
-All runtime entries are **Implemented but not verified** because ROS 2 is not
-available on the audit host. Topic QoS defaults to reliable, keep-last, depth
-10. Reliability and depth are startup parameters used by the automated
-reliable/best-effort comparison.
+ROS interfaces and launch installation are container-verified with ROS 2 Humble.
+MPD20 serial behavior remains unverified on physical hardware. Topic QoS
+defaults to reliable, keep-last, depth 10. Reliability and depth are startup
+parameters used by the automated reliable/best-effort comparison.
 
 ## Topics
 
@@ -38,15 +38,28 @@ reliable/best-effort comparison.
 | `serial_timeout` | Parameter | double | Input | User/YAML | Both nodes | N/A | node constructors | Implemented but not verified | Untuned on hardware |
 | `serial_retries` | Parameter | integer | Input | User/YAML | Both nodes | N/A | node constructors | Implemented but not verified | Untuned on hardware |
 | `motor_ids` | Parameter | integer array | Input | User/YAML | Both nodes | N/A | node constructors | Implemented but not verified | Logical IDs only |
+| `motor_labels` | Parameter | string array | Input | User/YAML | `dex_hand_node` | N/A | startup validation/status | Implemented and container-verified | Must align with motor IDs |
 | `position_min` / `position_max` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | `DriverConfig` | Implemented but not verified | Normalized limits |
+| `hardware_motion_enabled` | Parameter | boolean | Input | User/YAML | `dex_hand_node` | N/A | `MPD20Driver` | Implemented and container-verified | False by default; physical behavior pending |
+| `hardware_verify_on_connect` | Parameter | boolean | Input | User/YAML | `dex_hand_node` | N/A | `MPD20Driver.connect` | Implemented and container-verified | Function-04 timing pending |
+| `hardware_hold_on_connect` | Parameter | boolean | Input | User/YAML | `dex_hand_node` | N/A | `MPD20Driver.connect` | Implemented and container-verified | Active hold, not torque-off |
+| `hardware_require_stationary_on_connect` | Parameter | boolean | Input | User/YAML | `dex_hand_node` | N/A | `MPD20Driver.connect` | Implemented and container-verified | Moving flag requires hardware verification |
+| `hardware_allow_partial_operation` | Parameter | boolean | Input | User/YAML | `dex_hand_node` | N/A | `MPD20Driver` | Implemented and unit-verified | Enabled by packaged MPD20 backend policy; failed axes are omitted, so coordinated pose completion is not guaranteed |
+| `mpd20_raw_min` / `mpd20_raw_max` | Parameter | integer arrays | Input | User/YAML | `dex_hand_node` | N/A | MPD20 calibration | Implemented and unit-verified | Per-hand mechanical calibration required |
+| `mpd20_directions` | Parameter | integer array | Input | User/YAML | `dex_hand_node` | N/A | MPD20 calibration | Implemented and unit-verified | Values must be -1 or 1 |
+| `mpd20_max_speeds` | Parameter | integer array | Input | User/YAML | `dex_hand_node` | N/A | MPD20 startup | Implemented and unit-verified | Vendor scale; physical tuning required |
 | `max_command_rate` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | `SafetyController` | Implemented but not verified | Normalized percent/s |
 | `command_watchdog_timeout` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | `SafetyController` | Implemented but not verified | Hardware value untuned |
+| `command_watchdog_enabled` | Parameter | boolean | Input | Runtime YAML | `dex_hand_node` | N/A | watchdog timer creation | Implemented and config-verified | Disabled for discrete physical direct gestures; hardware E-stop still required |
+| `state_poll_failure_limit` | Parameter | integer | Input | User/YAML | `dex_hand_node` | N/A | state-future callback | Implemented and container-verified | Escalates global polling exceptions; tolerated per-axis MPD20 timeouts are reported separately |
 | `status_pub_freq` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | status timer | Implemented but not verified | Serial polling capacity unknown |
 | `pid_kp` / `pid_ki` / `pid_kd` | Parameter | double | Input | User/YAML | `dex_hand_node` | N/A | PID initialization | Implemented but not verified | Not hardware tuned |
 | `gesture_file` | Parameter | string | Input | User/YAML | `dex_hand_node` | N/A | `RoboticHand` construction | Implemented but not verified | Startup-only |
+| `gesture_execution_mode` | Parameter | string | Input | Runtime YAML | `dex_hand_node` | N/A | gesture callback | Implemented and unit-verified | `direct` writes final targets once; `smooth` samples a quintic trajectory; startup-only |
 | `qos_reliability` | Parameter | string | Input | User/YAML | `dex_hand_node` | N/A | `_reliability_policy` | Implemented but not verified | `reliable` or `best_effort`; startup-only |
 | `qos_depth` | Parameter | integer | Input | User/YAML | `dex_hand_node` | N/A | QoS construction | Implemented but not verified | Positive; startup-only |
 
-No actions, lifecycle nodes, callback groups, `JointState`, trajectory messages,
-TF frames, or `use_sim_time` behavior are implemented. Those omissions are
-intentional until verified model semantics exist.
+No actions, lifecycle nodes, explicit callback groups, standard joint-trajectory
+action, or `use_sim_time` behavior are implemented. `JointState` and TF are
+available only on the nominal simulation/visualization path; they are not a
+verified physical-hand model.

@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+from dex_hand_ros2.mpd20_commission import main
+
+if __name__ == "__main__":
+    raise SystemExit(main())

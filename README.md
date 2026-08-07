@@ -1,7 +1,59 @@
 # DEX Hand ROS 2 Control
 
-This repository contains a safety-oriented ROS 2 control package for a
-six-motor dexterous hand. The safe default is a deterministic mock backend.
+这是一个面向六轴灵巧手的分层 ROS 2 控制项目，包含 MPD20 Modbus RTU
+实机后端、仿真后端、手势控制、网页控制、标定工具和安全状态管理。控制核心使用
+`0..100` 归一化位置，不是电机 raw 值，也不是弧度。
+
+## 文档入口
+
+- [网页控制使用说明](readme_ui.md)：在浏览器中一键运行手势、查看状态和控制单轴；
+- [统一部署说明](DEPLOYMENT.md)：构建、配置分层、实机部署和新增手型；
+- [MPD20 实机部署说明](docs/MPD20_PHYSICAL_DEPLOYMENT.md)：改 ID、预检、标定和安全上线；
+- [实现状态](docs/IMPLEMENTATION_STATUS.md)：已验证范围和待验证项目。
+
+## 当前 MPD20/Jazzy 快速使用
+
+当前实体手使用 `/dev/ttyUSB0`、115200 波特率和物理 ID 1--6。启动前必须确认
+`src/dex_hand_ros2/config/deployments/lab_hand_001.yaml` 是这只手经过检查的部署文件，
+并准备独立于 ROS/主机的硬件断电急停。
+
+第一次更新后，在终端 1 构建并启动机械手：
+
+```bash
+cd ~/dex_hand/dex_hand_ros2
+git pull --ff-only origin agent/mpd20-hardware-deployment
+./scripts/start_mpd20_jazzy.sh --build --enable-motion
+```
+
+后续没有代码或配置更新时可省略 `--build`：
+
+```bash
+./scripts/start_mpd20_jazzy.sh --enable-motion
+```
+
+保持控制节点运行，在终端 2 启动网页：
+
+```bash
+cd ~/dex_hand/dex_hand_ros2
+./scripts/run_hand_web_ui.sh --ros-distro jazzy
+```
+
+浏览器默认打开 `http://127.0.0.1:8765`。网页会从控制节点读取实际手势列表，当前
+实体手提供 `open`、`half_open`、`fist`、`vgesture`、`rock` 和 `point`。详细操作、
+安全说明和故障排查见 [readme_ui.md](readme_ui.md)。
+
+查看控制器原始状态：
+
+```bash
+cd ~/dex_hand/dex_hand_ros2
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+ros2 topic echo /dex_hand/status
+```
+
+This repository contains a safety-oriented, layered ROS 2 control package for
+configurable position-controlled dexterous hands. The included reference
+models use six logical motors, and the safe default is a deterministic mock backend.
 Current command units are normalized percent (`0..100`); they are not radians
 and the logical labels `motor_1` through `motor_6` are not anatomical joint
 names.
@@ -11,17 +63,22 @@ names.
 - Driver abstraction and deterministic mock backend.
 - Central input validation, emergency-stop state, watchdog, and rate limits.
 - Modbus RTU and Feetech packet construction/validation with fake transports.
+- MPD20 function-04 feedback, calibrated raw-position mapping, read-only
+  preflight, bounded single-axis commissioning and motion interlocks.
 - Validated gesture library.
 - Multi-axis quintic trajectories.
 - Deterministic PID control.
 - CSV and metadata export for theoretical trajectory output.
 
-These modules are covered by pure Python tests. ROS 2 node execution and real
-hardware behavior are not verified on the current macOS system.
+These modules are covered by pure Python tests. ROS 2 builds, package tests and
+launch installation are verified in the repository's Ubuntu 22.04/Humble
+container. The current MPD20/Jazzy hand has been operator-tested with IDs 1--6
+and the six physical gestures above; repeatable timing, full-range and formal
+hardware safety acceptance measurements are still pending.
 
-### Named gesture catalogue
+### Gesture catalogues
 
-The packaged gesture configuration contains nine validated software presets:
+The generic simulation configuration contains nine validated software presets:
 `open`, `fist`, `vgesture`, `pinch_two`, `pinch_three`, `pinch_side`, `point`,
 `thumbs_up`, and `gesture_666`. Every preset defines all six logical motors,
 uses normalized percent, and passes the same duration and range validation.
@@ -33,6 +90,10 @@ hardware-calibrated values. In particular, this project's legacy convention
 uses `100` as the extended endpoint, whereas the current BrainCo SDK documents
 a different `0..1000` hardware convention. A deliberate adapter and real-hand
 calibration are required before sending these presets to physical hardware.
+
+Physical MPD20 launch does not load that generic catalogue. It loads the
+commissioned six-pose file containing `open`, `half_open`, `fist`, `vgesture`,
+`rock`, and `point`, with conservative raw-equivalent targets for this hand.
 
 Example ROS 2 command:
 
@@ -114,11 +175,26 @@ Or start the localhost browser control panel:
 ./scripts/run_hand_web_ui.sh
 ```
 
+For the MPD20 workstation running ROS 2 Jazzy, first keep
+`start_mpd20_jazzy.sh` running, then start the browser panel in a second
+terminal:
+
+```bash
+cd ~/dex_hand/dex_hand_ros2
+./scripts/run_hand_web_ui.sh --ros-distro jazzy
+```
+
+The gesture buttons are discovered from `/dex_hand/status`, so the physical
+`open`, `half_open`, `fist`, `vgesture`, `rock` and `point` poses appear without
+repeated `ros2 topic pub` commands.
+
 The page opens at `http://127.0.0.1:8765` and provides gesture buttons,
-six-motor sliders, PID controls, emergency-stop/recovery, simulation reset,
+dynamic per-axis sliders, PID controls, emergency-stop/recovery, simulation reset,
 fault injection and live controller feedback without requiring repeated
 terminal commands. It binds to localhost by default and has no authentication;
-do not expose it to an untrusted network.
+do not expose it to an untrusted network. See [readme_ui.md](readme_ui.md) for
+the complete browser-control guide and the distinction between physical and
+simulation-only controls.
 
 The controller publishes commands on `/dex_hand/joint_command`; Isaac Sim
 publishes articulation feedback separately on `/isaac_joint_states` to avoid a
@@ -160,15 +236,43 @@ On Apple Silicon macOS, use the reproducible Humble container workflow:
 Then open `http://localhost:6080/vnc.html`. Full instructions and the verified
 2026-07-25 run are recorded in `docs/MACOS_SIMULATION_GUIDE.md`.
 
-Real hardware must be selected explicitly:
+## MPD20 physical hand deployment
+
+The physical backend now has a dedicated safe launch. It probes every configured
+ID and rejects motion by default:
 
 ```bash
-ros2 launch dex_hand_ros2 hand.launch.py \
-  driver_type:=mpd20 serial_port:=/dev/ttyUSB0
+ros2 run dex_hand_ros2 mpd20_preflight \
+  --port /dev/serial/by-id/YOUR_ADAPTER --ids 1,2,3,4,5,6
+
+ros2 launch dex_hand_ros2 mpd20_hand.launch.py \
+  serial_port:=/dev/serial/by-id/YOUR_ADAPTER
 ```
 
-Do not run configuration services against powered hardware without confirming
-the device model, protocol, IDs, baud rate, and recovery procedure.
+After one-axis-at-a-time ID assignment, bounded jog testing and per-axis raw-limit
+and direction calibration, use the Ubuntu deployment wrapper with the explicit
+`--enable-motion` gate. The hardware catalogue contains safe-margin `open`,
+`half_open`, `fist`, `vgesture`, `rock`, and `point` poses; the simulation
+gesture catalogue is not loaded on physical hardware.
+
+For the current ROS 2 Jazzy workstation, use the dedicated wrapper:
+
+```bash
+./scripts/start_mpd20_jazzy.sh --build --enable-motion
+```
+
+```bash
+./scripts/deploy_mpd20_ubuntu.sh \
+  --port /dev/serial/by-id/YOUR_ADAPTER \
+  --config src/dex_hand_ros2/config/deployments/lab_hand_001.yaml \
+  --gestures src/dex_hand_ros2/config/hand_models/mpd20_six_axis/commissioning_gestures.json \
+  --enable-motion
+```
+
+See [the MPD20 physical deployment and reuse guide](docs/MPD20_PHYSICAL_DEPLOYMENT.md)
+before applying power. Software stop actively rewrites measured positions as
+targets, but it is not certified torque-off and does not replace a hardware
+power-disconnect emergency stop.
 
 ## Local core tests
 
@@ -176,7 +280,7 @@ the device model, protocol, IDs, baud rate, and recovery procedure.
 PYTHONPATH=src/dex_hand_ros2 pytest -q src/dex_hand_ros2/test
 ruff check src/dex_hand_ros2/dex_hand_ros2 src/dex_hand_ros2/test
 PYTHONPATH=src/dex_hand_ros2 mypy src/dex_hand_ros2/dex_hand_ros2 \
-  --exclude '(hand_node|config_node|gesture_cli)\.py'
+  --exclude '(hand_node|config_node|gesture_cli|hand_web_ui|ros_experiment)\.py'
 ```
 
 See `docs/IMPLEMENTATION_STATUS.md`, `docs/ENVIRONMENT_COMPATIBILITY.md`, and

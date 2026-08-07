@@ -3,7 +3,7 @@
 <package format="3">
   <name>dex_hand_ros2</name>
   <version>0.2.0</version>
-  <description>Safe ROS 2 control with a deterministic virtual backend for a six-motor dexterous hand.</description>
+  <description>Layered ROS 2 position control, simulation and hardware adapters for configurable dexterous hands.</description>
   <maintainer email="u3650775@connect.hku.hk">Yuan Lei</maintainer>
   <license>MIT</license>
 

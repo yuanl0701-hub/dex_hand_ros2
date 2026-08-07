@@ -111,7 +111,7 @@
   <header>
     <div>
       <h1>DEX Hand 控制台</h1>
-      <p>六电机控制 · ROS 2 Humble · Isaac Sim</p>
+      <p>MPD20 六轴手势与电机控制 · ROS 2</p>
     </div>
     <div class="badge"><span id="statusDot" class="dot"></span><span id="connection">等待 ROS 状态</span></div>
   </header>
@@ -154,9 +154,9 @@
     </article>
 
     <article class="card wide">
-      <h2>六电机独立控制</h2>
+      <h2>电机独立控制</h2>
       <div id="motors" class="motor-grid"></div>
-      <p class="footer-note">0 = 弯曲端，100 = 伸展端。食指、中指、无名指、小指和拇指 distal 会由软件耦合自动跟随。</p>
+      <p class="footer-note">位置使用当前部署定义的归一化范围；轴名称和数量由控制器状态提供。</p>
     </article>
 
     <article class="card wide">
@@ -198,13 +198,14 @@
 </main>
 
 <script>
-  const gestureNames = ["open","fist","vgesture","pinch_two","pinch_three","pinch_side","point","thumbs_up","gesture_666"];
+  let gestureNames = [];
+  let motorIds = [];
+  let renderedConfiguration = "";
   const gestureLabels = {
-    open:"张开", fist:"握拳", vgesture:"V 手势", pinch_two:"二指捏取",
+    open:"张开", half_open:"半张开", fist:"握拳", vgesture:"V 手势", rock:"摇滚手势", pinch_two:"二指捏取",
     pinch_three:"三指捏取", pinch_side:"侧捏", point:"指向",
     thumbs_up:"点赞", gesture_666:"666"
   };
-  const motorLabels = ["食指", "无名指", "中指", "小指", "拇指侧摆", "拇指弯曲"];
   const faultTypes = ["motor_stuck","motor_disconnect","position_bias","reduced_velocity","limit_hit","over_temperature","stale_feedback","command_drop"];
 
   const speed = document.getElementById("speed");
@@ -212,28 +213,42 @@
   speed.oninput = () => speedValue.value = speed.value;
   speedValue.oninput = () => speed.value = speedValue.value;
 
-  document.getElementById("gestures").innerHTML = gestureNames.map(name =>
-    `<button onclick="gesture('${name}')">${gestureLabels[name]}<br><small>${name}</small></button>`
-  ).join("");
-  document.getElementById("pidGesture").innerHTML = gestureNames.map(name => `<option>${name}</option>`).join("");
-  for (const id of ["pidMotor", "faultMotor"]) {
-    document.getElementById(id).innerHTML = [1,2,3,4,5,6].map(n => `<option value="${n}">电机 ${n}</option>`).join("");
-  }
   document.getElementById("faultType").innerHTML = faultTypes.map(name => `<option>${name}</option>`).join("");
-  document.getElementById("customPositions").innerHTML = [1,2,3,4,5,6].map(n =>
-    `<div class="field"><label>电机 ${n}</label><input id="custom${n}" type="number" min="0" max="100" value="50"></div>`
-  ).join("");
-  document.getElementById("motors").innerHTML = [1,2,3,4,5,6].map((n, index) => `
-    <div class="motor">
-      <div class="motor-head"><b>电机 ${n} · ${motorLabels[index]}</b><span id="motorValue${n}" class="motor-value">50</span></div>
-      <input id="motor${n}" type="range" min="0" max="100" value="50" oninput="motorValue${n}.textContent=this.value">
-      <div class="row">
-        <button onclick="setMotor(${n}, false)">发送位置</button>
-        <button onclick="setMotor(${n}, true)">PID 发送</button>
+
+  function renderConfiguration(data) {
+    const nextMotorIds = Array.isArray(data.motor_ids) ? data.motor_ids.map(Number) : [];
+    const nextGestures = Array.isArray(data.gestures) ? data.gestures.map(String) : [];
+    const labels = data.status?.motor_labels || {};
+    const key = JSON.stringify([nextMotorIds, nextGestures, labels]);
+    if (key === renderedConfiguration || nextMotorIds.length === 0) return;
+    renderedConfiguration = key;
+    motorIds = nextMotorIds;
+    gestureNames = nextGestures;
+    document.getElementById("gestures").innerHTML = gestureNames.map(name =>
+      `<button onclick="gesture('${name}')">${gestureLabels[name] || name}<br><small>${name}</small></button>`
+    ).join("");
+    document.getElementById("pidGesture").innerHTML =
+      gestureNames.map(name => `<option>${name}</option>`).join("");
+    for (const id of ["pidMotor", "faultMotor"]) {
+      document.getElementById(id).innerHTML = motorIds.map(n =>
+        `<option value="${n}">${labels[String(n)] || `电机 ${n}`}</option>`
+      ).join("");
+    }
+    document.getElementById("customPositions").innerHTML = motorIds.map(n =>
+      `<div class="field"><label>${labels[String(n)] || `电机 ${n}`}</label><input id="custom${n}" type="number" min="0" max="100" value="50"></div>`
+    ).join("");
+    document.getElementById("motors").innerHTML = motorIds.map(n => `
+      <div class="motor">
+        <div class="motor-head"><b>${labels[String(n)] || `电机 ${n}`}</b><span id="motorValue${n}" class="motor-value">50</span></div>
+        <input id="motor${n}" type="range" min="0" max="100" value="50" oninput="document.getElementById('motorValue${n}').textContent=this.value">
+        <div class="row">
+          <button onclick="setMotor(${n}, false)">发送位置</button>
+          <button onclick="setMotor(${n}, true)">PID 发送</button>
+        </div>
+        <small id="feedback${n}" style="color:var(--muted)">反馈：—</small>
       </div>
-      <small id="feedback${n}" style="color:var(--muted)">反馈：—</small>
-    </div>
-  `).join("");
+    `).join("");
+  }
 
   async function post(path, payload) {
     try {
@@ -263,7 +278,7 @@
     post("add_gesture", {
       name:customName.value, description:customDescription.value,
       duration:Number(customDuration.value),
-      positions:[1,2,3,4,5,6].map(n => Number(document.getElementById(`custom${n}`).value))
+      positions:motorIds.map(n => Number(document.getElementById(`custom${n}`).value))
     });
   }
   function setFault() {
@@ -281,6 +296,7 @@
     try {
       const response = await fetch("/api/state", {cache:"no-store"});
       const data = await response.json();
+      renderConfiguration(data);
       const state = data.status || {};
       const connected = Boolean(state.connected);
       const safety = state.safety_state || "waiting";
@@ -293,7 +309,7 @@
       dot.className = `dot ${connected && safety === "ready" ? "ready" : safety === "stopped" ? "error" : ""}`;
       document.getElementById("action").textContent = data.last_action || "等待操作";
       showError(data.last_error || "");
-      for (const id of [1,2,3,4,5,6]) {
+      for (const id of motorIds) {
         const motor = data.motors?.[String(id)];
         document.getElementById(`feedback${id}`).textContent = motor
           ? `反馈：${motor.position} · 速度 ${Number(motor.velocity).toFixed(1)}`

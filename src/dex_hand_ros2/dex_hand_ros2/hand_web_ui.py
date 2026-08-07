@@ -87,6 +87,18 @@ class SharedState:
 
     def snapshot(self) -> dict[str, Any]:
         with self._lock:
+            configured_ids = self._status.get("motor_ids")
+            motor_ids = (
+                [int(value) for value in configured_ids]
+                if isinstance(configured_ids, list) and configured_ids
+                else sorted(int(value) for value in self._motors) or list(range(1, 7))
+            )
+            configured_gestures = self._status.get("gesture_names")
+            gestures = (
+                [str(value) for value in configured_gestures]
+                if isinstance(configured_gestures, list) and configured_gestures
+                else list(GESTURES)
+            )
             return {
                 "status": dict(self._status),
                 "motors": {
@@ -95,9 +107,14 @@ class SharedState:
                 "last_action": self._last_action,
                 "last_error": self._last_error,
                 "updated_at": self._updated_at,
-                "gestures": list(GESTURES),
+                "motor_ids": motor_ids,
+                "gestures": gestures,
                 "fault_types": list(FAULT_TYPES),
             }
+
+    def motor_ids(self) -> tuple[int, ...]:
+        snapshot = self.snapshot()
+        return tuple(int(value) for value in snapshot["motor_ids"])
 
 
 class HandWebControlNode(Node):
@@ -196,11 +213,11 @@ class HandWebControlNode(Node):
             raise ValueError(f"{label} must be finite")
         return number
 
-    @staticmethod
-    def _motor_id(value: Any) -> int:
+    def _motor_id(self, value: Any) -> int:
         motor_id = int(value)
-        if motor_id not in range(1, 7):
-            raise ValueError("motor_id must be between 1 and 6")
+        allowed = self.shared.motor_ids()
+        if motor_id not in allowed:
+            raise ValueError(f"motor_id must be one of {list(allowed)}")
         return motor_id
 
     @classmethod
@@ -281,8 +298,9 @@ class HandWebControlNode(Node):
         positions = payload.get("positions")
         if not name:
             raise ValueError("gesture name must not be empty")
-        if not isinstance(positions, list) or len(positions) != 6:
-            raise ValueError("positions must contain six values")
+        motor_ids = self.shared.motor_ids()
+        if not isinstance(positions, list) or len(positions) != len(motor_ids):
+            raise ValueError(f"positions must contain {len(motor_ids)} values")
         request = AddGesture.Request()
         request.name = name
         request.positions = [self._position(value) for value in positions]

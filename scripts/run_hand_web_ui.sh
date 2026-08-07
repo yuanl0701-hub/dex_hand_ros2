@@ -7,6 +7,7 @@ ROOT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 WEB_HOST="127.0.0.1"
 WEB_PORT="8765"
 OPEN_BROWSER="true"
+WEB_ROS_DISTRO="${ROS_DISTRO:-jazzy}"
 
 usage() {
   cat <<'EOF'
@@ -15,6 +16,7 @@ Usage: ./scripts/run_hand_web_ui.sh [options]
 Options:
   --host ADDRESS    HTTP bind address (default: 127.0.0.1)
   --port PORT       HTTP port (default: 8765)
+  --ros-distro NAME ROS 2 distribution (default: current environment or jazzy)
   --no-browser      Do not open the default browser automatically
   -h, --help        Show this help
 
@@ -33,6 +35,11 @@ while (($#)); do
     --port)
       [[ $# -ge 2 ]] || { echo "Missing value for --port" >&2; exit 2; }
       WEB_PORT="$2"
+      shift 2
+      ;;
+    --ros-distro)
+      [[ $# -ge 2 ]] || { echo "Missing value for --ros-distro" >&2; exit 2; }
+      WEB_ROS_DISTRO="$2"
       shift 2
       ;;
     --no-browser)
@@ -55,8 +62,9 @@ if [[ ! "$WEB_PORT" =~ ^[0-9]+$ ]] || ((WEB_PORT < 1 || WEB_PORT > 65535)); then
   echo "Port must be an integer between 1 and 65535." >&2
   exit 2
 fi
-if [[ ! -f /opt/ros/humble/setup.bash ]]; then
-  echo "ROS 2 Humble was not found at /opt/ros/humble/setup.bash." >&2
+ROS_SETUP="/opt/ros/${WEB_ROS_DISTRO}/setup.bash"
+if [[ ! -f "$ROS_SETUP" ]]; then
+  echo "ROS 2 setup was not found at $ROS_SETUP." >&2
   exit 2
 fi
 if [[ ! -f "$ROOT_DIR/install/setup.bash" ]]; then
@@ -65,7 +73,7 @@ if [[ ! -f "$ROOT_DIR/install/setup.bash" ]]; then
 fi
 
 set +u
-source /opt/ros/humble/setup.bash
+source "$ROS_SETUP"
 source "$ROOT_DIR/install/setup.bash"
 set -u
 

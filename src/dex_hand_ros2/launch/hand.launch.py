@@ -1,4 +1,4 @@
-"""Launch the hand node with mock-safe defaults."""
+"""Launch the generic ROS facade with independently selectable layers."""
 
 import os
 
@@ -7,33 +7,35 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
-from launch_ros.parameter_descriptions import ParameterValue
+from launch_ros.parameter_descriptions import ParameterFile
 
 
 def generate_launch_description() -> LaunchDescription:
     share = get_package_share_directory("dex_hand_ros2")
-    gesture_file = os.path.join(share, "config", "gestures.yaml")
+    default_runtime = os.path.join(share, "config", "runtime", "default.yaml")
+    default_backend = os.path.join(share, "config", "backends", "mock.yaml")
+    default_model = os.path.join(
+        share, "config", "hand_models", "generic_six_axis", "ros_parameters.yaml"
+    )
+    default_gestures = os.path.join(
+        share, "config", "hand_models", "generic_six_axis", "gestures.json"
+    )
     return LaunchDescription(
         [
-            DeclareLaunchArgument("driver_type", default_value="fake"),
-            DeclareLaunchArgument("serial_port", default_value="/dev/ttyUSB0"),
-            DeclareLaunchArgument("qos_reliability", default_value="reliable"),
-            DeclareLaunchArgument("qos_depth", default_value="10"),
+            DeclareLaunchArgument("runtime_config", default_value=default_runtime),
+            DeclareLaunchArgument("backend_config", default_value=default_backend),
+            DeclareLaunchArgument("hand_model_config", default_value=default_model),
+            DeclareLaunchArgument("gesture_file", default_value=default_gestures),
             Node(
                 package="dex_hand_ros2",
                 executable="hand_node",
                 name="dex_hand_node",
                 output="screen",
                 parameters=[
-                    {
-                        "driver_type": LaunchConfiguration("driver_type"),
-                        "serial_port": LaunchConfiguration("serial_port"),
-                        "qos_reliability": LaunchConfiguration("qos_reliability"),
-                        "qos_depth": ParameterValue(
-                            LaunchConfiguration("qos_depth"), value_type=int
-                        ),
-                        "gesture_file": gesture_file,
-                    }
+                    ParameterFile(LaunchConfiguration("runtime_config"), allow_substs=True),
+                    ParameterFile(LaunchConfiguration("backend_config"), allow_substs=True),
+                    ParameterFile(LaunchConfiguration("hand_model_config"), allow_substs=True),
+                    {"gesture_file": LaunchConfiguration("gesture_file")},
                 ],
             ),
         ]

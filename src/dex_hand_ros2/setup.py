@@ -8,6 +8,6 @@ setup(
     zip_safe=True,
     maintainer="Yuan Lei",
     maintainer_email="u3650775@connect.hku.hk",
-    description="Safe ROS 2 control with a deterministic virtual backend for a dexterous hand",
+    description="Layered ROS 2 control and hardware adapters for configurable dexterous hands",
     license="MIT",
 )

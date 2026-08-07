@@ -1,5 +1,158 @@
 # Implementation Changelog
 
+## 2026-08-04 — MPD20 per-axis communication tolerance
+
+### Implemented
+
+- Added opt-in `hardware_allow_partial_operation` behavior to the MPD20
+  backend and enabled it in the packaged MPD20 backend policy.
+- Kept protocol-level `serial_retries` as the first recovery layer. After
+  retries are exhausted, only the failed logical motor is quarantined; a
+  multi-axis command continues writing every other reachable motor.
+- Changed MPD20 feedback polling in partial mode to publish the failed motor
+  with `connected=false` and position `-1` instead of escalating one axis to a
+  whole-hand fault.
+- Changed smooth-gesture trajectory construction to omit axes whose start
+  feedback is unavailable when the backend explicitly permits partial
+  operation; strict backends still reject incomplete start feedback.
+- Added `gesture_execution_mode` with `smooth` and `direct` policies. Physical
+  runtime now uses `direct`, issuing one final command set so MPD20's internal
+  position/speed control performs the motion; simulation retains sampled
+  quintic trajectories.
+- Added `start_mpd20_jazzy.sh`, a current-workstation wrapper with serial/file
+  validation, optional build, configurable ROS distribution and explicit
+  physical-motion enablement.
+- Updated the localhost browser-control launcher to use the active ROS
+  distribution or Jazzy by default, and added physical `half_open` and `rock`
+  labels to the dynamically discovered gesture buttons.
+- Added `readme_ui.md` with the complete MPD20/Jazzy browser workflow, physical
+  versus simulation control boundaries, status interpretation, network safety
+  and troubleshooting; promoted the current hardware and web quick start in
+  the root README.
+- Recorded the operator-confirmed current-hand mapping (IDs 1--4 finger
+  flexion, ID 5 thumb flexion, ID 6 thumb opposition) and added safe-margin
+  `vgesture`, `rock` and `point` poses. Commands use raw-equivalent 130/840
+  endpoints, thumb-fist raw 400 and a neutral ID 6 target pending separate
+  opposition-axis travel calibration.
+- Recorded the operator-reported recovery of ID 6 after correcting its baud
+  rate from 9600 to 115200; all six bus IDs and current gesture operation are
+  now reported working on the Jazzy deployment.
+- Added `command_watchdog_enabled`; disabled it in the discrete direct-position
+  physical runtime so idle time after a gesture does not enter a strict hold
+  path during transient communication dropouts. Hardware E-stop remains required.
+- Added `partial_operation_enabled`, `unavailable_motor_ids`, cumulative
+  `motor_failure_counts` and `motor_last_errors` to status JSON.
+- A successful later feedback read reapplies the configured speed limit and
+  returns the motor to the next command. It does not join a gesture that is
+  already in progress.
+- Kept operator emergency stop and shutdown hold strict: failure to hold any
+  configured actuator is still reported as a fault and is not presented as a
+  successful stop.
+
+### Commands and actual results
+
+| Command/check | Result |
+|---|---|
+| System `python3 -m pytest ...` | Blocked because the system Python has no pytest; not counted as a code failure |
+| `PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src/dex_hand_ros2 /opt/anaconda3/bin/python -m pytest -q src/dex_hand_ros2/test` | Passed: 80 tests |
+| `/opt/anaconda3/bin/ruff check` on all changed Python files | Passed |
+| `mypy` on the 39 ROS-independent source files | Passed: no issues found |
+| `bash -n scripts/run_hand_web_ui.sh` and `scripts/run_hand_web_ui.sh --help` | Passed |
+| Python HTML parse plus physical gesture-label assertions | Passed |
+| Python code-fence and local-link validation for the five updated Markdown documents | Passed |
+| Stale ID 6 offline-wording search across root and `docs/` Markdown | Passed: no matches |
+| `git diff --check` | Passed |
+| ROS 2 build and physical MPD20 operation | Not run in this macOS workspace; target-host verification remains required |
+
+## 2026-07-30 — Reusable architecture and layered deployment
+
+### Implemented
+
+- Moved hardware-independent controller, safety, gestures, trajectory, PID,
+  driver contract, joint mapping and kinematics into `core/`.
+- Split MPD20, Feetech and HTS20L into separate files under `backends/`; moved
+  serial protocols, deterministic simulation and MPD20 commissioning into
+  their own packages.
+- Retained the historical top-level Python modules as compatibility imports.
+- Replaced the flat backend factory arguments with typed connection, MPD20 and
+  simulation settings for new code.
+- Separated reusable logical `motor_ids` from per-hand MPD20 physical
+  `mpd20_device_ids`; all MPD20 bus operations now resolve this mapping.
+- Split ROS configuration into runtime, backend, hand-model and physical
+  deployment overlays. Removed the former aggregate YAML files.
+- Updated all launch files, Ubuntu MPD20 deployment wrapper and Isaac Sim
+  wrapper to use the layered configuration.
+- Made the browser UI discover logical axes, labels and gestures from controller
+  status instead of validating a fixed ID 1--6 set.
+- Added `DEPLOYMENT.md` as the project-wide build, simulation, MPD20 and
+  new-hardware deployment guide.
+
+### Commands and actual results
+
+| Command/check | Result |
+|---|---|
+| System `python3 -m compileall` / pytest | Blocked by macOS system Python cache permissions and missing pytest; not counted as a code failure |
+| `PYTHONPYCACHEPREFIX=/tmp/dex_hand_pycache PYTHONPATH=src/dex_hand_ros2 python3.13 -m pytest -q src/dex_hand_ros2/test` | Passed: 68 tests |
+| `ruff check src/dex_hand_ros2/dex_hand_ros2 src/dex_hand_ros2/test` | Passed |
+| `mypy ... --exclude '(hand_node\|config_node\|gesture_cli\|hand_web_ui\|ros_experiment)\.py'` | Passed: 39 source files |
+| `git diff --check` | Passed |
+| Humble container isolated build under `/tmp` | Passed: 2 packages |
+| Humble `colcon test-result --verbose` | Passed: 69 tests, 0 errors/failures/skips |
+| Layered Mock launch | Passed; backend `fake`, logical IDs 1--6 and status JSON observed |
+| Layered simulated launch | Passed; backend `simulated` and six-joint `JointState` observed |
+| MPD20 launch `--show-args` | Passed; all four configuration layers installed and motion default is false |
+| Physical MPD20 communication/motion | Not run; hardware unavailable |
+
+## 2026-07-30 — MPD20 physical-deployment path
+
+### Source audit
+
+- Cross-checked the supplied MPD20 V1.5 manual, all five pages of the Modbus
+  Poll guide, and the prior physical-hand dissertation.
+- Confirmed that MPD20-S feedback uses Modbus function 04/input register 2,
+  while target position uses function 06/holding register 2.
+- Confirmed the documented raw target range 120--850, maximum-speed register 3,
+  8N1/115200 default and baud-code table.
+- Confirmed six physical axes and RS-485 address assignment, but found no
+  authoritative ID-to-finger map, mechanical safe range or direction record.
+
+### Implemented
+
+- Corrected MPD20 feedback to function 04 and added strict input-register tests.
+- Added per-motor raw minimum/maximum, direction and speed calibration while
+  retaining the common normalized 0--100 controller domain.
+- Added all-ID startup probe, stationary-start requirement, read-only motion
+  gate, initial active hold and speed setup.
+- Added active measured-position hold on emergency stop, watchdog, consecutive
+  feedback failures and shutdown. This is explicitly not a torque-off claim.
+- Added read-only `mpd20_preflight` and explicitly confirmed, delta-limited
+  `mpd20_commission` tools.
+- Added physical-hand YAML/gesture templates, a safe MPD20 launch and an Ubuntu
+  build/preflight/launch wrapper.
+- Added a Chinese physical deployment, staged acceptance and new-hand reuse
+  guide. Simulation-only gestures remain separate from the hardware catalogue.
+
+### Commands and actual results
+
+| Command/check | Result |
+|---|---|
+| Pure Python pytest suite | 63 passed |
+| Ruff changed-source check | Passed |
+| Mypy hardware-independent source check | Passed: 17 source files |
+| Compileall | Passed |
+| Deployment shell syntax/help | Passed |
+| Git diff whitespace check | Passed |
+| ARM64 ROS 2 Humble isolated build | 2 packages finished |
+| Humble package test result | 64 tests, 0 errors/failures/skips |
+| Installed MPD20 YAML/launch/tools check | Passed |
+| MPD20 preflight/commission CLI help | Passed in installed environment |
+| `mpd20_hand.launch.py --show-args` | Passed; motion default shown as false |
+| Physical MPD20 communication/motion | Not run; hardware unavailable |
+
+The source is software-deployable, but physical functionality remains
+implemented and not hardware-verified until the staged acceptance checklist in
+`MPD20_PHYSICAL_DEPLOYMENT.md` is completed.
+
 ## 2026-07-28 — Isaac Sim 4.5 gesture visualization path
 
 - Added collision geometry, positive mass/inertia and joint dynamics to the

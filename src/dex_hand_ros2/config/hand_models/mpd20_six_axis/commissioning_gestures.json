@@ -1,0 +1,46 @@
+{
+  "gestures": [
+    {
+      "name": "open",
+      "description": "Safe open pose: raw about 840 for commissioned flexion axes",
+      "duration": 1.0,
+      "units": "normalized_percent",
+      "positions": {"1": 98.63, "2": 98.63, "3": 98.63, "4": 98.63, "5": 98.63, "6": 50.0}
+    },
+    {
+      "name": "half_open",
+      "description": "Mid-stroke commissioning pose",
+      "duration": 1.0,
+      "units": "normalized_percent",
+      "positions": {"1": 50.0, "2": 50.0, "3": 50.0, "4": 50.0, "5": 50.0, "6": 50.0}
+    },
+    {
+      "name": "fist",
+      "description": "Safe fist: fingers raw about 130, thumb-flexion raw about 400",
+      "duration": 1.0,
+      "units": "normalized_percent",
+      "positions": {"1": 1.37, "2": 1.37, "3": 1.37, "4": 1.37, "5": 38.36, "6": 50.0}
+    },
+    {
+      "name": "vgesture",
+      "description": "V sign: index and middle open; ring, little and thumb flexed",
+      "duration": 1.0,
+      "units": "normalized_percent",
+      "positions": {"1": 98.63, "2": 98.63, "3": 1.37, "4": 1.37, "5": 38.36, "6": 50.0}
+    },
+    {
+      "name": "rock",
+      "description": "Rock sign: index and little open; middle, ring and thumb flexed",
+      "duration": 1.0,
+      "units": "normalized_percent",
+      "positions": {"1": 98.63, "2": 1.37, "3": 1.37, "4": 98.63, "5": 38.36, "6": 50.0}
+    },
+    {
+      "name": "point",
+      "description": "Single-finger point: index open; other fingers and thumb flexed",
+      "duration": 1.0,
+      "units": "normalized_percent",
+      "positions": {"1": 98.63, "2": 1.37, "3": 1.37, "4": 1.37, "5": 38.36, "6": 50.0}
+    }
+  ]
+}

@@ -18,3 +18,4 @@ experiments/archives/
 .experiment_work/
 experiment_results/
 .isaacsim/
+tmp/
